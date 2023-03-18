@@ -1,0 +1,108 @@
+/* 初始顶部导航栏 */
+#topBar {
+    height: 5.6rem;
+    width: 100%;
+    background-color: rgb(255, 255, 255, .6);
+    z-index: 100;
+    float: left;
+    position: fixed;
+}
+
+/* 初始导航栏标题 */
+#pageTitle {
+    color: rgb(28, 58, 119);
+    float: left;
+    margin: -4rem 0 0 8rem;
+    position: absolute;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* 导航栏一输入框 */
+#input {
+    width: 660px;
+    position: absolute;
+    margin: -82px 0 0 430px;
+}
+
+/* 路由文本链接父级元素 */
+#text_bar {
+    float: left;
+    width: 60rem;
+    position: absolute;
+    /* color: rgb(236,219,186); */
+    margin: -3.6rem 0 0 30rem;
+}
+
+/* 文本链接子级元素 */
+#text_bar div {
+    float: left;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0 4rem;
+    cursor: pointer;
+}
+
+
+/* 第二导航栏 */
+#bar {
+    /* position: sticky; */
+    position: fixed;
+    width: 100%;
+    /* top: 0px; */
+    background-color: white;
+    /* background-color: #DFF4FF; */
+    height: 4rem;
+    z-index: 999;
+    border-bottom: 2px rgb(28, 58, 119) solid;
+    animation: showbar .7s;
+}
+
+/* 第二导航栏文字 */
+#secondBarTitle {
+    height: "5rem";
+    width: "10rem";
+    margin: 0.5rem 0 0 3rem;
+    color: rgb(28, 58, 119);
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+/* 路由链接 */
+#text_bar_1 {
+    margin: -40px 0 0 140px;
+    width: 500px;
+    color: rgb(236, 219, 186);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* 输入框 */
+#input_1 {
+    width: 700px;
+    position: absolute;
+    margin: -2.1rem 0 0 30rem;
+}
+
+/* element元素样式重置 */
+.el-button {
+    background-color: rgb(236, 219, 186) !important;
+}
+
+.el-button--default {
+    background-color: rgb(236, 219, 186) !important;
+}
+
+.el-select {
+    width: 100px;
+}
+
+.el-input__inner :focus {
+    border-color: rgb(236, 219, 186) !important;
+}
+
+/* 修改鼠标样式 */
+.bardiv {
+    cursor: pointer;
+}
