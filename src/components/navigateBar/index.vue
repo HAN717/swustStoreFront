@@ -1,14 +1,16 @@
 <template>
   <div v-if="scrollHeight <= 130" id="topBar">
+    <div :id="isHover == true ? 'navBanner' : ''"></div>
     <img
+      id = 'logoPic'
       @click="navgateTo('/')"
       src="../../assets/pic/logo.png"
       alt="logo"
-      width="80rem"
-      height="80rem"
-      style="margin: 0.3rem 0 0 1rem"
+      width="50rem"
+      height="50rem"
+      style="margin: 0.6rem 0 0 1rem"
     />
-    <div id="pageTitle" @click="navgateTo('/')">西科周边好物商城</div>
+    <div id="pageTitle" @click="navgateTo('/')"  @mouseenter="mouseIsHover()" @mouseleave="mouseIsLeave()">西科周边好物</div>
     <!-- <div id="input">
           <el-input placeholder="请输入内容" v-model="inputText" class="input-with-select" style="width:600px">
             <el-select v-model="select" slot="prepend" placeholder="请选择">
@@ -21,9 +23,9 @@
         </div>       -->
     <div id="text_bar">
       <!-- 根据当前路由动态设置class类名 -->
-      <div :class="activeBar == '/goodGoods'? 'activeBar' : ''" @click="navgateTo('/goodGoods')">西科好物</div>
-      <div :class="activeBar == '/originality'? 'activeBar' : ''" @click="navgateTo('/originality')">西科创意</div>
-      <div :class="activeBar == '/publishment'? 'activeBar' : ''" @click="navgateTo('/publishment')">西科出版</div>
+      <div :class="activeBar == '/goodGoods'? 'activeBar' : 'normal'" @click="navgateTo('/goodGoods')">西科好物</div>
+      <div :class="activeBar == '/originality'? 'activeBar' : 'normal'" @click="navgateTo('/originality')">西科创意</div>
+      <div :class="activeBar == '/publishment'? 'activeBar' : 'normal'" @click="navgateTo('/publishment')">西科出版</div>
       <div v-if="isLogin == false" class="bardiv" @click="navgateTo('/login')">
         登录系统
       </div>
@@ -71,7 +73,7 @@
         <el-button
           slot="append"
           icon="el-icon-search"
-          style="position: absolute; margin-top: -20px; height: 40px"
+          style="position: absolute; margin-top: -20px; height: 40px;color: white;"
         ></el-button>
       </el-input>
     </div>
@@ -84,6 +86,7 @@ export default {
   name: "navigateBar",
   data() {
     return {
+      isHover: false,
       isLogin: false,
       userName: "",
       select: "",
@@ -104,6 +107,12 @@ export default {
     this.getWeaAndTem();
   },
   methods: {
+    mouseIsHover(){
+      this.isHover=true;
+    },
+    mouseIsLeave(){
+      this.isHover=false;
+    },
     getLoginState() {
       let user = localStorage.getItem("user");
       console.log("user", user);

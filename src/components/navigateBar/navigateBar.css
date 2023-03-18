@@ -1,24 +1,48 @@
 /* 初始顶部导航栏 */
 #topBar {
-    height: 5.6rem;
+    height: 4.3rem;
     width: 100%;
     background-color: rgb(255, 255, 255, .6);
     z-index: 100;
     float: left;
+    overflow: hidden;
     /* position: fixed; */
 }
-
 /* 初始导航栏标题 */
-#pageTitle {
-    color: rgb(28, 58, 119);
+#pageTitle{
+    /* color: #abbcf2; */
+    color: #1c3a77;
     float: left;
-    margin: -4rem 0 0 8rem;
+    margin: -3rem 0 0 6rem;
     position: absolute;
     font-weight: 600;
     font-size: 1.5rem;
     cursor: pointer;
+    letter-spacing: 0.1rem;
 }
-
+/* 导航栏背景 */
+#navBanner{
+    background-image: url("../../assets/pic/home/banner.jpg");
+    background-position: 0 -9.5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: absolute;
+    height: 4.3rem;
+    z-index: -1;
+    animation: showBg 0.7s;
+}
+@keyframes showBg {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+/* 标题颜色动效 */
+#pageTitle:hover{
+    /* background-image: linear-gradient(to top, rgb(255,210,209), rgb(171,188,242));
+    background-clip: text;
+    color: transparent;  */
+    color: #1c3a77;
+}
 /* 导航栏一输入框 */
 #input {
     width: 660px;
@@ -32,16 +56,16 @@
     width: 60rem;
     position: absolute;
     /* color: rgb(236,219,186); */
-    margin: -3.6rem 0 0 30rem;
+    margin: -2.8rem 0 0 64rem;
 }
 
 /* 文本链接子级元素 */
 #text_bar div {
     float: left;
     /* color: rgb(0, 0, 0); */
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 800;
-    margin: 0 4rem;
+    margin: 0.2rem 2rem;
     cursor: pointer;
 }
 /* 文本链接动效 */
@@ -52,10 +76,12 @@
 
 /* 当前路由页面对应导航高亮 */
 .activeBar{
-    color: rgb(187, 227, 254);
-    text-shadow: 0 0.3rem 0.3rem rgb(251, 248, 95) ;
+    color: #abbcf2;
+    text-shadow: 0 0.3rem 0.3rem #fbf85f ;
 }
-
+.normal{
+    color: rgb(28, 58, 119);
+}
 
 /* 第二导航栏 */
 #bar {
@@ -65,20 +91,28 @@
     /* top: 0px; */
     background-color: white;
     /* background-color: #DFF4FF; */
-    height: 4rem;
+    height: 3.4rem;
     z-index: 999;
     border-bottom: 2px rgb(28, 58, 119) solid;
     animation: showbar .7s;
+}
+@keyframes showbar {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
 /* 第二导航栏文字 */
 #secondBarTitle {
     height: "5rem";
     width: "10rem";
-    margin: 0.5rem 0 0 3rem;
+    margin: 0.5rem 0 0 3.8rem;
     color: rgb(28, 58, 119);
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 /* 路由链接 */
@@ -94,16 +128,16 @@
 #input_1 {
     width: 700px;
     position: absolute;
-    margin: -2.1rem 0 0 30rem;
+    margin: -2.1rem 0 0 47.2rem;
 }
 
 /* element元素样式重置 */
 .el-button {
-    background-color: rgb(236, 219, 186) !important;
+    background-color: #1c3a77 !important;
 }
 
 .el-button--default {
-    background-color: rgb(236, 219, 186) !important;
+    background-color: #1c3a77 !important;
 }
 
 .el-select {
@@ -111,10 +145,11 @@
 }
 
 .el-input__inner :focus {
-    border-color: rgb(236, 219, 186) !important;
+    border-color: #1c3a77 !important;
 }
 
 /* 修改鼠标样式 */
 .bardiv {
+    color: #1c3a77;
     cursor: pointer;
 }

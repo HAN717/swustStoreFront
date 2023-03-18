@@ -6,7 +6,7 @@
       alt="回到顶部"
       style="width: 70px"
     />
-    <div style="margin: -7px 0 0 5px; color: rgb(236, 219, 186)">回到顶部</div>
+    <div style="margin: -7px 0 0 5px; color: rgb(28, 58, 119)">回到顶部</div>
   </div>
 </template>
 <script>
@@ -44,7 +44,7 @@ export default {
   position: sticky;
   bottom: 7rem;
   float: right;
-  right: 10rem;
+  right: 3rem;
   cursor: pointer;
   animation: showMb 0.7s;
 }
