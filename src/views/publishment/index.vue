@@ -1,15 +1,21 @@
 <template>
-    <div class="content">
-      西科出版
-    </div>
-  </template>
-  <script>
-  export default {
-    data() {
-      return {};
-    },
-    methods: {},
-  };
-  </script>
-  <style>
-  </style>
+  <div class="content">
+    <navigateBar />
+    西科出版
+  </div>
+</template>
+<script>
+import navigateBar from "../../components/navigateBar";
+export default {
+  components: {
+    navigateBar,
+  },
+  data() {
+    return {};
+  },
+  methods: {},
+};
+</script>
+<style>
+
+</style>

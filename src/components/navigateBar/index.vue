@@ -1,13 +1,14 @@
 <template>
   <div v-if="scrollHeight <= 130" id="topBar">
     <img
+      @click="navgateTo('/')"
       src="../../assets/pic/logo.png"
       alt="logo"
       width="80rem"
       height="80rem"
       style="margin: 0.3rem 0 0 1rem"
     />
-    <div id="pageTitle">西科周边好物商城</div>
+    <div id="pageTitle" @click="navgateTo('/')">西科周边好物商城</div>
     <!-- <div id="input">
           <el-input placeholder="请输入内容" v-model="inputText" class="input-with-select" style="width:600px">
             <el-select v-model="select" slot="prepend" placeholder="请选择">
@@ -19,9 +20,10 @@
           </el-input>
         </div>       -->
     <div id="text_bar">
-      <div  @click="navgateTo('/goodGoods')">西科好物</div>
-      <div  @click="navgateTo('/originality')">西科创意</div>
-      <div  @click="navgateTo('/publishment')">西科出版</div>
+      <!-- 根据当前路由动态设置class类名 -->
+      <div :class="activeBar == '/goodGoods'? 'activeBar' : ''" @click="navgateTo('/goodGoods')">西科好物</div>
+      <div :class="activeBar == '/originality'? 'activeBar' : ''" @click="navgateTo('/originality')">西科创意</div>
+      <div :class="activeBar == '/publishment'? 'activeBar' : ''" @click="navgateTo('/publishment')">西科出版</div>
       <div v-if="isLogin == false" class="bardiv" @click="navgateTo('/login')">
         登录系统
       </div>
@@ -91,10 +93,12 @@ export default {
       wea: "",
       tem: "",
       wea_img: "",
+      activeBar:0
     };
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll), this.getLoginState();
+    this.activeBar = this.$route.path;
   },
   created() {
     this.getWeaAndTem();
@@ -134,7 +138,7 @@ export default {
     },
     navgateTo(dataPath) {
       this.$router.push(dataPath);
-      document.title = "欢迎登录";
+      // document.title = "欢迎登录";
     },
   },
 };

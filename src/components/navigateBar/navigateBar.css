@@ -5,7 +5,7 @@
     background-color: rgb(255, 255, 255, .6);
     z-index: 100;
     float: left;
-    position: fixed;
+    /* position: fixed; */
 }
 
 /* 初始导航栏标题 */
@@ -16,6 +16,7 @@
     position: absolute;
     font-weight: 600;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* 导航栏一输入框 */
@@ -37,11 +38,22 @@
 /* 文本链接子级元素 */
 #text_bar div {
     float: left;
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
     font-size: 1.2rem;
-    font-weight: 700;
-    padding: 0 4rem;
+    font-weight: 800;
+    margin: 0 4rem;
     cursor: pointer;
+}
+/* 文本链接动效 */
+#text_bar div:hover{
+    color: rgb(187, 227, 254);
+    text-shadow: 0 0.3rem 0.3rem rgb(28, 58, 119) ;
+}
+
+/* 当前路由页面对应导航高亮 */
+.activeBar{
+    color: rgb(187, 227, 254);
+    text-shadow: 0 0.3rem 0.3rem rgb(251, 248, 95) ;
 }
 
 
