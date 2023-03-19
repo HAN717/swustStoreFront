@@ -13,8 +13,10 @@
           <el-col :span="8">
             <div>
               <div v-show="scrollHeight > 330" id="areaTitle1">西科好物 | goodGoods</div>
-              <div v-show="scrollHeight > 340" id="discribeWords1">发现优质好物，<br>畅享无限购物乐趣，<br>尽在西科周边商城！</div>
-              <div v-show="scrollHeight > 650" id="smallDiscribe"><span style="color:rgb(28, 58, 119);">我们将为你带来</span>精选的周边商品，涵盖学校文化和独立设计。这里出售自创商品和限量版商品，让你体验与众不同的购物感受。</div>
+              <br> <br> <br> 
+              <div v-show="scrollHeight > 340" id="discribeWords1">西科好物 ,文化周边<br>校园之美 ,尽在其中</div>
+              <div v-show="scrollHeight > 650" id="smallDiscribe"><span style="color:rgb(28, 58, 119);">我们将为你带来</span>精选的周边商品 ,涵盖学校文化和独立设计。这里出售自创商品和限量版商品 ,让你体验与众不同的购物感受。</div>
+              <br> <br>
               <div v-show="scrollHeight > 650" id="learnMore" @click="navgateTo('/goodGoods')">
                 <span>了解更多<i style="font-size:1.3rem;display: block;float: right;" class="el-icon-right"></i></span>
               </div>
@@ -57,20 +59,20 @@
         <el-row style="margin-top:6rem;margin-left: 4rem;">
           <el-col :span="10"> 
             <div style="overflow:hidden;width:25rem;height: 32rem;">
-              <img v-show="scrollHeight > 1320" src="../../assets/pic/home/showGoods/42.jpg" alt="西科大原创抱枕" style="width:25rem;" id="area22Pic">
+              <img v-show="scrollHeight > 1220" src="../../assets/pic/home/showGoods/42.jpg" alt="西科大原创抱枕" style="width:25rem;" id="area22Pic">
             </div>
           </el-col>
           <el-col :span="8">
             <div>
-              <div v-show="scrollHeight > 1330" id="areaTitle2">西科创意 | originality</div>
-              <div v-show="scrollHeight > 1340" id="discribeWords2">西南明珠出沧海，<br>桃李春风物华新</div>
-              <div v-show="scrollHeight > 1340" id="smallDiscribe2">西科创意旨在展示西南科技大学的历史、人文、风景以及优秀的设计和创意作品。这里将会展现学校的独特魅力和创新精神，为师生和参观者提供一个充满艺术氛围的场所。</div>
+              <div v-show="scrollHeight > 1230" id="areaTitle2">西科创意 | originality</div>
+              <div v-show="scrollHeight > 1340" id="discribeWords2">西南明珠出沧海 ,<br>桃李春风物华新</div>
+              <div v-show="scrollHeight > 1340" id="smallDiscribe2">西科创意旨在展示西南科技大学的历史、人文、风景以及优秀的设计和创意作品。这里将会展现学校的独特魅力和创新精神 ,为师生和参观者提供一个充满艺术氛围的场所。</div>
             </div>
           </el-col>
           <el-col :span="4"> 
             <img v-show="scrollHeight > 1350" id="area22Pic2" src="../../assets/pic/home/showGoods/32.jpg" alt="西科大原创抱枕">
           </el-col>
-          <div v-show="scrollHeight > 1450" id="learnMore2" @click="navgateTo('/originality')">
+          <div v-show="scrollHeight > 1550" id="learnMore2" @click="navgateTo('/originality')">
           <span>了解更多<i style="font-size:1.3rem;display: block;float: right;" class="el-icon-right"></i></span>
         </div>
         </el-row>
@@ -87,31 +89,43 @@
     <!-- 过渡区 -->
     <div>
        <transitonArea/> 
-       <div id="twoPic"> 
+       <div id="twoPic">  
+          <div id="picBottomWords"  v-show="scrollHeight >=2100&&scrollHeight<2500">
+            &emsp;&emsp;在西南科技大学 ,有一群坚持传承“艰苦奋斗 ,拼搏创新”校园精神的教学科研人员 ,他们崇尚“有一种力量叫团结 ,有一种胸怀叫包容 ,有一种精神叫实干 ,有一种境界叫奉献”的信念 ,自建校70年来 ,矢志不渝、百折不挠 ,硬是凭着苦干实干将学校的科技创新从无到有 ,从慢车道助推到全国第98位、省属高校第3位(中国内地高校自然指数排名)的发展快车道。
+          </div>
           <img v-show="scrollHeight > 2100&&scrollHeight<2200" id="book1" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
-          <img v-show="scrollHeight >= 2200&&scrollHeight<2300" id="book2" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
-          <img v-show="scrollHeight >=2300&&scrollHeight<2400" id="book3" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
-          <img v-show="scrollHeight >=2400&&scrollHeight<2600" id="book4" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight > 2200&&scrollHeight<2300" id="book2" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight >= 2300&&scrollHeight<2400" id="book3" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight >=2400&&scrollHeight<2500" id="book4" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+         
        </div>
     </div>
     <!-- 西科出版展示区 -->
     <div id="publishmentArea">
       <div v-show="scrollHeight > 1900&&scrollHeight<2300" id="publishmentAreaContent"></div>
       <div v-show="scrollHeight >= 2300&&scrollHeight<2500" id="publishmentAreaContent1"></div>
-      <div v-show="scrollHeight >=2500&&scrollHeight<2700" id="publishmentAreaContent2"></div>
-      <div v-show="scrollHeight > 2700" id="publishmentAreaContent3"></div>
+      <div v-show="scrollHeight >2500" id="publishmentAreaContent2"></div>
       <el-row id="area3">
         <el-col :span="6">
           <div style="width:100%;height:39rem;">
-            <div v-show="scrollHeight > 2500" id="areaTitle3">西科出版 | publishment</div>
-            <div v-show="scrollHeight > 2600" id="discribeWords3">知识智慧，不可匿藏，<br>西科出版，献礼学堂。</div>
-            <div v-show="scrollHeight > 2600" id="smallDiscribe3">西科出版旨在展示学校教师出版的教材或书籍，以及学校的科研成果、学术论文等等。这里汇集大量高质量的出版物，包括学术著作、科研成果、教育教材和行业指南等。同时，西科出版还提供出版服务，为学校教师和学生提供出版支持和资源共享。</div>
+            <div v-show="scrollHeight > 2200" id="areaTitle3">西科出版 | publishment</div>
+            <div v-show="scrollHeight > 2200" id="discribeWords3">知识智慧 , 不可匿藏<br>西科出版 , 献礼学堂</div>
+            <div v-show="scrollHeight > 2200" id="smallDiscribe3">西科出版旨在展示学校教师出版的教材或书籍 ,以及学校的科研成果、学术论文等等。这里汇集大量高质量的出版物 ,包括学术著作、科研成果、教育教材和行业指南等。同时 ,西科出版还提供出版服务 ,为学校教师和学生提供出版支持和资源共享。</div>
           </div>
         </el-col>
         <el-col :span="18">
-          <img v-show="scrollHeight > 2600" src="../../assets/pic/home/books/education.png" id="educationPic">
+          <img v-show="scrollHeight > 2500" src="../../assets/pic/home/books/education.png" id="educationPic">
         </el-col>
       </el-row>
+      <div id="learnMore3" v-show="scrollHeight > 2700" @click="navgateTo('/publishment')">
+        查看更多
+      </div>
+      <div id="showPages" v-show="scrollHeight > 2700" >
+        <div :class="'pages'+index" style="width: 12rem;height: 15rem;background-color: white;margin-left: 2.8rem;" v-for="(item,index) of imgList" :key="index">
+          <img :src="item"/>
+        </div>
+      </div>
+      
     </div>
     <toTop />
    
@@ -137,6 +151,13 @@ export default {
   data() {
     return {
       scrollHeight:0,
+      imgList: [
+          require('../../assets/pic/home/books/pages1.png'),
+          require('../../assets/pic/home/books/pages5.png'),
+          require('../../assets/pic/home/books/pages4.png'),
+          require('../../assets/pic/home/books/pages3.png'),
+          require('../../assets/pic/home/books/pages2.png'),
+      ],
     };
   },
   methods: {
