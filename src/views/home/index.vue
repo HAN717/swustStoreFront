@@ -21,9 +21,10 @@
             </div>
           </el-col>
           <el-col :span="4"> 
-            <img v-show="scrollHeight > 340" id="area2Pic" src="../../assets/pic/home/showGoods/21.jpg" alt="西科大原创抱枕" style="width:20rem;margin: 8rem 0 0 1rem;">
+            <img v-show="scrollHeight > 340" id="area2Pic" src="../../assets/pic/home/showGoods/21.jpg" alt="西科大原创抱枕" style="width:20rem;margin: 7rem 0 0 1rem;">
           </el-col>
         </el-row>
+        <!-- 过渡区 -->
         <!-- 图片滚动展示 -->
         <div id="scrollShowPic" v-show="scrollHeight > 900&&scrollHeight<1300">
           <div id="scrollShowPic1">
@@ -50,7 +51,6 @@
           </div>
         </div>
       </div>
-      <!-- 过渡区 -->
       <div id="transitionArea1"></div>
       <!-- 西科创意展示区 -->
       <div v-show="scrollHeight > 1000" id="originalityArea">
@@ -70,18 +70,41 @@
           <el-col :span="4"> 
             <img v-show="scrollHeight > 1350" id="area22Pic2" src="../../assets/pic/home/showGoods/32.jpg" alt="西科大原创抱枕">
           </el-col>
-          <div v-show="scrollHeight > 1450" id="learnMore2" @click="navgateTo('/goodGoods')">
+          <div v-show="scrollHeight > 1450" id="learnMore2" @click="navgateTo('/originality')">
           <span>了解更多<i style="font-size:1.3rem;display: block;float: right;" class="el-icon-right"></i></span>
         </div>
         </el-row>
+        <el-row style="margin-top:2.4rem">
+          <el-col :span="18" v-show="scrollHeight > 1800" id="area2leftPic"  >
+            <swiper :speed="1" :direction="'right'"></swiper>
+          </el-col>
+          <el-col :span="6" id="area2rightWords">
+            <div>&emsp;&emsp;<span style="color:rgb(111, 160, 250)">西南科技大学</span>, 创建于1952年, 坐落于中国科技城——四川省绵阳市。是四川省人民政府与教育部共建高校, 被教育部确定为国家重点建设的西部14所高校之一。学校现占地5463亩, 环境优美, 设施完善, 是读书治学的好地方。70年来学校培养了众多优秀毕业生,涌现出了众多科技创新成果。</div>
+          </el-col>
+        </el-row>
       </div>
-      <!-- 过渡区 -->
-
-      <!-- 西科出版展示区 -->
-      <div id="publishmentArea"></div>
-
+    </div>
+    <!-- 过渡区 -->
+    <div>
+       <transitonArea/> 
+       <div id="twoPic"> 
+          <div>
+            <img src="../../assets/pic/home/showGoods/25.jpg" style="height:17rem">
+          </div>
+          <div>
+            <img src="../../assets/pic/home/showGoods/27.jpg" style="height:17rem">
+          </div>
+       </div>
+    </div>
+    <!-- 西科出版展示区 -->
+    <div id="publishmentArea">
+      <el-row>
+        <el-col :span="6"></el-col>
+        <el-col :span="18"></el-col>
+      </el-row>
     </div>
     <toTop />
+   
     <pageFooter/>
   </div>
 </template>
@@ -89,13 +112,17 @@
 import navigateBar from "../../components/navigateBar";
 import toTop from "../../components/toTop";
 import pageFooter from "../../components/pageFooter";
+import transitonArea from "../../components/transitionArea";
+import swiper from "../../components/swiper"
 import "../home/home.css"
 export default {
   name: "homePage",
   components: {
     navigateBar,
     toTop,
-    pageFooter,
+    swiper,
+    transitonArea,
+    pageFooter
   },
   data() {
     return {

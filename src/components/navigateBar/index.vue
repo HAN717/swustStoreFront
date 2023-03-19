@@ -58,7 +58,7 @@
     </div> -->
   </div>
   <div id="bar" v-else>
-    <div id="secondBarTitle">西科周边好物</div>
+    <div id="secondBarTitle">SWUST</div>
     <div id="input_1">
       <el-input
         placeholder="请输入内容"
@@ -116,14 +116,14 @@ export default {
     },
     getLoginState() {
       let user = localStorage.getItem("user");
-      console.log("user", user);
+      // console.log("user", user);
       if (user !== null) {
         this.isLogin = true;
         this.userName = user;
       }
     },
     outLogin() {
-      console.log("退出系统");
+      // console.log("退出系统");
       localStorage.clear();
       location.reload();
     },

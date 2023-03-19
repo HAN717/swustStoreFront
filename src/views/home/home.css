@@ -16,7 +16,7 @@ body{
     width: 100%;
 }
 #content{
-    height: 2000px;
+    height: 1780px;
     width: 100%;
     /* background-color: #DFF4FF; */
     background-color: white;
@@ -171,7 +171,7 @@ body{
 #originalityArea{
     margin-top: -2.5rem;
     position: absolute;
-    height: 53rem;
+    height: 60rem;
     width: 100%;
     background-color: rgb(203, 230, 248);
     animation:  showOriginality 2s ease-in-out;
@@ -207,7 +207,7 @@ body{
     animation: showsmallDiscribe 1.5s ease-in-out;
 }
 #learnMore2{
-    margin: 3rem 0 0 -6rem;
+    margin: 2rem 0 0 -6rem;
     color:rgb(111, 160, 250);
     letter-spacing: 0.4rem;
     font-weight: 600;
@@ -223,7 +223,7 @@ body{
     animation: showarea22Pic 1.7s ease-in-out;
 }
 @keyframes showarea22Pic {
-    from{width:26rem;}
+    from{width:27rem;margin: -3rem 0 0 -3rem;}
     to{width:25rem;}
 }
 #area22Pic2{
@@ -233,4 +233,30 @@ body{
 @keyframes showarea22Pic2 {
     from{margin-top: 14rem;}
     to{margin-top: 8rem;}
+}
+#area2leftPic{
+    margin: 3rem 0 0 4rem;
+    width: 59rem;
+    height: 20rem;
+    animation: showSwiper 1s ease-in-out;
+}
+#area2rightWords{
+    margin: 3rem 0 0 4rem;
+    width: 23rem;
+    height: 20rem;
+    /* background-color:aquamarine; */
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.2rem;
+    color: white;
+    line-height: 2rem;
+}
+@keyframes showSwiper{
+    from{margin-left: -18rem;}
+    to{margin-left: 4rem;}
+}
+/* 第三分区 西科出版 | publishment */
+#publishmentArea{
+    width: 100%;
+    height: 60rem;
+    background-color: white;
 }

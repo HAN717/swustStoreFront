@@ -1,12 +1,14 @@
 <template>
   <!-- 回到顶部按钮 -->
   <div @click="toTop()" class="toTop" v-show="scrollHeight > 1000">
-    <img
+    <!-- <img
       src="../../assets/pic/home/toTop.png"
       alt="回到顶部"
       style="width: 70px"
-    />
-    <div style="margin: -7px 0 0 5px; color: rgb(28, 58, 119)">回到顶部</div>
+    /> -->
+    <div style="margin: -7px 0 0 5px; color: rgb(28, 58, 119);font-family: 'Courier New';font-weight: 600;">
+      To<br>Top<br>
+    </div>
   </div>
 </template>
 <script>
@@ -42,9 +44,9 @@ export default {
 <style>
 .toTop {
   position: sticky;
-  bottom: 7rem;
+  bottom: 2rem;
   float: right;
-  right: 3rem;
+  right: 1rem;
   cursor: pointer;
   animation: showMb 0.7s;
   z-index: 100;

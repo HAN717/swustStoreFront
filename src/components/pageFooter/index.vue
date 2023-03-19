@@ -1,6 +1,5 @@
 <template>
     <div id="footer">
-      <div id="transitionArea1"></div>
     </div>
   </template>
   <script>

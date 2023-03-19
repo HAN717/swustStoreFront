@@ -1,0 +1,28 @@
+.swiperBox {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#swiper {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+.imgBox {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+}
+.imgDiv {
+    width: 100%;
+    margin-left: 15px;
+}
+.imgDiv img {
+    height: 100%;
+    width: 30rem;
+}
