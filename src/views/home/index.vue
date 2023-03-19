@@ -88,19 +88,29 @@
     <div>
        <transitonArea/> 
        <div id="twoPic"> 
-          <div>
-            <img src="../../assets/pic/home/showGoods/25.jpg" style="height:17rem">
-          </div>
-          <div>
-            <img src="../../assets/pic/home/showGoods/27.jpg" style="height:17rem">
-          </div>
+          <img v-show="scrollHeight > 2100&&scrollHeight<2200" id="book1" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight >= 2200&&scrollHeight<2300" id="book2" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight >=2300&&scrollHeight<2400" id="book3" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
+          <img v-show="scrollHeight >=2400&&scrollHeight<2600" id="book4" src="../../assets/pic/home/books/rjcs.png" style="height:17rem">
        </div>
     </div>
     <!-- 西科出版展示区 -->
     <div id="publishmentArea">
-      <el-row>
-        <el-col :span="6"></el-col>
-        <el-col :span="18"></el-col>
+      <div v-show="scrollHeight > 1900&&scrollHeight<2300" id="publishmentAreaContent"></div>
+      <div v-show="scrollHeight >= 2300&&scrollHeight<2500" id="publishmentAreaContent1"></div>
+      <div v-show="scrollHeight >=2500&&scrollHeight<2700" id="publishmentAreaContent2"></div>
+      <div v-show="scrollHeight > 2700" id="publishmentAreaContent3"></div>
+      <el-row id="area3">
+        <el-col :span="6">
+          <div style="width:100%;height:39rem;">
+            <div v-show="scrollHeight > 2500" id="areaTitle3">西科出版 | publishment</div>
+            <div v-show="scrollHeight > 2600" id="discribeWords3">知识智慧，不可匿藏，<br>西科出版，献礼学堂。</div>
+            <div v-show="scrollHeight > 2600" id="smallDiscribe3">西科出版旨在展示学校教师出版的教材或书籍，以及学校的科研成果、学术论文等等。这里汇集大量高质量的出版物，包括学术著作、科研成果、教育教材和行业指南等。同时，西科出版还提供出版服务，为学校教师和学生提供出版支持和资源共享。</div>
+          </div>
+        </el-col>
+        <el-col :span="18">
+          <img v-show="scrollHeight > 2600" src="../../assets/pic/home/books/education.png" id="educationPic">
+        </el-col>
       </el-row>
     </div>
     <toTop />

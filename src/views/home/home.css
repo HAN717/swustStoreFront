@@ -254,9 +254,96 @@ body{
     from{margin-left: -18rem;}
     to{margin-left: 4rem;}
 }
+/* 过渡区 */
+#twoPic{
+    position: absolute;
+    right: 0rem;
+    width: 20rem;
+    height: 17rem;
+}
+#book1{ 
+    margin-top: -4rem;
+}
+#book2{
+    margin-top: 0rem;
+}
+#book3{
+    margin-top: 4rem;
+}
+#book4{
+    margin-top: 8rem;
+}
 /* 第三分区 西科出版 | publishment */
 #publishmentArea{
+    /* overflow: hidden; */
     width: 100%;
     height: 60rem;
-    background-color: white;
+    background-color: rgb(78, 108, 146);
+}
+#publishmentAreaContent{
+    float: left;
+    width: 100%;
+    height: 60rem;
+    background-color: rgb(255,255,255);
+}
+#publishmentAreaContent1{
+    float: left;
+    width: 100%;
+    height: 60rem;
+    background-color: rgb(255,255,255,.66);
+
+}
+#publishmentAreaContent2{
+    float: left;
+    width: 100%;
+    height: 60rem;
+    background-color: rgb(255,255,255,.33);
+
+}
+#publishmentAreaContent3{
+    float: left;
+    width: 100%;
+    height: 60rem;
+    background-color: rgb(255,255,255,0);
+}
+#area3{
+    width: 130rem;
+    margin: 5rem 0 0 13rem;
+    position: absolute;
+}
+#areaTitle3{
+    font-family: 'Courier New';
+    margin: 6rem 0 5rem -6rem;
+    color: rgb(174, 200, 253);
+    animation: showareaTitle1 1s ease-in-out;
+    animation: changeColor 3s ease-in-out;
+}
+#discribeWords3{
+    margin: 2rem 0 2rem -6rem;
+    color: white;
+    font-size: 3rem;
+    animation: showsmallDiscribe 1s ease-in-out;
+}
+#smallDiscribe3{
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.2rem;
+    margin: 2rem 0 1rem -6rem;
+    width: 25rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: rgb(174, 200, 253);
+    animation: showsmallDiscribe 1.5s ease-in-out;
+    animation: changeColor 3s ease-in-out;
+}
+@keyframes changeColor {
+    from{color:rgb(28, 58, 119)}
+    to{color:rgb(174, 200, 253)}
+}
+#educationPic{
+    width:50rem;height:50rem;margin: -3rem 0 0 -6rem;
+    animation: showEducationPic 1s ease-in-out;
+}
+@keyframes showEducationPic {
+    from{margin-top: 10rem;}
+    to{margin-top: -3rem;}
 }
