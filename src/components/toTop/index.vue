@@ -6,7 +6,7 @@
       alt="回到顶部"
       style="width: 70px"
     /> -->
-    <div style="margin: -7px 0 0 5px; color: rgb(28, 58, 119);font-family: 'Courier New';font-weight: 600;">
+    <div style="color: rgb(28, 58, 119);font-family: Courier New;font-weight: 600;">
       To<br>Top<br>
     </div>
   </div>
@@ -44,12 +44,13 @@ export default {
 <style>
 .toTop {
   position: sticky;
-  bottom: 2rem;
+  bottom: 3rem;
   float: right;
   right: 1rem;
   cursor: pointer;
   animation: showMb 0.7s;
   z-index: 100;
+  text-shadow: 0.1rem 0.1rem 0.6rem white;
 }
 
 @keyframes showbar {

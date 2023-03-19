@@ -125,10 +125,8 @@
           <img :src="item"/>
         </div>
       </div>
-      
     </div>
     <toTop />
-   
     <pageFooter/>
   </div>
 </template>

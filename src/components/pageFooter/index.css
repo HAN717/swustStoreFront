@@ -1,7 +1,13 @@
 #footer{
     width: 100%;
-    height: 15rem;
+    height: 10rem;
     background-color: rgb(28, 58, 119);
     /* background-color: rgb(180, 222, 244,.5); */
-    position: sticky;
+    /* position: sticky; */
+}
+#footText{
+    text-decoration:none
+}
+a :hover{
+    color: aqua;
 }
