@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 #banner {
     background-image: url("../../assets/pic/home/banner.jpg");
     background-position: 0 -9.5rem;
@@ -18,21 +21,42 @@
     /* background-color: #DFF4FF; */
     background-color: white;
 }
+
+/* 第一分区 西科好物 | goodGoods */
 #goodGoodsArea{
-    height: 53rem;
+    height: 50rem;
     /* background-color: burlywood; */
     padding: 2rem;
+}
+#area1Pic{
+    animation: showarea1Pic 1s ease-in-out;
+}
+@keyframes showarea1Pic {
+    from{margin-top: 5rem;}
+    to{margin-top: 0;}
+}
+#area2Pic{
+    animation: showarea2Pic 1.2s ease-in-out;
+}
+@keyframes showarea2Pic {
+    from{margin-left: 5rem;}
+    to{margin-left: 1rem;}
 }
 #areaTitle1{
     font-family: 'Courier New';
     margin: 2rem 0 0 1rem;
     color: rgb(131,123,110);
+    animation: showareaTitle1 1s ease-in-out;
+}
+@keyframes showareaTitle1 {
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 #discribeWords1{
     margin: 2rem 0 0 1rem;
     color: rgb(221,214,196);
     font-size: 3rem;
-    animation: showDiscribe 0.6s;
+    animation: showareaTitle1 1.5s ease-in-out;
 }
 #smallDiscribe{
     font-family:'Times New Roman', Times, serif;
@@ -42,6 +66,11 @@
     font-size: 0.9rem;
     line-height: 1.5rem;
     color: rgb(182,180,168);
+    animation: showsmallDiscribe 1.5s ease-in-out;
+}
+@keyframes showsmallDiscribe {
+    from{margin-top: 5rem;}
+    to{margin-top: 2rem;}
 }
 #learnMore{
     margin: 2rem 0 0 1rem;
@@ -50,6 +79,7 @@
     font-weight: 600;
     float: left;
     cursor: pointer;
+    animation: showsmallDiscribe 1s ease-in-out;
 }
 #learnMore :hover :first-child{
     animation: goRight .8s;
@@ -63,7 +93,144 @@
         margin-left: 0.7rem;
     }
 }
+
+/* 一二分区过渡部分 */
+#transitionArea1{
+    margin-top: -3rem;
+    position: absolute;
+    width: 100%;
+    height: 26rem;
+    background-image: url("../../assets/pic/home/bannerSmall.gif");
+    background-position: 0 .5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#scrollShowPic,#scrollShowPicSecond,#scrollShowPicThird{
+    position: absolute;
+    margin: -1rem 0 0 40rem;
+    width: 49.8rem;
+    height: 16rem;
+    z-index: 3;
+}
+#scrollShowPic1{
+    position: absolute;
+    margin-left: 20rem;width:14rem;height:16rem;overflow: hidden;float: left;
+    animation: ssp1 .7s ease-in-out;
+}
+@keyframes ssp1 {
+    from{}
+    to{margin-left: 20rem;}
+}
+#scrollShowPic2{
+    position: absolute;
+    margin-left: 36rem;width:14rem;height:16rem;overflow: hidden;
+    animation: ssp2 1s ease-in-out;
+}
+@keyframes ssp2 {
+    from{}
+    to{margin-left: 36rem;}
+}
+#scrollShowPicSecond #scrollShowPic11{
+    position: absolute;
+    margin-left: 12rem;width:14rem;height:16rem;overflow: hidden;float: left;
+    animation: ssp11 1s ease-in-out;
+}
+@keyframes ssp11 {
+    from{}
+    to{margin-left: 12rem;}
+}
+#scrollShowPicSecond #scrollShowPic22{
+    position: absolute;
+    margin-left: 28rem;width:14rem;height:16rem;overflow: hidden;
+    animation: ssp22 1s ease-in-out;
+}
+@keyframes ssp22 {
+    from{}
+    to{margin-left: 28rem;}
+}
+#scrollShowPicThird #scrollShowPic111{
+    position: absolute;
+    margin-left: 5rem;width:14rem;height:16rem;overflow: hidden;float: left;
+    animation: ssp111 1s ease-in-out;
+}
+@keyframes ssp111 {
+    from{}
+    to{margin-left: 5rem;}
+}
+#scrollShowPicThird #scrollShowPic222{
+    position: absolute;
+    margin-left: 21rem;width:14rem;height:16rem;overflow: hidden;
+    animation: ssp222 1s ease-in-out;
+}
+@keyframes ssp222 {
+    from{}
+    to{margin-left: 21rem;}
+}
+
+/* 第二分区 西科创意 | originality*/
 #originalityArea{
+    margin-top: -2.5rem;
+    position: absolute;
     height: 53rem;
-    background-color: rgb(187, 227, 254);
+    width: 100%;
+    background-color: rgb(203, 230, 248);
+    animation:  showOriginality 2s ease-in-out;
+}
+@keyframes showOriginality {
+    from{margin-top:5rem}
+    to{margin-top: -2.5rem;}
+}
+#areaTitle2{
+    font-family: 'Courier New';
+    margin: 6rem 0 5rem -6rem;
+    color: rgb(111, 160, 250);
+    animation: showareaTitle1 1s ease-in-out;
+}
+@keyframes showareaTitle1 {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+#discribeWords2{
+    margin: 2rem 0 2rem -6rem;
+    color: white;
+    font-size: 3rem;
+    animation: showsmallDiscribe 1s ease-in-out;
+}
+#smallDiscribe2{
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.2rem;
+    margin: 2rem 0 1rem -6rem;
+    width: 25rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: rgb(111, 160, 250);
+    animation: showsmallDiscribe 1.5s ease-in-out;
+}
+#learnMore2{
+    margin: 3rem 0 0 -6rem;
+    color:rgb(111, 160, 250);
+    letter-spacing: 0.4rem;
+    font-weight: 600;
+    float: left;
+    cursor: pointer;
+    animation: showsmallDiscribe 1s ease-in-out;
+}
+#learnMore2 :hover :first-child{
+    animation: goRight .8s;
+    margin-left: 0.7rem;
+}
+#area22Pic{
+    animation: showarea22Pic 1.7s ease-in-out;
+}
+@keyframes showarea22Pic {
+    from{width:26rem;}
+    to{width:25rem;}
+}
+#area22Pic2{
+    width:24rem;margin: 8rem 0 0 -6rem;
+    animation: showarea22Pic2 1.7s ease-in-out;
+}
+@keyframes showarea22Pic2 {
+    from{margin-top: 14rem;}
+    to{margin-top: 8rem;}
 }

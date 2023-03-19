@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-      页脚
+      <div id="transitionArea1"></div>
     </div>
   </template>
   <script>

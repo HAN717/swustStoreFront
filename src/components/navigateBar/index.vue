@@ -1,5 +1,5 @@
 <template>
-  <div v-if="scrollHeight <= 130" id="topBar">
+  <div v-if="scrollHeight <= 70" id="topBar">
     <div :id="isHover == true ? 'navBanner' : ''"></div>
     <img
       id = 'logoPic'
@@ -100,7 +100,8 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll), this.getLoginState();
+    window.addEventListener("scroll", this.handleScroll);
+    this.getLoginState();
     this.activeBar = this.$route.path;
   },
   created() {

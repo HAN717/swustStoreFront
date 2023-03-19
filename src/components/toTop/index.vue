@@ -1,6 +1,6 @@
 <template>
   <!-- 回到顶部按钮 -->
-  <div @click="toTop()" class="toTop" v-show="scrollHeight > 400">
+  <div @click="toTop()" class="toTop" v-show="scrollHeight > 1000">
     <img
       src="../../assets/pic/home/toTop.png"
       alt="回到顶部"
@@ -47,6 +47,7 @@ export default {
   right: 3rem;
   cursor: pointer;
   animation: showMb 0.7s;
+  z-index: 100;
 }
 
 @keyframes showbar {
