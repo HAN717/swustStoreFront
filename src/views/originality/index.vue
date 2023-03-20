@@ -1,28 +1,27 @@
 <template>
   <div class="content">
     <navigateBar />
-    西科创意
+    <div id="mainContent"></div>
+    <pageFooter/>
   </div>
 </template>
 <script>
 import navigateBar from "../../components/navigateBar";
+import pageFooter from "../../components/pageFooter"
 export default {
   components: {
     navigateBar,
+    pageFooter
   },
   data() {
     return {};
   },
-  methods: {
-    setTitle(){
-      document.title='西科原创'
-    }
-  },
-  mounted(){
-    setTitle();
-  }
+  methods: {},
 };
 </script>
 <style>
-
+#mainContent{
+  width: 100%;
+  height: 35rem;
+}
 </style>
