@@ -7,13 +7,14 @@
                         <div style="background-color:rgb(255,255,255);height:560px;position: absolute;width:580px">
                             <div style="font-size: 40px;text-align: center;margin-top: 50px;
                             font-family:宋体;font-weight: 600;">Hi! 欢迎登录西科周边好物</div>
-                            <img src="../../assets/pic/login/login.png" width="580px" height="580px"
-                            style="position:absolute;margin-top: -50px;">
+                            <!-- <img src="../../assets/pic/login/login.png" width="580px" height="580px"
+                            style="position:absolute;margin-top: -50px;"> -->
+                            <img src="../../assets/pic/svg/login.svg" width="480px" height="480px"
+                            style="position:absolute;margin: -0.25rem 0 0 2.5rem;">
                         </div>
                     </el-col>
                     <el-col :span="12">
                         <div style="height:560px;width:580px;position: absolute;margin:60px 0 0 580px;">
-                           
                             <img src="../../assets/pic/logo.png" alt="logo" width="65px" height="65px" 
                             style="position:absolute;right: 26rem;top: 2.3rem;">
                             <div style="position:absolute;right: 11rem;top: 47px;font-size: 1.7rem;color:rgb(28, 58, 119);letter-spacing: 0.5rem;">西科周边好物</div>
@@ -47,6 +48,7 @@
 <script>
 import { Message } from "element-ui";
 import { login } from "../../api/login/login";
+import svgUrl from "../../assets/pic/svg/login.svg"
     export default {
         data(){
             return{
@@ -61,8 +63,8 @@ import { login } from "../../api/login/login";
           },
           userLogin(){
             const user = {
-              name: this.input_name,
-              pwd:this.input_pwd
+              userName: this.input_name,
+              userPwd:this.input_pwd
             };
             login(user).then((res) =>{
                 if(res.data==-1){

@@ -1,5 +1,5 @@
 import axios from "axios";
-export const baseUrl = "http://localhost:8081";
+export const baseUrl = "http://192.168.43.244:8080";
 
 // 第一步，创建实例
 const instance = axios.create({

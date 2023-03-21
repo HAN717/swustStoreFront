@@ -9,7 +9,7 @@
             <img class="yuan4" src="../../assets/pic/regist/c4.png" style="bottom: -160px;left:150px;position: relative;">
 
             <div class="regcontent">
-                <div style="width:173px;height:50px;background-color: #dff4ff;margin: 20px 0 0 42px;
+                <div style="width:173px;height:50px;background-color: rgb(236,219,186,.7);margin: 20px 0 0 42px;
                 border-radius: 10px;">
                     <img src="../../assets/pic/logo.png" alt="logo" width="40rem" height="40rem" 
                         style="margin:0.35rem 0 0 0.75rem ;position: absolute;">
@@ -18,7 +18,7 @@
                 </div>
                 <div style="font-size:26px;position: relative;margin: -35px 0 0 720px;font-family: 幼圆;
                 letter-spacing: 10px;">免费注册西科周边好物用户</div>
-                <img src="../../assets/pic/regist/register.png" alt="logo" width="500px" height="500px" 
+                <img src="../../assets/pic/svg/regist.svg" alt="logo" width="500px" height="500px" 
                 style="position:absolute;right: 205px;top: 148px;">
                 <div class="formcontent">
                     <el-form label-position="left" :model="formList" label-width="80px" >
@@ -51,7 +51,7 @@
                                 <el-form-item label="用户身份">
                                     <el-select v-model="formList.userRole" style="width:13.1rem" placeholder="请选择身份">
                                         <el-option
-                                        v-for="item in options"
+                                        v-for="item in userRoleList"
                                         :key="item.value"
                                         :label="item.label"
                                         :value="item.value">
@@ -78,7 +78,7 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { regist } from "../../api/regist/regist"
+import { regist , getUserRole } from "../../api/regist/regist"
 export default {
     data(){
         return{
@@ -104,9 +104,23 @@ export default {
                 value: '2',
                 label: '其他'
             }],
+            userRoleList:[]
         }
     },
+    mounted(){
+        getUserRoleList()
+    },
     methods:{
+        getUserRoleList(){
+            getUserRole().then((res)=>{
+                if(res.state==200){
+                    this.userRoleList = res.data
+                }
+                else{
+                    Message.warning(res.message)
+                }
+            })
+        },
         listenInput(){
             this.infoIsOk = true
             if(this.formList.userName==''||this.formList.userPwd==''){
@@ -127,12 +141,12 @@ export default {
                 }
             }
             if(this.infoIsOk==true){
-                const regList = {
-                    userName : this.formList.userName,
-                    userPwd : this.formList.userPwd
-                }
-                regist(regList).then((res)=>{
-                    if(res.data=='注册成功'){
+                // const regList = {
+                //     userName : this.formList.userName,
+                //     userPwd : this.formList.userPwd
+                // }
+                regist(formList).then((res)=>{
+                    if(res.state==200){
                         Message.success("注册成功！")
                         this.$router.push("/login")
                     }
