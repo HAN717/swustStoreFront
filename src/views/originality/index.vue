@@ -1,7 +1,9 @@
 <template>
   <div class="content">
     <navigateBar />
-    <div id="mainContent"></div>
+    <div id="mainContent">
+
+    </div>
     <pageFooter/>
   </div>
 </template>

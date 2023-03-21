@@ -114,7 +114,7 @@
           </div>
         </el-col>
         <el-col :span="18">
-          <img v-show="scrollHeight > 2500" src="../../assets/pic/svg/education.svg" id="educationPic">
+          <img v-show="scrollHeight > 2500" src="../../assets/pic/home/books/education.png" id="educationPic">
         </el-col>
       </el-row>
       <div id="learnMore3" v-show="scrollHeight > 2700" @click="navgateTo('/publishment')">
