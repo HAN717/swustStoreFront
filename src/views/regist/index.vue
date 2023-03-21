@@ -9,19 +9,17 @@
             <img class="yuan4" src="../../assets/pic/regist/c4.png" style="bottom: -160px;left:150px;position: relative;">
 
             <div class="regcontent">
-                <div style="width:170px;height:60px;background-color: rgb(93,134,117);margin: 30px 0 0 40px;
+                <div style="width:173px;height:50px;background-color: #dff4ff;margin: 20px 0 0 42px;
                 border-radius: 10px;">
-                    <img src="../../assets/pic/home/toTop.png" alt="logo" width="65px" height="65px" 
-                        style="margin:-4px 0 0 0 ;position: absolute;">
-                    <img src="../../assets/pic/text_logo_no_background.png" alt="logo" width="90px" height="55px"
-                        style="margin:0px 0 0 70px ;position: absolute;">
+                    <img src="../../assets/pic/logo.png" alt="logo" width="40rem" height="40rem" 
+                        style="margin:0.35rem 0 0 0.75rem ;position: absolute;">
+                    <div width="90px" height="55px" style="margin:0px 0 0 70px ;position: absolute;font-family: 幼圆;
+                    margin: 0.8rem 0 0 4.5rem;font-size: 1.4rem;color:rgb(0,0,0,.7)">用户注册</div>
                 </div>
-                <div style="font-size:26px;position: relative;margin: -50px 0 0 760px;font-family: 幼圆;
-                letter-spacing: 10px;">免费注册逸物平台用户</div>
-                <div style="font-size:26px;position: relative;margin: 60px 0 0 40px;font-family: 幼圆;
-                letter-spacing: 10px;line-height: 50px;">全国十四亿分之一的人都在用的<br>个人闲置物品交换系统</div>
+                <div style="font-size:26px;position: relative;margin: -35px 0 0 720px;font-family: 幼圆;
+                letter-spacing: 10px;">免费注册西科周边好物用户</div>
                 <img src="../../assets/pic/regist/register.png" alt="logo" width="500px" height="500px" 
-                style="position:absolute;right: 205px;top: 125px;">
+                style="position:absolute;right: 205px;top: 148px;">
                 <div class="formcontent">
                     <el-form label-position="left" :model="formList" label-width="80px" >
                         <el-form-item label="用户名">
@@ -29,12 +27,46 @@
                             placeholder="用户名长度不超过6位且不能出现字符"></el-input>
                         </el-form-item>
                         <el-form-item label="用户密码" >
-                            <el-input v-model="formList.userPwd" maxlength="16"
+                            <el-input v-model="formList.pwd" maxlength="16"
                             placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
                         </el-form-item>
                         <el-form-item label="确认密码"> 
                             <el-input v-model="pwd" maxlength="16"
                             placeholder="再次输入密码"></el-input>
+                        </el-form-item>
+                         <el-row>
+                            <el-col :span="12">
+                                <el-form-item label="用户性别">
+                                    <el-select v-model="formList.sex" style="width:12rem" placeholder="请选择性别">
+                                        <el-option
+                                        v-for="item in userSex"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form-item label="用户身份">
+                                    <el-select v-model="formList.userRole" style="width:13.1rem" placeholder="请选择身份">
+                                        <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                        </el-option>
+                                    </el-select>
+                                </el-form-item>
+                            </el-col>
+                        </el-row>
+                        <el-form-item label="用户地址">
+                            <el-input v-model="formList.address"  maxlength="6"
+                            placeholder="请输入详细地址"></el-input>
+                        </el-form-item>
+                        <el-form-item label="电话号码">
+                            <el-input v-model="formList.phoneNum"  maxlength="6"
+                            placeholder="请输入正确电话号码格式"></el-input>
                         </el-form-item>
                         <el-button  @click="listenInput()" style="width:580px;">确认注册</el-button>
                     </el-form>
@@ -53,11 +85,25 @@ export default {
             activeNum:1,
             formList:{
                 userName:'',
-                userPwd:''
+                pwd:'',
+                sex:'',
+                userRole:'',
+                address:'',
+                phoneNum:''
             },
             pwd:'',
             err:'',
-            infoIsOk:true
+            infoIsOk:true,
+            userSex: [{
+                value: '0',
+                label: '男'
+                }, {
+                value: '1',
+                label: '女'
+                }, {
+                value: '2',
+                label: '其他'
+            }],
         }
     },
     methods:{
@@ -111,32 +157,32 @@ export default {
     background-color: white;
     height: 600px;
     width: 1200px;
-    margin: -545px auto ;
+    margin: -540px auto ;
     border-radius: 10px;
 }
 .yuan2{
-    animation:return_c1 4s ease-in-out infinite alternate;
+    animation:return_c1 3s ease-in-out infinite alternate;
 }
 .yuan4{
-    animation:return_c2 4s ease-in-out infinite alternate;
+    animation:return_c2 3s ease-in-out infinite alternate;
 }
 @keyframes return_c1 {
-  0% {  top: -280px; }
+  0% {  top: -380px; }
   100% {  top: -200px; }
 }
 @keyframes return_c2 {
-  0% { left:150px; }
+  0% { left:180px; }
   100% { left:130px; }
 }
 .yuan3{
-    animation:return_c3 4s ease-in-out infinite alternate;
+    animation:return_c3 3s ease-in-out infinite alternate;
 }
 @keyframes return_c3 {
   0% { top: 20px; }
   100% { }
 }
 .formcontent{
-    border: 2px dashed rgb(93,134,117);
+    border: 2px dashed rgb(235,218,185);
     border-radius: 10px;
     padding: 20px;
     margin: 30px 0 0 45px;

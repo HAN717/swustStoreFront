@@ -6,7 +6,7 @@
                     <el-col :span="12">
                         <div style="background-color:rgb(255,255,255);height:560px;position: absolute;width:580px">
                             <div style="font-size: 40px;text-align: center;margin-top: 50px;
-                            font-family:宋体;font-weight: 600;">Hi!&nbsp; 欢迎登录逸物</div>
+                            font-family:宋体;font-weight: 600;">Hi! 欢迎登录西科周边好物</div>
                             <img src="../../assets/pic/login/login.png" width="580px" height="580px"
                             style="position:absolute;margin-top: -50px;">
                         </div>
@@ -14,15 +14,14 @@
                     <el-col :span="12">
                         <div style="height:560px;width:580px;position: absolute;margin:60px 0 0 580px;">
                            
-                            <img src="../../assets/pic/home/toTop.png" alt="logo" width="65px" height="65px" 
-                            style="position:absolute;right: 335px;top: 45px;">
-                            <img src="../../assets/pic/text_logo_no_background.png" alt="logo" width="90px" height="60px"
-                            style="position:absolute;right: 245px;top: 47px;">
-                            <div style="margin:130px 0 0 150px;position:absolute;color: rgb(236,219,186);letter-spacing: 5px;">/个人闲置物品交换平台/</div>
+                            <img src="../../assets/pic/logo.png" alt="logo" width="65px" height="65px" 
+                            style="position:absolute;right: 26rem;top: 2.3rem;">
+                            <div style="position:absolute;right: 11rem;top: 47px;font-size: 1.7rem;color:rgb(28, 58, 119);letter-spacing: 0.5rem;">西科周边好物</div>
+                            <div style="margin:9rem 0 0 4rem;position:absolute;color: rgb(28, 58, 119);letter-spacing:1.5rem">/校园之美,尽在其中/</div>
                             <div class="input_box">
                             <div style="width:400px;margin:200px 0 0 50px;padding: 10px;">
-                                <div style="height:40px;color: rgb(255,255,255,.5);">账号密码登录</div>
-                                <div  @click="goto()" style="height:40px;color: rgb(236,219,186);margin: -35px 0 0 270px;font-size: 13px;
+                                <div style="height:40px;color: rgb(28, 58, 119,.5);">账号密码登录</div>
+                                <div  @click="goto()" style="height:40px;color: rgb(28, 58, 119);margin: -35px 0 0 270px;font-size: 13px;
                                 position: absolute;cursor: pointer;">没有账号？前去注册吧</div>
                                 <el-input placeholder="请输入账号" v-model="input_name" 
                                 prefix-icon="el-icon-user"></el-input>
@@ -59,7 +58,6 @@ import { login } from "../../api/login/login";
         methods:{
           goto(){
             this.$router.push("/regist")
-            document.title = '免费注册'
           },
           userLogin(){
             const user = {
@@ -106,7 +104,8 @@ import { login } from "../../api/login/login";
   }
 }
 .login_bg{
-    background-color: rgb(53,104,82);
+    /* background-color: rgb(53,104,82); */
+    background-color: rgb(174, 200, 253);
     height: 560px;
     width: 1100px;
     border-radius: 10px;
@@ -118,7 +117,7 @@ import { login } from "../../api/login/login";
 
 .bg {
   animation:slide 4s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(53,104,82,.4) 50%, rgb(93,134,117) 50%);
+  background-image: linear-gradient(-60deg, rgb(174, 200, 253,.1) 50%, rgb(174, 200, 253,.5) 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -141,5 +140,9 @@ import { login } from "../../api/login/login";
   100% {
     transform:translateX(25%);
   }
+}
+
+.el-button {
+    background-color: white !important;
 }
 </style>
