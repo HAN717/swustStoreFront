@@ -66,15 +66,16 @@
                 </div>
               </div>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
               <div style="font-family:幼圆;font-size:1.2rem;margin: 1.5rem 0 0 0;">{{ item.name }}</div>
-            </el-col>
-            <el-col :span="9">
-              <div style="font-family:幼圆;font-size:0.8rem;margin: 12.5rem 0 0 5rem;">
-                <div>
-                  <div style="position:absolute;margin-left: 12.3rem;">查看详情&emsp;<i class="el-icon-arrow-right"></i></div>
-                    
-                </div>
+              <div style="margin:6.6rem 0 1rem 0">售价 <span style="color:rgb(0,0,0,.7);font-size:0.9rem">{{item.price}}</span> </div>
+              <div style="margin-bottom:1rem">
+                种类 <el-tag type="warning">装饰类</el-tag>&emsp; 
+                材质 <el-tag>布料</el-tag>&emsp;
+                发售时间 <el-tag type="success">2022-12-5</el-tag>
+              </div>
+              <div id="lookDetails">
+                <div style="position:absolute;margin: -2.5rem 0 0 12.3rem;">查看详情&emsp;<i class="el-icon-arrow-right"></i></div>
               </div>
             </el-col>
           </el-row>

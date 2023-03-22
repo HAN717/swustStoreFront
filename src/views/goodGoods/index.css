@@ -108,3 +108,8 @@
     z-index: -4;
     margin: 0 0 2rem 0;
 }
+#lookDetails{
+    font-family:幼圆;font-size:0.8rem;margin: 0rem 0 0 22rem;
+    position: absolute;width: 25rem;
+    cursor: pointer;
+}

@@ -55,7 +55,7 @@ const router = new Router({
       name: 'login',
       component: login,
       meta: {
-        title: '登录'
+        title: '欢迎登录'
       }
     },
     {
