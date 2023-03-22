@@ -22,6 +22,6 @@ export default {
 <style>
 #mainContent{
   width: 100%;
-  height: 35rem;
+  /* height: 35rem; */
 }
 </style>

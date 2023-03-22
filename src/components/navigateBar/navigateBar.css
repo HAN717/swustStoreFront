@@ -29,12 +29,13 @@
     width: 100%;
     position: absolute;
     height: 4.3rem;
-    z-index: -1;
+    opacity: 0.3;
+    /* z-index: -2; */
     animation: showBg 0.7s;
 }
 @keyframes showBg {
     0%{opacity: 0;}
-    100%{opacity: 1;}
+    100%{opacity: 1;opacity: 0.3;}
 }
 /* 标题颜色动效 */
 #pageTitle:hover{
@@ -132,19 +133,19 @@
 }
 
 /* element元素样式重置 */
-.el-button {
+.input-with-select .el-button {
     background-color: #1c3a77 !important;
 }
 
-.el-button--default {
+.input-with-select .el-button--default {
     background-color: #1c3a77 !important;
 }
 
-.el-select {
+.input-with-select .el-select {
     width: 100px;
 }
 
-.el-input__inner :focus {
+.input-with-select .el-input__inner :focus {
     border-color: #1c3a77 !important;
 }
 
