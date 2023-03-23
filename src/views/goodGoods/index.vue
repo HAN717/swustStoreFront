@@ -80,20 +80,31 @@
             </el-col>
           </el-row>
         </div>
+        <!-- 列表分页 -->
+        <div id="buttomPagination">
+          <el-pagination
+            background-color:
+            layout="prev, pager, next, jumper"
+            :total="1000">
+          </el-pagination>
+        </div>
       </div>
       <div style="clear:both"></div>
     </div>
+    <toTop />
     <pageFooter/>
   </div>
 </template>
 <script>
 import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
+import toTop from "../../components/toTop";
 import "./index.css"
 export default {
   components: {
     navigateBar,
-    pageFooter
+    pageFooter,
+    toTop
   },
   data() {
     return {
@@ -127,7 +138,7 @@ export default {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'22'
+          id:'2'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',

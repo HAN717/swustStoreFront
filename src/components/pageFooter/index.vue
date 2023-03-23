@@ -4,14 +4,14 @@
         <el-col :span="6" style="margin: 1.5rem 0 0 4rem;">
           <span style="color:white">友情链接：</span>
           <br><br>
-          <a id="footText" href="www.baidu.com" style="color:rgb(174, 200, 253);margin-top: 1rem;">清华大学官网</a>
-          <a id="footText" href="www.baidu.com" style="color:rgb(174, 200, 253);margin-top: 1rem;">&emsp;&emsp;清华大学官网</a>
+          <a id="footText" href="https://www.baidu.com" style="color:rgb(174, 200, 253);margin-top: 1rem;">清华大学官网</a>
+          <a id="footText" href="https://www.baidu.com" style="color:rgb(174, 200, 253);margin-top: 1rem;">&emsp;&emsp;清华大学官网</a>
           <br>
-          <a href="www.baidu.com" id="footText" style="color:rgb(174, 200, 253);line-height: 2.4rem;font-size: 0.8rem;">西南科技大学官网</a>
-          <a href="www.baidu.com" id="footText" style="color:rgb(174, 200, 253);line-height: 2.4rem;font-size: 0.8rem;">&emsp;&emsp;西南科技大学官网</a>
+          <a href="https://www.baidu.com" id="footText" style="color:rgb(174, 200, 253);line-height: 2.4rem;font-size: 0.8rem;">西南科技大学官网</a>
+          <a href="https://www.baidu.com" id="footText" style="color:rgb(174, 200, 253);line-height: 2.4rem;font-size: 0.8rem;">&emsp;&emsp;西南科技大学官网</a>
           <br>
-          <a href="www.baidu.com" id="footText" style="color:rgb(174, 200, 253);font-size: 0.8rem;">计算机科学与技术学院</a>
-          <a href="www.baidu.com" id="footText" style="color:rgb(174, 200, 253);font-size: 0.8rem;">&emsp;&emsp;计算机科学与技术学院</a>
+          <a href="https://www.baidu.com" id="footText" style="color:rgb(174, 200, 253);font-size: 0.8rem;">计算机科学与技术学院</a>
+          <a href="https://www.baidu.com" id="footText" style="color:rgb(174, 200, 253);font-size: 0.8rem;">&emsp;&emsp;计算机科学与技术学院</a>
         </el-col>
         <el-col :span="10">
           <div style="color:rgb(174, 200, 253);margin: 1.5rem 0 0 0rem;">
@@ -44,7 +44,12 @@
     data() {
       return {};
     },
-    methods: {},
+    methods: {
+      imgClick(url){
+        let path=window.location.protocol+'//'+url
+        window.location.href=path
+      },
+    },
   };
   </script>
   <style>
