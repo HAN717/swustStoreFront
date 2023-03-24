@@ -73,4 +73,9 @@
     height:14.9rem;
     float: left;
     border: 0.05rem solid rgb(0,0,0,.1);
+    cursor: pointer;
+}
+#listIem  :hover{
+    opacity: 0.7;
+    color: #6a6d6a;
 }

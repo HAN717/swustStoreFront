@@ -5,13 +5,14 @@
     <div id="mainContent">
       <!-- 左侧导航栏 -->
         <div id="leftNavbar" v-show="scrollHeight > 200">
-          <div v-for="(item,index) in navBarList" :key="index" :id="item.id" @mouseenter="mouseIsHover(item.index)">
+          <div v-for="(item,index) in navBarList" :key="index" :id="item.id" @click="toDiv(item.index)">
             {{ item.title }}
           </div>
         </div>
       <!-- 右侧展示区 -->
       <div id="rightList">
-        <!-- <div v-show="activeBarNum==1" id="showlist1"> -->
+
+        <!--教育板块 -->
         <div id="showlist1">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
@@ -22,23 +23,37 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient(#b3e5fccc 6rem,#1c3a77) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  XXXXXXXXXXXXXXXXX<br>XXXXXX
+                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
                 </div>
                 <div style="height:15rem;width: 100%;">
-                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;"></div>
+                  <!-- 卡片底部分页 -->
+                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                      <el-pagination
+                        background-color:
+                        layout="prev, pager, next, jumper"
+                        :total="1000">
+                      </el-pagination>
+                    </div>
+                  </div>
                   <img src="../../assets/pic/svg/list1.svg" alt="logo" width="240px" height="240px" 
                 style="position:absolute;">
                 </div>
                 
               </div>
             </el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
+            <el-col :span="20">
+              <div id="list1ItemBox">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                    <img src="../../assets/pic/home/scenery/fj2.png" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
+                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                </div>
+              </div>
+            </el-col>
           </el-row>
         </div>
+
+        <!--历史板块 -->
         <div id="showlist2">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
@@ -49,10 +64,19 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient( #c8e6c9cc 6rem,#2f7331) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  XXXXXXXXXXXXXXXXX<br>XXXXXX
+                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
                 </div>
                 <div style="height:15rem;width: 100%;">
-                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;"></div>
+                  <!-- 卡片底部分页 -->
+                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                      <el-pagination
+                        background-color:
+                        layout="prev, pager, next, jumper"
+                        :total="1000">
+                      </el-pagination>
+                    </div>
+                  </div>
                   <img src="../../assets/pic/svg/list1.svg" alt="logo" width="240px" height="240px" 
                 style="position:absolute;">
                 </div>
@@ -60,27 +84,93 @@
             </el-col>
             <el-col :span="20">
               <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index">
-                    <img src="../../assets/pic/home/scenery/fj1.jpg" style="width:10rem;height:10rem;margin: 1rem 0 0 0;">
-                    <div style="margin:1rem 0 0 0">{{ item.title }}</div>
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                    <img src="../../assets/pic/home/scenery/fj1.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
+                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
                 </div>
               </div>
             </el-col>
           </el-row>
         </div>
+        
+        <!--风景板块 -->
         <div id="showlist3">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
             &emsp;风&nbsp;景&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
+          <el-row>
+            <el-col :span="4">
+              <div style="width:100%;background-image: linear-gradient(  #fff9c499 6rem, #ebd82e) ;height: 35rem;">
+                <div style="height:20rem;width: 100%;">
+                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                </div>
+                <div style="height:15rem;width: 100%;">
+                  <!-- 卡片底部分页 -->
+                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                      <el-pagination
+                        background-color:
+                        layout="prev, pager, next, jumper"
+                        :total="1000">
+                      </el-pagination>
+                    </div>
+                  </div>
+                  <img src="../../assets/pic/svg/list1.svg" alt="logo" width="240px" height="240px" 
+                style="position:absolute;">
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="20">
+              <div id="list1ItemBox">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                    <img src="../../assets/pic/home/scenery/fj4.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
+                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
         </div>
+
+        <!-- 文创板块 -->
         <div id="showlist4">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
             &emsp;文&nbsp;创&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
+          <el-row>
+            <el-col :span="4">
+              <div style="width:100%;background-image: linear-gradient(  #ffccbccc 7rem, #f86a3f) ;height: 35rem;">
+                <div style="height:20rem;width: 100%;">
+                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                </div>
+                <div style="height:15rem;width: 100%;">
+                  <!-- 卡片底部分页 -->
+                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                      <el-pagination
+                        background-color:
+                        layout="prev, pager, next, jumper"
+                        :total="1000">
+                      </el-pagination>
+                    </div>
+                  </div>
+                  <img src="../../assets/pic/svg/list1.svg" alt="logo" width="240px" height="240px" 
+                style="position:absolute;">
+                </div>
+              </div>
+            </el-col>
+            <el-col :span="20">
+              <div id="list1ItemBox">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                    <img src="../../assets/pic/home/scenery/fj3.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
+                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
         </div>
         <!-- <div v-show="activeBarNum==2" id="showlist2"></div>
         <div v-show="activeBarNum==3" id="showlist3"></div>
@@ -105,6 +195,9 @@ export default {
   data() {
     return {
       scrollHeight:0,
+      metaHeight:15,
+      metaTime: 10,
+      targetHeight:0,
       activeBarNum:1,
       navBarList:[
         {
@@ -192,26 +285,60 @@ export default {
       this.scrollHeight = scrollTop;
       // console.log('当前滚轮高度:',this.scrollHeight);
     },
-    toDiv(toHeight) {
+    toDiv(index) {
+      switch (index) {
+        case 1:
+          this.targetHeight = 208
+          break;
+        case 2:
+          this.targetHeight = 960
+          break;
+        case 3:
+          this.targetHeight = 1637
+          break;
+        case 4:
+          this.targetHeight = 2305
+          break;
+        default: 
+          this.targetHeight = 208
+          break;
+      }
       // 指定高度大于当前滚动条位置（即在下方）
-      if(toHeight > this.scrollHeight){
-        const timeTop = setInterval(() => {
-          document.documentElement.scrollTop = this.scrollHeight += 50;
-          if (this.scrollHeight == toHeight) {
-            clearInterval(timeTop); //清除定时器
+      if(this.targetHeight > this.scrollHeight){
+        //高度差
+        let x = this.targetHeight - this.scrollHeight;
+        // 先加上余数，保证高度差能整除设定的最小移动单位
+        document.documentElement.scrollTop += x%this.metaHeight;
+        x -= x%this.metaHeight;
+        const goto = setInterval(() => {
+          document.documentElement.scrollTop  += this.metaHeight;
+          x-= this.metaHeight;
+          if (x == 0) {
+            clearInterval(goto); //清除定时器
           }
-        }, 10);
+        }, this.metaTime);
       }
       // 指定高度小于当前滚动条位置（即在上方）
       else{
-        const timeTop = setInterval(() => {
-          document.documentElement.scrollTop = this.scrollHeight -= 50;
-          if (this.scrollHeight == height) {
-            clearInterval(timeTop); //清除定时器
+        //高度差
+        let x = this.scrollHeight - this.targetHeight;
+        // 先减去余数，保证高度差能整除设定的最小移动单位
+        document.documentElement.scrollTop -= x%this.metaHeight;
+        x -= x%this.metaHeight;
+        const goto = setInterval(() => {
+          document.documentElement.scrollTop -= this.metaHeight;
+          x-= this.metaHeight;
+          if (x == 0) {
+            clearInterval(goto); //清除定时器
           }
-        }, 10);
+        }, this.metaTime);
       }
     },
+    goDetils(url){
+      // let path=window.location.protocol+'//'+url
+      // const routeUrl = window.location.href=url
+      window.open(url, '_blank')
+    }
   },
   mounted(){
     window.addEventListener("scroll", this.handleScroll)
