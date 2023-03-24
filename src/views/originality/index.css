@@ -3,12 +3,20 @@
     height: 165rem;
 }
 #leftNavbar{
-    height: 16rem;
-    width: 4rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 23rem;
+    width: 3.2rem;
     position: sticky;
     top: 7.5rem;
     left: 0rem;
     margin:  5.6rem 0 0 0;
+    box-shadow: 0.1rem 0.22rem 0.5rem rgb(117, 111, 111);
+    animation: showLnbBox  3.8s ease-in-out;
+}
+@keyframes showLnbBox{
+    from{ box-shadow: none;}
+    to{ box-shadow: 0.1rem 0.22rem 0.5rem rgb(117, 111, 111);}
 }
 #lnb1, #lnb2 ,#lnb3, #lnb4{
     height: 5.77rem;
@@ -22,7 +30,7 @@
     letter-spacing: 0.3rem;
 }
 @keyframes showLnb{
-    from{ height: 2rem;line-height: 1.2rem;}
+    from{ height: 0rem;line-height: 1.2rem;border-radius: 0rem;box-shadow:none;opacity: 0;}
     to{height: 5.77rem;line-height: 4.3rem;}
 }
 #lnb1{ background-color: rgb(179, 229, 252,.8); animation: showLnb 1.8s ease-in-out;}
@@ -38,6 +46,8 @@
     /* background-color: blanchedalmond; */
 }
 #showlist1,#showlist2,#showlist3,#showlist4{
+    overflow: hidden;
+    border-radius: 1rem;
     height: 35rem;
     width: 86.3rem;
     margin-bottom: 7rem;

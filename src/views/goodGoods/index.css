@@ -10,19 +10,25 @@
     background-color: rgb(187, 227, 254);
     width: 21rem;
     height: 13rem;
-    animation: showSelectForm 1.2s ease-in-out;
     position: sticky;
-}
-@keyframes showSelectForm {
-    from{left: -14rem;}
-    to{left: 4rem;}
+    animation: showSelectForm1 1.3s ease-in-out;
 }
 #goodGoodsSelect .el-form-item__label{
     font-size: 1rem;
     color: rgb(255,255,255) !important;
 }
 #selectForm {
+    position: sticky;
     margin: 1.2rem 0 0 1.4rem;
+    animation: showSelectForm2 1.3s ease-in-out;
+}
+@keyframes showSelectForm1 {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes showSelectForm2 {
+    from{margin: 1.2rem 0 0 -12.4rem;}
+    to{margin: 1.2rem 0 0 1.4rem;}
 }
 #goodsPic{
     width:16rem;
@@ -91,6 +97,19 @@
     width:62rem;
     position: absolute;
     overflow: auto;
+    animation: showggL 1.2s ease-in-out;
+}
+#goodGoodsList1{
+    right: 7.5rem;
+    top: 22rem;
+    height:170rem;
+    width:82rem;
+    position: absolute;
+    overflow: auto;
+}
+@keyframes showggL {
+    from{right: 7.5rem;width:82rem;}
+    to{right: 4rem;width:62rem;}
 }
 .listItem{
     overflow: hidden;
@@ -100,13 +119,7 @@
     background-color: white;
     margin-bottom: 2rem;
 }
-#selectForm {
-    position: sticky;
-}
-@keyframes showSelectForm {
-    from{margin: 1.2rem 0 0 -6.4rem;}
-    to{margin: 1.2rem 0 0 1.4rem;}
-}
+
 #banner2 {
     background-image: url("../../assets/pic/bg.png");
     background-position: 0 -22rem;

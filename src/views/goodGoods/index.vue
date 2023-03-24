@@ -4,7 +4,7 @@
     <div id="banner2"></div>
     <div id="mainContent">
       <!-- 筛选框 -->
-      <div id="goodGoodsSelect">
+      <div id="goodGoodsSelect" v-show="scrollHeight > 300||this.isShow==true">
         <el-form id="selectForm">
           <el-form-item label="好物材质">
             <el-select v-model="value1"  style="width:13.1rem" placeholder="请选择材质">
@@ -39,7 +39,7 @@
         </el-form>
       </div>
       <!-- 展示区 -->
-      <div id="goodGoodsList">
+      <div :id="this.isShow == true ? 'goodGoodsList':'goodGoodsList1'">
         <div class="listItem"   v-for="(item,index) of goodsList" :key="index">
           <el-row>
             <el-col :span="8">
@@ -108,6 +108,8 @@ export default {
   },
   data() {
     return {
+      isShow:false,
+      scrollHeight:0,
       mouseHovering: false,
       activeItem:0,
       value1:'',
@@ -194,7 +196,17 @@ export default {
       this.activeItem = 0;
       this.mouseHovering=false;
     },
+    handleScroll() {
+      var scrollTop = document.documentElement.scrollTop;
+      this.scrollHeight = scrollTop;
+      if (this.scrollHeight > 200) {
+        this.isShow = true
+      }
+    },
   },
+  mounted(){
+    window.addEventListener("scroll", this.handleScroll)
+  }
 };
 </script>
 <style>
