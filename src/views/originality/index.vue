@@ -23,7 +23,9 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient(#b3e5fccc 6rem,#1c3a77) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                  <div style="margin:3rem 0 0 1.5rem;position: absolute;color: rgb(0,0,0,.4);font-size: 1.6rem;line-height: 3rem;font-family: 幼圆;">
+                    西南明珠出沧海 <br>桃李春风物华新
+                  </div>
                 </div>
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
@@ -64,12 +66,14 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient( #c8e6c9cc 6rem,#2f7331) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                  <div style="margin:3rem 0 0 1.5rem;position: absolute;color: rgb(0,0,0,.4);font-size: 1.6rem;line-height: 3rem;font-family: 幼圆;">
+                    西南明珠出沧海 <br>桃李春风物华新
+                  </div>
                 </div>
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination2">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"
@@ -104,12 +108,14 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient(  #fff9c499 6rem, #ebd82e) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                  <div style="margin:3rem 0 0 1.5rem;position: absolute;color: rgb(0,0,0,.4);font-size: 1.6rem;line-height: 3rem;font-family: 幼圆;">
+                    西南明珠出沧海 <br>桃李春风物华新
+                  </div>
                 </div>
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination3">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"
@@ -144,12 +150,14 @@
             <el-col :span="4">
               <div style="width:100%;background-image: linear-gradient(  #ffccbccc 7rem, #f86a3f) ;height: 35rem;">
                 <div style="height:20rem;width: 100%;">
-                  <!-- XXXXXXXXXXXXXXXXX<br>XXXXXX -->
+                  <div style="margin:3rem 0 0 1.5rem;position: absolute;color: rgb(0,0,0,.4);font-size: 1.6rem;line-height: 3rem;font-family: 幼圆;">
+                    西南明珠出沧海 <br>桃李春风物华新
+                  </div>
                 </div>
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
+                    <div style="margin:2rem 0 0 32rem" id="buttomPagination4">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"

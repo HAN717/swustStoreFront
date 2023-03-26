@@ -48,7 +48,6 @@
 <script>
 import { Message } from "element-ui";
 import { login } from "../../api/login/login";
-import svgUrl from "../../assets/pic/svg/login.svg"
     export default {
         data(){
             return{

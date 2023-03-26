@@ -9,7 +9,7 @@
     width: 3.2rem;
     position: sticky;
     top: 7.5rem;
-    left: 0rem;
+    left: 0;
     margin:  5.6rem 0 0 0;
     box-shadow: 0.1rem 0.22rem 0.5rem rgb(117, 111, 111);
     animation: showLnbBox  3.8s ease-in-out;
@@ -63,13 +63,25 @@
     /* border: 0.7rem solid #c8e6c9cc; */
     background-color: white;
 }
+#buttomPagination2 .el-pager li.active{
+    background-color:#c8e6c9;
+    color:white
+}
 #showlist3{ 
     /* border: 0.7rem solid #fff9c499; */
     background-color: white;
 }
+#buttomPagination3 .el-pager li.active{
+    background-color:#f0e582;
+    color:white
+}
 #showlist4{ 
     /* border: 0.7rem solid #ffccbccc; */
     background-color: white;
+}
+#buttomPagination4 .el-pager li.active{
+    background-color:#ffccbc;
+    color:white
 }
 #list1ItemBox{
     display: flex;

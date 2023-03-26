@@ -7,6 +7,7 @@ import goodGoods from '../views/goodGoods/index'
 import originality from '../views/originality/index'
 import publishment from '../views/publishment/index'
 import getPageTitle from './getPageTitle'
+import notFound from '../components/notFound/index'
 import NProgress from 'nprogress'
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ const router = new Router({
         title: '用户注册'
       }
     },
+    {
+      path: "*",
+      name: "NotFound",
+      component: notFound,
+    }
   ]
 })
 export default router;
