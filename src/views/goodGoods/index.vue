@@ -75,7 +75,7 @@
                 发售时间 <el-tag type="success">2022-12-5</el-tag>
               </div>
               <div id="lookDetails">
-                <div style="position:absolute;margin: -2.5rem 0 0 12.3rem;">查看详情&emsp;<i class="el-icon-arrow-right"></i></div>
+                <div style="position:absolute;margin: -2.5rem 0 0 12.3rem;" @click="goDetails(item)">查看详情&emsp;<i class="el-icon-arrow-right"></i></div>
               </div>
             </el-col>
           </el-row>
@@ -134,55 +134,55 @@ export default {
           url:'../../assets/pic/home/showGoods/18.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'1'
+          id:'1231'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'2'
+          id:'1232'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'3'
+          id:'1233'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'4'
+          id:'1234'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'5'
+          id:'1235'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'6'
+          id:'1236'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'7'
+          id:'1237'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'8'
+          id:'1238'
         },
         {
           url:'../../assets/pic/home/showGoods/25.jpg',
           name:'70周年校庆周边抱枕',
           price:'￥99.0元',
-          id:'9'
+          id:'1239'
         },
       ]
     };
@@ -203,6 +203,12 @@ export default {
         this.isShow = true
       }
     },
+    goDetails(item){
+      this.$router.push({
+        path:'/details/'+item.id,
+        query:{ itemData:item }
+      });
+    }
   },
   mounted(){
     window.addEventListener("scroll", this.handleScroll)

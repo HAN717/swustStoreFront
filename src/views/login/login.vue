@@ -62,8 +62,8 @@ import { login } from "../../api/login/login";
           },
           userLogin(){
             const user = {
-              userName: this.input_name,
-              userPwd:this.input_pwd
+              account: this.input_name,
+              pwd:this.input_pwd
             };
             login(user).then((res) =>{
                 if(res.data==-1){

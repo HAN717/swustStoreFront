@@ -3,11 +3,12 @@ import Router from 'vue-router'
 import home from '@/views/home/index'
 import login from '@/views/login/login'
 import regist from '@/views/regist/index'
+import details from '../views/details/index'
 import goodGoods from '../views/goodGoods/index'
 import originality from '../views/originality/index'
 import publishment from '../views/publishment/index'
-import getPageTitle from './getPageTitle'
 import notFound from '../components/notFound/index'
+import getPageTitle from './getPageTitle'
 import NProgress from 'nprogress'
 Vue.use(Router)
 
@@ -68,9 +69,20 @@ const router = new Router({
       }
     },
     {
+      path: "/details/:id",
+      name: 'details',
+      component: details,
+      meta: {
+        title: '好物详情'
+      }
+    },
+    {
       path: "*",
       name: "NotFound",
       component: notFound,
+      meta: {
+        title: '404'
+      }
     }
   ]
 })

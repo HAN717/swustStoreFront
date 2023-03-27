@@ -23,7 +23,7 @@
                 <div class="formcontent">
                     <el-form label-position="left" :model="formList" label-width="80px" >
                         <el-form-item label="用户名">
-                            <el-input v-model="formList.userName"  maxlength="6"
+                            <el-input v-model="formList.account"  maxlength="6"
                             placeholder="用户名长度不超过6位且不能出现字符"></el-input>
                         </el-form-item>
                         <el-form-item label="用户密码" >
@@ -52,20 +52,20 @@
                                     <el-select v-model="formList.userRole" style="width:13.1rem" placeholder="请选择身份">
                                         <el-option
                                         v-for="item in userRoleList"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
+                                        :key="item.roleId"
+                                        :label="item.roleName"
+                                        :value="item.roleId">
                                         </el-option>
                                     </el-select>
                                 </el-form-item>
                             </el-col>
                         </el-row>
                         <el-form-item label="用户地址">
-                            <el-input v-model="formList.address"  maxlength="6"
+                            <el-input v-model="formList.address" 
                             placeholder="请输入详细地址"></el-input>
                         </el-form-item>
                         <el-form-item label="电话号码">
-                            <el-input v-model="formList.phoneNum"  maxlength="6"
+                            <el-input v-model="formList.phoneNum" 
                             placeholder="请输入正确电话号码格式"></el-input>
                         </el-form-item>
                         <el-button  @click="listenInput()" style="width:580px;">确认注册</el-button>
@@ -78,13 +78,14 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { regist , getUserRole } from "../../api/regist/regist"
+import { userReg , getUserRole } from "../../api/regist/regist"
 export default {
     data(){
         return{
             activeNum:1,
             formList:{
-                userName:'',
+                userName:'老王',
+                account:'',
                 pwd:'',
                 sex:'',
                 userRole:'',
@@ -107,14 +108,13 @@ export default {
             userRoleList:[]
         }
     },
-    mounted(){
-        getUserRoleList()
-    },
     methods:{
         getUserRoleList(){
             getUserRole().then((res)=>{
-                if(res.state==200){
-                    this.userRoleList = res.data
+                console.log(res.data.state)
+                if(res.data.state===200){
+                    this.userRoleList = res.data.data;
+                    // console.log(this.userRoleList)
                 }
                 else{
                     Message.warning(res.message)
@@ -127,26 +127,35 @@ export default {
                 Message.warning("请填写完整信息")
                 this.infoIsOk=false
             }
-            var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
-            if(reg.test(this.formList.userPwd)==false){
-                this.pwd = ''
-                Message.warning("请确保密码在8-16位，且为数字和字母组合")
-                this.infoIsOk=false
-            }
-            else{
-                if(this.formList.userPwd!==this.pwd){
-                    this.pwd = ''
-                    Message.warning("请重新确认密码")
-                    this.infoIsOk=false
-                }
-            }
+            // var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/
+            // if(reg.test(this.formList.userPwd)==false){
+            //     this.pwd = ''
+            //     Message.warning("请确保密码在8-16位，且为数字和字母组合")
+            //     this.infoIsOk=false
+            // }
+            // else{
+            //     if(this.formList.userPwd!==this.pwd){
+            //         this.pwd = ''
+            //         Message.warning("请重新确认密码")
+            //         this.infoIsOk=false
+            //     }
+            // }
             if(this.infoIsOk==true){
                 // const regList = {
                 //     userName : this.formList.userName,
                 //     userPwd : this.formList.userPwd
                 // }
-                regist(formList).then((res)=>{
-                    if(res.state==200){
+                let dataList ={
+                    userName:this.formList.userName,
+                    account:this.formList.account,
+                    pwd:this.formList.pwd,
+                    sex:this.formList.sex,
+                    userRole:this.formList.userRole,
+                    address:this.formList.address,
+                    phoneNum:this.formList.phoneNum
+                }
+                userReg(dataList).then((res)=>{
+                    if(res.data.state==200){
                         Message.success("注册成功！")
                         this.$router.push("/login")
                     }
@@ -156,6 +165,9 @@ export default {
                 })
             }
         }
+    },
+    mounted(){
+        this.getUserRoleList()
     },
 }
 </script>

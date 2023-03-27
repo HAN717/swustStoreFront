@@ -4,7 +4,7 @@ import service from '../../utils/request'
 export function getUserRole(){
     return service.request({
         url:'/user_role/search_all_user_role',
-        methods: "get",
+        method: "get",
     })
 }
 
@@ -12,7 +12,7 @@ export function getUserRole(){
 export function userReg(data){
     return service.request({
         url:'/user/reg',
-        methods: "post",
+        method: "post",
         data:data
     })
 }

@@ -1,0 +1,18 @@
+.detailsContent #banner2{
+    height: 4.3rem;
+}
+.detailsContent{
+    /* background-color: aquamarine; */
+    height: 45.8rem;
+    width: 100%;
+}
+#goodsBox{
+    height: 39rem;
+}
+#goodsPicbig{
+    width:42rem;
+    height:33rem;
+    margin: 1.5rem 0 0 13rem;
+    border-radius: 0.3rem;
+    float: left;
+}
