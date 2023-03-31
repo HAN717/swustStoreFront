@@ -1,6 +1,30 @@
 body{
     overflow-x: hidden;
 }
+#helloWords{
+    position: absolute;
+    margin: 13rem 12rem;
+    font-size: 3.5rem;
+    color: #3559a0;
+    /* color: #ffffff; */
+    white-space:nowrap;
+    animation: showWords steps(10) 2s;
+    overflow: hidden;
+    text-shadow: 0.6rem 0.6rem 2rem rgb(174, 200, 253),
+    0.6rem 0.6rem 1rem rgb(174, 200, 253);
+}
+@keyframes showWords {
+    from{
+        width: 0;
+    }
+    to{
+        width: 1120px;
+    }
+}
+@keyframes showBanner {
+    from{filter: blur(6px);}
+    to{filter: blur(2px);}
+}
 #banner {
     background-image: url("../../assets/pic/home/banner.jpg");
     background-position: 0 -9.5rem;
@@ -10,6 +34,8 @@ body{
     width: 100%;
     height: 45rem;
     z-index: -1;
+    filter: blur(2px);
+    animation: showBanner inherit 3s;
 }
 #tmBlock{
     height: 55rem;

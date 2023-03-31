@@ -10,7 +10,7 @@
 
             <div class="regcontent">
                 <div style="width:173px;height:50px;background-color: rgb(236,219,186,.7);margin: 20px 0 0 42px;
-                border-radius: 10px;">
+                border-radius: 10px;" @click="goto()">
                     <img src="../../assets/pic/logo.png" alt="logo" width="40rem" height="40rem" 
                         style="margin:0.35rem 0 0 0.75rem ;position: absolute;">
                     <div width="90px" height="55px" style="margin:0px 0 0 70px ;position: absolute;font-family: 幼圆;
@@ -60,13 +60,23 @@
                                 </el-form-item>
                             </el-col>
                         </el-row>
+                        <el-row>
+                            <el-col :span="12">
+                                <el-form-item label="电话号码" style="width:17rem">
+                                    <el-input v-model="formList.phoneNum" 
+                                    placeholder="请输入正确电话号码格式"></el-input>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form-item label="真实姓名" >
+                                    <el-input v-model="formList.userName" 
+                                    placeholder="请输入用户真实姓名"></el-input>
+                                </el-form-item>
+                            </el-col>
+                        </el-row>
                         <el-form-item label="用户地址">
                             <el-input v-model="formList.address" 
                             placeholder="请输入详细地址"></el-input>
-                        </el-form-item>
-                        <el-form-item label="电话号码">
-                            <el-input v-model="formList.phoneNum" 
-                            placeholder="请输入正确电话号码格式"></el-input>
                         </el-form-item>
                         <el-button  @click="listenInput()" style="width:580px;">确认注册</el-button>
                     </el-form>
@@ -84,7 +94,7 @@ export default {
         return{
             activeNum:1,
             formList:{
-                userName:'老王',
+                userName:'',
                 account:'',
                 pwd:'',
                 sex:'',
@@ -109,6 +119,9 @@ export default {
         }
     },
     methods:{
+        goto(){
+            this.$router.push("/")
+        },
         getUserRoleList(){
             getUserRole().then((res)=>{
                 console.log(res.data.state)

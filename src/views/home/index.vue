@@ -2,7 +2,12 @@
   <div id="main">
     <navigateBar />
     <div id="banner"></div>
-    <div id="tmBlock"></div>
+    <div id="tmBlock">
+      <!-- <div v-show="this.showWords==true" id="helloWords"> -->
+      <div v-show="scrollHeight<=600" id="helloWords">
+        <h1 >欢迎来到西科周边好物 &emsp;</h1>
+      </div>
+    </div>
     <div id="content">
       <!-- 西科好物展示区 -->
       <div id="goodGoodsArea">
@@ -149,6 +154,7 @@ export default {
   data() {
     return {
       scrollHeight:0,
+      showWords:true,
       imgList: [
           require('../../assets/pic/home/books/pages1.png'),
           require('../../assets/pic/home/books/pages5.png'),
@@ -162,15 +168,35 @@ export default {
     handleScroll() {
       var scrollTop = document.documentElement.scrollTop;
       this.scrollHeight = scrollTop;
-      // console.log('当前滚轮高度:',this.scrollHeight);
+      // console.log('当前滚轮高度:',this.scrollHeight); 
     },
     navgateTo(dataPath) {
       this.$router.push(dataPath);
     },
+    moveToCard(){
+      const timeTop = setInterval(() => {
+        document.documentElement.scrollTop = this.scrollHeight += 20;
+        if (this.scrollHeight >= 880) {
+          this.showWords = false
+          clearInterval(timeTop); //清除定时器
+        }
+      }, 30);
+    }
   },
   mounted() {
-      window.addEventListener("scroll", this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll)
   },
+  created(){
+    setTimeout(()=>{
+      if(this.scrollHeight!==0){
+        this.scrollHeight-=this.scrollHeight;
+        this.moveToCard()
+      }
+      else{
+        this.moveToCard()
+      }
+    },3000);
+  }
 };
 </script>
 <style>

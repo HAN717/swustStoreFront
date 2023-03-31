@@ -29,17 +29,19 @@
       <div v-if="isLogin == false" class="bardiv" @click="navgateTo('/login')">
         登录系统
       </div>
-      <div v-if="isLogin == true" class="bardiv">
-        欢迎
+      <div v-if="isLogin == true" class="bardiv" style="margin-top: -0.1rem;">
         <el-dropdown>
-          <span class="el-dropdown-link" style="color: rgb(236, 219, 186)">
-            &nbsp;{{ userName }}
+          <span class="el-dropdown-link" style="color: rgb(0,0,0);margin: -2rem 0 0  -2.5rem;font-size: 1.1rem;">
+            {{ userName }}
             <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item
-              ><span @click="outLogin()">退出系统</span></el-dropdown-item
-            >
+            <el-dropdown-item>
+              <span @click="navgateTo('/userCenter')">用户中心</span>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <span @click="outLogin()">退出系统</span>
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>

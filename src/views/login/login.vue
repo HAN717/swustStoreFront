@@ -66,17 +66,13 @@ import { login } from "../../api/login/login";
               pwd:this.input_pwd
             };
             login(user).then((res) =>{
-                if(res.data==-1){
-                  this.loginMes = "账号不存在"
-                  Message.warning(this.loginMes)
-                }
-                else if(res.data==0){
-                  this.loginMes = "密码错误"
-                  Message.warning(this.loginMes)
+                if(res.data.state!==200){
+                  Message.warning(res.data.message)
                 }
                 else{
                   this.loginMes = "登录成功"
                   Message.success(this.loginMes)
+                  // this.$cookies.set("token", res.data.data, {expires: "15D"});
                   localStorage.setItem("user",this.input_name)
                   this.$router.push("/")
                 }

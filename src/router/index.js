@@ -8,6 +8,7 @@ import goodGoods from '../views/goodGoods/index'
 import originality from '../views/originality/index'
 import publishment from '../views/publishment/index'
 import notFound from '../components/notFound/index'
+import userCenter from '../views/userCenter/index'
 import getPageTitle from './getPageTitle'
 import NProgress from 'nprogress'
 Vue.use(Router)
@@ -74,6 +75,14 @@ const router = new Router({
       component: details,
       meta: {
         title: '好物详情'
+      }
+    },
+    {
+      path: "/userCenter",
+      name: 'userCenter',
+      component: userCenter,
+      meta: {
+        title: '用户中心'
       }
     },
     {
