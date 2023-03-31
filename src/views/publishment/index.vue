@@ -12,51 +12,8 @@
       <!-- 右侧展示区 -->
       <div id="rightList">
 
-        <!--教育板块 -->
-        <div id="showlist1">
-          <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
-            <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;教&nbsp;育&emsp;
-            <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-          </h3>
-          <el-row>
-            <el-col :span="4">
-              <div style="width:100%;background-image: linear-gradient(#b3e5fccc 6rem,#1c3a77) ;height: 35rem;">
-                <div style="height:20rem;width: 100%;">
-                  <div style="margin:3rem 0 0 1.5rem;position: absolute;color: rgb(0,0,0,.4);font-size: 1.6rem;line-height: 3rem;font-family: 幼圆;">
-                    西南明珠出沧海 <br>桃李春风物华新
-                  </div>
-                </div>
-                <div style="height:15rem;width: 100%;">
-                  <!-- 卡片底部分页 -->
-                  <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination">
-                      <el-pagination
-                        background-color:
-                        layout="prev, pager, next, jumper"
-                        :total="1000">
-                      </el-pagination>
-                    </div>
-                  </div>
-                  <img src="../../assets/pic/svg/list1.svg" alt="logo" width="240px" height="240px" 
-                style="position:absolute;">
-                </div>
-                
-              </div>
-            </el-col>
-            <el-col :span="20">
-              <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                    <img src="../../assets/pic/home/scenery/fj2.png" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
-                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
-                </div>
-              </div>
-            </el-col>
-          </el-row>
-        </div>
-
         <!--历史板块 -->
-        <div id="showlist2">
+        <div id="showlist1">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
             &emsp;历&nbsp;史&emsp;
@@ -89,8 +46,12 @@
             <el-col :span="20">
               <div id="list1ItemBox">
                 <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                    <img src="../../assets/pic/home/scenery/fj1.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
-                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                  <div id="itemBox">
+                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <div id="itemDiscribe">{{ item.title }}
+                    </div> 
+                  </div>
+                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
@@ -98,7 +59,7 @@
         </div>
         
         <!--风景板块 -->
-        <div id="showlist3">
+        <div id="showlist2">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
             &emsp;风&nbsp;景&emsp;
@@ -131,8 +92,12 @@
             <el-col :span="20">
               <div id="list1ItemBox">
                 <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                    <img src="../../assets/pic/home/scenery/fj4.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
-                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                  <div id="itemBox">
+                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <div id="itemDiscribe">{{ item.title }}
+                    </div> 
+                  </div>
+                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
@@ -140,7 +105,7 @@
         </div>
 
         <!-- 文创板块 -->
-        <div id="showlist4">
+        <div id="showlist3">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
             &emsp;文&nbsp;创&emsp;
@@ -173,8 +138,12 @@
             <el-col :span="20">
               <div id="list1ItemBox">
                 <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                    <img src="../../assets/pic/home/scenery/fj3.jpg" style="width:10rem;height:10rem;margin: 1.5rem 0 0 0;">
-                    <div id="itemDiscribe" style="margin:1rem 0 0 0">{{ item.title }}</div>
+                  <div id="itemBox">
+                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <div id="itemDiscribe">{{ item.title }}
+                    </div> 
+                  </div>
+                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
@@ -210,77 +179,55 @@ export default {
       navBarList:[
         {
           id:"lnb1",
-          title:"教育",
+          title:"历史",
           index:1
         },
         {
           id:"lnb2",
-          title:"历史",
+          title:"风景",
           index:2
         },
         {
           id:"lnb3",
-          title:"风景",
-          index:3
-        },
-        {
-          id:"lnb4",
           title:"文创",
-          index:4
+          index:3
         }
       ],
       list1:[
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
+          title:'初春|快来一起赏花吧',
+          pic:'@/assets/pic/home/scenery/fj1.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
+          title:'初春|快来一起赏花吧',
+          pic:'../../assets/pic/home/scenery/fj2.png',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
+          title:'初春|快来一起赏花吧',
+          pic:'../../assets/pic/home/scenery/fj3.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+        },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
+          title:'初春|快来一起赏花吧',
+          pic:'../../assets/pic/home/scenery/fj4.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+        },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
+          title:'初春|快来一起赏花吧',
+          pic:'../../assets/pic/home/scenery/fj5.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+        },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
+          title:'初春|快来一起赏花吧',
+          pic:'../../assets/pic/home/scenery/fj1.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
-        { 
-          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
-          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
-          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-        { 
-          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春暖阳|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg'
-        },
-
+        
       ]
     };
   },
@@ -303,9 +250,6 @@ export default {
           break;
         case 3:
           this.targetHeight = 1637
-          break;
-        case 4:
-          this.targetHeight = 2305
           break;
         default: 
           this.targetHeight = 208

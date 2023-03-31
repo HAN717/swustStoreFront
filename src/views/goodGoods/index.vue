@@ -2,7 +2,7 @@
   <div class="content">
     <navigateBar />
     <div id="banner2"></div>
-    <div id="mainContent">
+    <div id="goodGoodscontent">
       <!-- 筛选框 -->
       <div id="goodGoodsSelect" v-show="scrollHeight > 300||this.isShow==true">
         <el-form id="selectForm">
