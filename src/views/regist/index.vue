@@ -190,9 +190,12 @@ export default {
     /* background-color:cadetblue; */
     width: 100%;
     height: 712px;
+    background-color: rgb(225,225,225);
+
 }
 .regcontent{
     overflow: hidden;
+    /* background-color: white; */
     background-color: white;
     height: 600px;
     width: 1200px;

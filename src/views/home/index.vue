@@ -170,13 +170,29 @@ export default {
       this.scrollHeight = scrollTop;
       // console.log('当前滚轮高度:',this.scrollHeight); 
     },
+    // 当自动向下滚动时，检测用户是否也正在滚动鼠标。增强交互、减少卡顿
+    mouseScroll(e){
+      e = e || window.event;  
+        if (e.wheelDelta) {  //判断浏览器谷歌滑轮事件               
+          if (e.wheelDelta != 0) { //当滑轮滚动时  
+            this.showWords = false
+          }  
+        } else if (e.detail) {  //Firefox滑轮事件  
+          if (e.detail> 0) { //当滑轮向上滚动时  
+            this.showWords = false
+          }  
+          if (e.detail< 0) { //当滑轮向下滚动时  
+            this.showWords = false
+          }  
+        }  
+    },
     navgateTo(dataPath) {
       this.$router.push(dataPath);
     },
     moveToCard(){
       const timeTop = setInterval(() => {
         document.documentElement.scrollTop = this.scrollHeight += 20;
-        if (this.scrollHeight >= 880) {
+        if (this.scrollHeight >= 880||this.showWords == false) {
           this.showWords = false
           clearInterval(timeTop); //清除定时器
         }
@@ -184,7 +200,9 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll),
+    window.addEventListener('DOMMouseScroll', this.mouseScroll);
+    window.onmousewheel = document.onmousewheel = this.mouseScroll; 
   },
   created(){
     setTimeout(()=>{

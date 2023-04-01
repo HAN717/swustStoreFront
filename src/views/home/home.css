@@ -5,25 +5,24 @@ body{
     position: absolute;
     margin: 13rem 12rem;
     font-size: 3.5rem;
-    color: #3559a0;
-    /* color: #ffffff; */
+    /* color: #3559a0; */
+    color: rgb(255,246,203);
     white-space:nowrap;
-    animation: showWords steps(10) 2s;
-    overflow: hidden;
-    text-shadow: 0.6rem 0.6rem 2rem rgb(174, 200, 253),
-    0.6rem 0.6rem 1rem rgb(174, 200, 253);
+    overflow-x: hidden;
+    /* text-shadow: 0.6rem 0.6rem 2rem rgb(174, 200, 253),
+    0.6rem 0.6rem 1rem rgb(174, 200, 253); */
+    text-shadow: 0.6rem 0.6rem 1rem rgba(64,68,91);
+}
+#helloWords h1{
+    animation: showWords steps(10) 2.8s;
 }
 @keyframes showWords {
-    from{
-        width: 0;
-    }
-    to{
-        width: 1120px;
-    }
-}
-@keyframes showBanner {
-    from{filter: blur(6px);}
-    to{filter: blur(2px);}
+    0%{width: 0;border-right: 0.5rem rgba(255, 255, 255, 0.721) solid; overflow-x: hidden;}
+    75%{width: 1120px;overflow-x: hidden;}
+    76%{width: 1120px;border-right: 0.5rem rgb(255, 255, 255, 0.721) solid; }
+    82%{border-right:none}
+    90%{width: 1120px;border-right: 0.5rem rgb(255, 255, 255, 0.721) solid;}
+    100%{width: 1120px;border-right: 0.5rem rgb(255, 255, 255, 0.721) solid;}
 }
 #banner {
     background-image: url("../../assets/pic/home/banner.jpg");
@@ -35,7 +34,6 @@ body{
     height: 45rem;
     z-index: -1;
     filter: blur(2px);
-    animation: showBanner inherit 3s;
 }
 #tmBlock{
     height: 55rem;
@@ -55,17 +53,17 @@ body{
     padding: 2rem;
 }
 #area1Pic{
-    animation: showarea1Pic 1s ease-in-out;
+    animation: showarea1Pic 1.3s ease-in-out;
 }
 @keyframes showarea1Pic {
-    from{margin-top: 5rem;}
+    from{margin-top: 7rem;}
     to{margin-top: 0;}
 }
 #area2Pic{
-    animation: showarea2Pic 1.2s ease-in-out;
+    animation: showarea2Pic 1.5s ease-in-out;
 }
 @keyframes showarea2Pic {
-    from{margin-left: 5rem;}
+    from{margin-left: 7rem;}
     to{margin-left: 1rem;}
 }
 #areaTitle1{
