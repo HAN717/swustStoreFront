@@ -8,7 +8,7 @@
       alt="logo"
       width="50rem"
       height="50rem"
-      style="margin: 0.6rem 0 0 1rem"
+      style="margin: 0.6rem 0 0 4rem"
     />
     <div id="pageTitle" @click="navgateTo('/')"  @mouseenter="mouseIsHover()" @mouseleave="mouseIsLeave()">西科周边好物</div>
     <!-- <div id="input">

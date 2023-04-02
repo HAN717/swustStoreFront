@@ -204,9 +204,10 @@ export default {
       }
     },
     goDetails(item){
+      let id = item.id
       this.$router.push({
-        path:'/details/'+item.id,
-        query:{ itemData:item }
+        path:'/details/'+id,
+        query:{ 'name':item.name}
       });
     }
   },

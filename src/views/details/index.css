@@ -1,18 +1,116 @@
-.detailsContent #banner2{
-    height: 4.3rem;
+/* 顶部banner */
+.detailsContent #banner2 {
+    /* height: 4.3rem; */
 }
-.detailsContent{
+/* 页面父元素 */
+.detailsContent {
     /* background-color: aquamarine; */
-    height: 45.8rem;
+    height: 30rem;
     width: 100%;
 }
-#goodsBox{
-    height: 39rem;
+/* 好物展示部分 */
+#goodsBox {
+    height: 37rem;
 }
-#goodsPicbig{
-    width:42rem;
-    height:33rem;
-    margin: 1.5rem 0 0 13rem;
+/* 好物名称 */
+#goodsName {
+    position: absolute;
+    font-size: 1.5rem;
+    width: 40rem;
+    left: 32rem;
+    top: 23.5rem;
+    font-family: 幼圆;
+    color: rgb(28, 58, 119);
+}
+/* 好物大图 */
+#goodsPicbig {
+    width: 22rem;
+    height: 18rem;
+    margin: 1.5rem 0 0 8rem;
     border-radius: 0.3rem;
     float: left;
+}
+/* 放大镜鼠标事件区 */
+.event {
+    width: 22rem;
+    height: 18rem;
+    position: absolute;
+    margin: 1.5rem 0 0 8rem;
+    border-radius: 0.3rem;
+    z-index: 998;
+    cursor: move;
+    /* background-color: aquamarine; */
+}
+/* 放大镜蒙版 */
+.mask {
+    width: 11rem;
+    height: 9rem;
+    background-color: rgba(119, 153, 222, 0.3);
+    position: absolute;
+    margin: 23.5rem 0 0 8rem;
+    display: none;
+    border-radius: 0.3rem;
+}
+/* 放大镜大图区 */
+.big {
+    width: 44rem;
+    height: 32.8rem;
+    position: absolute;
+    left: 30.8rem;
+    top: 23.5rem;
+    border-radius: 0.3rem;
+    border: 0.1rem solid rgb(182, 182, 182);
+    overflow: hidden;
+    z-index: 717;
+    display: none;
+    /* background: rgb(44, 40, 40); */
+    animation: showBigPic 0.3s ease-in-out;
+}
+/* 放大镜大图 */
+.big img {
+    width: 210%;
+    height: 210%;
+    position: absolute;
+    animation: showBigPic 0.3s ease-in-out;
+}
+/* 大图出现动画 */
+@keyframes showBigPic {
+    from{ opacity: 0; width: 11rem; height: 8rem;}
+    to{}
+}
+/* 放大镜hover事件 */
+.event:hover~.mask,
+.event:hover~.big {
+    display: block;
+}
+/* 底部推荐区 */
+#showMore{
+    top: 43.4rem;
+    left: 8rem;
+    position: absolute;
+    width: 80rem;
+    height: 13rem;
+    margin-top: 1.5rem;
+    border-radius: 0.3rem;
+    background-color: #f4eeee;
+}
+/* 单个推荐框 */
+#showMoreItem{
+    margin:  0.5rem 1rem 1rem 0.8rem;
+    width: 12.4rem;
+    height:9rem;
+    float: left;
+}
+#showMoreItem:hover{
+    outline:  0.16rem solid rgb(28, 58, 119,.5);
+    border-radius:  0.3rem;
+}
+/* 推荐商品图 */
+#showMorePic{
+    border-radius:  0.3rem;
+    margin: 0 auto;
+    float: left;
+}
+#showMoreItem:hover #showMorePic{
+    border-radius: 0.2rem 0 0 0.2rem;
 }

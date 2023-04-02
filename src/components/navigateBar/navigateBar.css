@@ -13,7 +13,7 @@
     /* color: #abbcf2; */
     color: #1c3a77;
     float: left;
-    margin: -3rem 0 0 6rem;
+    margin: -3rem 0 0 9rem;
     position: absolute;
     font-weight: 600;
     font-size: 1.5rem;
@@ -57,7 +57,7 @@
     width: 60rem;
     position: absolute;
     /* color: rgb(236,219,186); */
-    margin: -2.8rem 0 0 64rem;
+    margin: -2.8rem 0 0 62rem;
 }
 
 /* 文本链接子级元素 */
