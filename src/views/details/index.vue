@@ -19,7 +19,7 @@
             发售时间 <el-tag type="success">2022-12-5</el-tag>
           </div>
           <div style="padding: 0.2rem 0;color: slategray;">
-            由西科i货运公司发货, 并提供售后服务. 现在下单，4月3日前发货，预计4月6日送达
+            由西科i货运公司发货, 并提供售后服务. 现在下单, 4月3日前发货, 预计4月6日送达
           </div>
           <div style="width: 14rem;height: 18rem;background-color: rgb(138, 58, 119,.08);right: -16rem;
           top: -3rem;position: absolute;border-radius: 0.5rem;">
