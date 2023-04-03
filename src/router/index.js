@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// 前台
 import home from '@/views/home/index'
 import login from '@/views/login/login'
 import regist from '@/views/regist/index'
 import details from '../views/details/index'
 import goodGoods from '../views/goodGoods/index'
+import userCenter from '../views/userCenter/index'
+import notFound from '../components/notFound/index'
 import originality from '../views/originality/index'
 import publishment from '../views/publishment/index'
-import notFound from '../components/notFound/index'
-import userCenter from '../views/userCenter/index'
+// 后台
+import adminLogin from '../views/backStage/adminLogin/index'
+// 其他组件
 import getPageTitle from './getPageTitle'
 import NProgress from 'nprogress'
 Vue.use(Router)
@@ -86,6 +90,15 @@ const router = new Router({
         title: '用户中心'
       }
     },
+    // 后台
+    {
+      path: "/adminLogin",
+      name: 'adminLogin',
+      component: adminLogin,
+      meta: {
+        title: '后台登录'
+      }
+    },
     {
       path: "*",
       name: "NotFound",
@@ -107,15 +120,3 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(() => {  
   NProgress.done() // 在即将进入新的页面组件前，关闭掉进度条
 })
-
-// 路由守卫（路由拦截）
-// router.beforeEach((to,from,next) => {
-//   let isLogin = this.$cookies.isKey("token");
-//   if(to.path ==="/goodGoods" && isLogin == true ) {
-//       next('/goodGoods')
-//   } 
-//   else if (to.path ==="/goodGoods" && isLogin !== true ) {
-//      next('/login');
-//   }
-//  return next();
-// })
