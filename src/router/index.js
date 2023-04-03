@@ -12,6 +12,11 @@ import originality from '../views/originality/index'
 import publishment from '../views/publishment/index'
 // 后台
 import adminLogin from '../views/backStage/adminLogin/index'
+import userManage from '../views/backStage/userManage/index'
+import goodsManage from '../views/backStage/goodsManage/index'
+import backstageFrame from '../views/backStage/backstageFrame/index'
+import originalityManage from '../views/backStage/originalityManage/index'
+import publishmentManage from '../views/backStage/publishmentManage/index'
 // 其他组件
 import getPageTitle from './getPageTitle'
 import NProgress from 'nprogress'
@@ -39,7 +44,6 @@ const router = new Router({
       component: goodGoods,
       meta: {
         title: '西科好物',
-        requireAuth: true
       }
     },
     {
@@ -99,6 +103,52 @@ const router = new Router({
         title: '后台登录'
       }
     },
+    {
+      // 后台框架
+      path: "/admin",
+      name: 'backstageFrame',
+      component: backstageFrame,
+      // 路由守卫(登录)
+      meta: {
+        requireAuth: true
+      },
+      // 子路由
+      children:[
+        {
+          path: "/userManage",
+          name: 'userManage',
+          component: userManage,
+          meta: {
+            title: '用户管理'
+          }
+        },
+        {
+          path: "/goodsManage",
+          name: 'goodsManage',
+          component: goodsManage,
+          meta: {
+            title: '好物管理'
+          }
+        },
+        {
+          path: "/originalityManage",
+          name: 'originalityManage',
+          component: originalityManage,
+          meta: {
+            title: '创意管理'
+          }
+        },
+        {
+          path: "/originalityManage",
+          name: 'publishmentManage',
+          component: publishmentManage,
+          meta: {
+            title: '出版管理'
+          }
+        },
+      ]
+    },
+    // 404页
     {
       path: "*",
       name: "NotFound",

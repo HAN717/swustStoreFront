@@ -37,7 +37,7 @@ import { Message } from "element-ui";
               Message.success(this.loginMes)
               // this.$cookies.set("token", res.data.data, {expires: "15D"});
               localStorage.setItem("admin",this.input_name)
-            //   this.$router.push("/")
+              this.$router.push("/admin")
               this.$cookies.set("adminToken", this.token, {expires: "7D"});
               // console.log('登陆成功',this.$cookies.isKey("token"))
             }
