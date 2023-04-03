@@ -34,7 +34,8 @@ const router = new Router({
       name: 'goodGoods',
       component: goodGoods,
       meta: {
-        title: '西科好物'
+        title: '西科好物',
+        requireAuth: true
       }
     },
     {
@@ -96,6 +97,7 @@ const router = new Router({
   ]
 })
 export default router;
+
 // 动态修改页面title
 router.beforeEach(async (to, from, next) => {
   document.title = getPageTitle(to.meta.title);
@@ -105,3 +107,15 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(() => {  
   NProgress.done() // 在即将进入新的页面组件前，关闭掉进度条
 })
+
+// 路由守卫（路由拦截）
+// router.beforeEach((to,from,next) => {
+//   let isLogin = this.$cookies.isKey("token");
+//   if(to.path ==="/goodGoods" && isLogin == true ) {
+//       next('/goodGoods')
+//   } 
+//   else if (to.path ==="/goodGoods" && isLogin !== true ) {
+//      next('/login');
+//   }
+//  return next();
+// })

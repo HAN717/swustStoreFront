@@ -128,6 +128,7 @@ export default {
       // console.log("退出系统");
       localStorage.clear();
       location.reload();
+      this.$cookies.remove("token");
     },
     handleScroll() {
       // var sortMenu = document.body.scrollTop;
