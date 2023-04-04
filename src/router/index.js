@@ -109,9 +109,7 @@ const router = new Router({
       name: 'backstageFrame',
       component: backstageFrame,
       // 路由守卫(登录)
-      meta: {
-        requireAuth: true
-      },
+      meta: { requireAuth: true },
       // 子路由
       children:[
         {
@@ -119,7 +117,8 @@ const router = new Router({
           name: 'userManage',
           component: userManage,
           meta: {
-            title: '用户管理'
+            title: '用户管理',
+            meta: { requireAuth: true },
           }
         },
         {
@@ -127,7 +126,8 @@ const router = new Router({
           name: 'goodsManage',
           component: goodsManage,
           meta: {
-            title: '好物管理'
+            title: '好物管理',
+            meta: { requireAuth: true },
           }
         },
         {
@@ -135,7 +135,8 @@ const router = new Router({
           name: 'originalityManage',
           component: originalityManage,
           meta: {
-            title: '创意管理'
+            title: '创意管理',
+            meta: { requireAuth: true },
           }
         },
         {
@@ -143,7 +144,8 @@ const router = new Router({
           name: 'publishmentManage',
           component: publishmentManage,
           meta: {
-            title: '出版管理'
+            title: '出版管理',
+            meta: { requireAuth: true },
           }
         },
       ]

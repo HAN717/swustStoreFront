@@ -27,7 +27,7 @@ import { Message } from "element-ui";
                 input_name:'',
                 input_pwd:'',
                 loginMes:'',
-                token:'AASFDCASDCWE2141DFQW1234'
+                token:'AASFDCASD123CWE2141DFQW1234'
             }
         },
         methods:{
@@ -37,8 +37,8 @@ import { Message } from "element-ui";
               Message.success(this.loginMes)
               // this.$cookies.set("token", res.data.data, {expires: "15D"});
               localStorage.setItem("admin",this.input_name)
-              this.$router.push("/admin")
               this.$cookies.set("adminToken", this.token, {expires: "7D"});
+              this.$router.push("/userManage",()=>{})
               // console.log('登陆成功',this.$cookies.isKey("token"))
             }
            
@@ -60,15 +60,18 @@ import { Message } from "element-ui";
             //   }
             // )
           }
-        }
+        },
     }
 </script>
 <style>
 .adminContent{
-    background-size: contain;
     height: 44.5rem;
     width: 100%;
-    background-image: linear-gradient(to right,#E1BEE7 30%,#BBDEFB);
+    background-image: linear-gradient(to right,#E1BEE7 ,#BBDEFB);
+    filter: blur(2px);
+}
+.adminContent:hover{
+    transition: all 0.3s ease-in-out;filter: blur(0px);
 }
 #loginCard{
     height: 400px;width:360px;margin:160px 578px;
