@@ -15,9 +15,9 @@
                     </el-col>
                     <el-col :span="12">
                         <div style="height:560px;width:580px;position: absolute;margin:60px 0 0 580px;">
-                            <img src="../../assets/pic/logo.png" alt="logo" width="65px" height="65px" 
-                            style="position:absolute;right: 26rem;top: 2.3rem;">
-                            <div style="position:absolute;right: 11rem;top: 47px;font-size: 1.7rem;color:rgb(28, 58, 119);letter-spacing: 0.5rem;">西科周边好物</div>
+                            <img @click="goHome()" src="../../assets/pic/logo.png" alt="logo" width="65px" height="65px" 
+                            style="position:absolute;right: 26rem;top: 2.3rem;cursor: pointer;">
+                            <div @click="goHome()" style="position:absolute;right: 11rem;top: 47px;font-size: 1.7rem;color:rgb(28, 58, 119);letter-spacing: 0.5rem;cursor: pointer;">西科周边好物</div>
                             <div style="margin:9rem 0 0 4rem;position:absolute;color: rgb(28, 58, 119);letter-spacing:1.5rem">/校园之美,尽在其中/</div>
                             <div class="input_box">
                             <div style="width:400px;margin:200px 0 0 50px;padding: 10px;">
@@ -32,10 +32,8 @@
                                 <div style="height:50px"></div>
                                 <el-button @click="userLogin()" style="width:400px" >确认登录</el-button>
                             </div>
-                            
                         </div>
                         </div>
-                        
                     </el-col>
                 </el-row>
             </div> 
@@ -60,6 +58,9 @@ import { login } from "../../api/login/login";
         methods:{
           goto(){
             this.$router.push("/regist")
+          },
+          goHome(){
+            this.$router.push("/")
           },
           userLogin(){
             if(this.input_name==123){

@@ -5,7 +5,7 @@
     <div id="mainContent">
       <!-- 左侧导航栏 -->
         <div id="leftNavbar" v-show="scrollHeight > 200">
-          <div v-for="(item,index) in navBarList" :key="index" :id="item.id" @click="toDiv(item.index)">
+          <div v-for="(item,index) in navBarList" :key="index" :id=" item.id"  @click="toDiv(item.index)">
             {{ item.title }}
           </div>
         </div>
@@ -149,9 +149,6 @@
             </el-col>
           </el-row>
         </div>
-        <!-- <div v-show="activeBarNum==2" id="showlist2"></div>
-        <div v-show="activeBarNum==3" id="showlist3"></div>
-        <div v-show="activeBarNum==4" id="showlist4"></div> -->
       </div>
     </div>
     <toTop />
@@ -232,9 +229,6 @@ export default {
     };
   },
   methods: {
-    mouseIsHover(itemNum){
-      this.activeBarNum = itemNum;
-    },
     handleScroll() {
       var scrollTop = document.documentElement.scrollTop;
       this.scrollHeight = scrollTop;
@@ -255,8 +249,14 @@ export default {
           this.targetHeight = 208
           break;
       }
+      if( (document.documentElement.scrollTop===208&&this.targetHeight === 208)||
+          (document.documentElement.scrollTop===960&&this.targetHeight === 960)||
+          (document.documentElement.scrollTop===1637&&this.targetHeight === 1637)
+        ){
+        // console.log('已经到达区域了哦')
+      }
       // 指定高度大于当前滚动条位置（即在下方）
-      if(this.targetHeight > this.scrollHeight){
+      else if(this.targetHeight > this.scrollHeight){
         //高度差
         let x = this.targetHeight - this.scrollHeight;
         // 先加上余数，保证高度差能整除设定的最小移动单位

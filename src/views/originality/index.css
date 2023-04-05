@@ -11,8 +11,10 @@
     top: 7.5rem;
     left: 0;
     margin:  5.6rem 0 0 0;
+    /* animation: showLnbBox  3.8s ease-in-out; */
+}
+#leftNavbar:hover{
     box-shadow: 0.1rem 0.22rem 0.5rem rgb(117, 111, 111,.7);
-    animation: showLnbBox  3.8s ease-in-out;
 }
 @keyframes showLnbBox{
     from{ box-shadow: none;}
@@ -22,16 +24,17 @@
     height: 7.77rem;
     width: 3.2rem;
     text-align: center;
-    font-size: 1rem;line-height: 4.3rem;
+    font-size: 1rem;
     font-family: 幼圆;
     color: rgb(117, 111, 111,.7);
     cursor: pointer;
     box-shadow: 0.1rem 0.1rem 0.1rem rgb(117, 111, 111,.3);
     letter-spacing: 0.3rem;
+    line-height: 7rem;
 }
 @keyframes showLnb{
     from{ height: 0rem;line-height: 1.2rem;border-radius: 0rem;box-shadow:none;opacity: 0;}
-    to{height: 7.77rem;line-height: 4.3rem;}
+    to{height: 7.77rem;line-height: 7rem;}
 }
 /* #lnb1{ background-color: rgb(200, 230, 201,.8); animation: showLnb 1.5s ease-in-out;}
 #lnb2{ background-color: rgb(255, 249, 196,.6); animation: showLnb 1.2s ease-in-out;}

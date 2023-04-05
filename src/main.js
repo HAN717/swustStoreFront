@@ -17,6 +17,7 @@ new Vue({
   components: { App },
   render: h => h(App)
 })
+// 后台路由守卫
 router.beforeEach((to, from, next) => {
   if (to.matched.some(res => res.meta.requireAuth)) { // 验证是否需要登陆
     if (VueCookies.isKey("adminToken")) { next(); } // 若登录则进入后台
