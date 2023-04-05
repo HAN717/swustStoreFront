@@ -78,10 +78,8 @@
 .nav_tools,
 .menuLeft,
 .content-main {
-	transition: inline-block 0.3s, left 0.3s, width 0.3s, margin-left 0.3s, font-size 0.3s;
+	transition: inline-block 0.3s, left 0.3s, width 0.3s, margin-left 0.3s, font-size 0.3s, height;
 }
- 
- 
 /* 侧边栏 */
  
 .menuLeft .el-menu {

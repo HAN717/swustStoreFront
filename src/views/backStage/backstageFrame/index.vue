@@ -10,7 +10,7 @@
 			</div>
              <!--todo 菜单栏组件 -->
             <el-menu active-text-color="#fff" background-color="#2d363a" class="el-menu-vertical-demo"
-				:collapse-transition="false" default-active="1" text-color="#979899" @open="handleOpen"
+				:collapse-transition="false" default-active="1-1" text-color="#979899" @open="handleOpen"
 				@close="handleClose" :collapse="isCollapse">
 				<el-submenu index="1">
 					<template #title>
@@ -90,10 +90,10 @@
 				</el-dropdown>
 			</div>
 			<!-- todo 内容组件 -->
-			<el-scrollbar  :height="siteContentViewHeight+32+'px'" >
-				<el-card :style="'min-height:'+ siteContentViewHeight + 'px'">
-					<router-view />
-				</el-card>
+			<el-scrollbar  :height="siteContentViewHeight+32+'px'">
+				<!-- <el-card :style="'min-height:'+ siteContentViewHeight + 'px'"> -->
+					<router-view  />
+				<!-- </el-card> -->
 			</el-scrollbar>
 		</div>
 	</div>

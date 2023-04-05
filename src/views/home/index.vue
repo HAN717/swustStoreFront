@@ -206,6 +206,7 @@ export default {
   },
   created(){
     setTimeout(()=>{
+      // 当 第一次 进入 首页 时才执行动画
       if(this.scrollHeight!==0){
         this.scrollHeight-=this.scrollHeight;
         this.moveToCard()
