@@ -150,7 +150,7 @@ import { login } from "../../api/login/login";
   }
 }
 
-.el-button {
+.input_box .el-button {
     background-color: white !important;
 }
 </style>
