@@ -1,4 +1,5 @@
 <template>
+  <!-- 初始导航栏 -->
   <div v-if="scrollHeight <= 70" id="topBar">
     <div :id="isHover == true ? 'navBanner' : ''"></div>
     <img
@@ -11,16 +12,6 @@
       style="margin: 0.6rem 0 0 4rem"
     />
     <div id="pageTitle" @click="navgateTo('/')"  @mouseenter="mouseIsHover()" @mouseleave="mouseIsLeave()">西科周边好物</div>
-    <!-- <div id="input">
-          <el-input placeholder="请输入内容" v-model="inputText" class="input-with-select" style="width:600px">
-            <el-select v-model="select" slot="prepend" placeholder="请选择">
-              <el-option label="西科好物" value="1"></el-option>
-              <el-option label="西科创意" value="2"></el-option>
-              <el-option label="西科出版" value="3"></el-option>
-            </el-select>
-            <el-button slot="append" icon="el-icon-search" style="position:absolute;margin-top: -20px;height: 40px;"></el-button>
-          </el-input>
-        </div>       -->
     <div id="text_bar">
       <!-- 根据当前路由动态设置class类名 -->
       <div :class="activeBar == '/goodGoods'? 'activeBar' : 'normal'" @click="navgateTo('/goodGoods')">西科好物</div>
@@ -46,22 +37,36 @@
         </el-dropdown>
       </div>
     </div>
-    <!-- <div style="position: absolute; color: rgb(0, 0, 0); margin: -60px 0 0 1070px">
-      <div style="color: black">
-        <span><i class="el-icon-location-information"></i>&nbsp;绵阳</span
-        ><span>&emsp;</span>
-        <i v-if="wea_img == 'yin'" class="el-icon-cloudy-and-sunny"></i>
-        <i v-else-if="wea_img == 'qing'" class="el-icon-sunny"></i>
-        <i v-else-if="wea_img == 'yu'" class="el-icon-light-rain"></i>
-        <i v-else-if="wea_img == 'yun'" class="el-icon-cloudy"></i>&nbsp;{{
-          tem
-        }}°C
-      </div>
-    </div> -->
   </div>
+
+  <!-- 页面滚动后导航栏 -->
   <div id="bar" v-else>
-    <div id="secondBarTitle">SWUST</div>
-    <div id="input_1">
+    <div id="secondBarTitle"  @click="navgateTo('/')" style="cursor: pointer;">SWUST</div>
+    <div id="text_bar" style="margin-top: -1.8rem;">
+      <!-- 根据当前路由动态设置class类名 -->
+      <div :class="activeBar == '/goodGoods'? 'activeBar' : 'normal'" @click="navgateTo('/goodGoods')">西科好物</div>
+      <div :class="activeBar == '/originality'? 'activeBar' : 'normal'" @click="navgateTo('/originality')">西科创意</div>
+      <div :class="activeBar == '/publishment'? 'activeBar' : 'normal'" @click="navgateTo('/publishment')">西科出版</div>
+      <div v-if="isLogin == false" class="bardiv" @click="navgateTo('/login')">
+        登录系统
+      </div>
+      <div v-if="isLogin == true" class="bardiv" style="margin-top: -0.1rem;">
+        <el-dropdown>
+          <span class="el-dropdown-link" style="color: rgb(0,0,0);margin: -2rem 0 0  -2.5rem;font-size: 1.1rem;">
+            {{ userName }}
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>
+              <span @click="navgateTo('/userCenter')">用户中心</span>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <span @click="outLogin()">退出系统</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+    </div>
+    <!-- <div id="input_1">
       <el-input
         placeholder="请输入内容"
         v-model="inputText"
@@ -78,11 +83,10 @@
           style="position: absolute; margin-top: -20px; height: 40px;color: white;"
         ></el-button>
       </el-input>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
-import { getWether } from "../../api/wether/wether";
 import "../navigateBar/navigateBar.css";
 export default {
   name: "navigateBar",
@@ -95,9 +99,6 @@ export default {
       inputText: "",
       scrollHeight: 0,
       dialogVisible: false,
-      wea: "",
-      tem: "",
-      wea_img: "",
       activeBar:0
     };
   },
@@ -105,9 +106,6 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
     this.getLoginState();
     this.activeBar = this.$route.path;
-  },
-  created() {
-    this.getWeaAndTem();
   },
   methods: {
     mouseIsHover(){
@@ -117,37 +115,25 @@ export default {
       this.isHover=false;
     },
     getLoginState() {
-      let user = localStorage.getItem("user");
+      let user = this.$cookies.get('token');
       // console.log("user", user);
       if (user !== null) {
         this.isLogin = true;
-        this.userName = user;
+        this.userName = localStorage.getItem("user");
       }
     },
     outLogin() {
       // console.log("退出系统");
       localStorage.clear();
-      location.reload();
       this.$cookies.remove("token");
+      this.isLogin = false;
+      location.reload();
     },
     handleScroll() {
       // var sortMenu = document.body.scrollTop;
       var scrollTop = document.documentElement.scrollTop;
       this.scrollHeight = scrollTop;
       // console.log('滚动条高度',this.scrollHeight);
-    },
-    getWeaAndTem() {
-      const dataList = {
-        appid: "55297681", // 账号ID
-        appsecret: "PZcXgN1m", // 账号密钥
-        city: "绵阳", // 城市名称,不要带市和区
-        version: "v61",
-      };
-      getWether(dataList).then((res) => {
-        this.wea = res.data.wea;
-        this.tem = res.data.tem;
-        this.wea_img = res.data.wea_img;
-      });
     },
     navgateTo(dataPath) {
       this.$router.push(dataPath);

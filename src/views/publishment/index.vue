@@ -12,11 +12,11 @@
       <!-- 右侧展示区 -->
       <div id="rightList">
 
-        <!--历史板块 -->
+        <!--文献板块 -->
         <div id="showlist1">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;历&nbsp;史&emsp;
+            &emsp;文&nbsp;献&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
           <el-row>
@@ -44,25 +44,24 @@
               </div>
             </el-col>
             <el-col :span="20">
-              <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                  <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
-                    <div id="itemDiscribe">{{ item.title }}
+              <div id="list1ItemBox" style="margin-left: 3rem;">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)" style="width: 17rem;">
+                  <div id="itemBox" style="width: 11.6rem;">
+                    <img src="../../assets/pic/home/books/pages1.png" style="width:10rem;margin: 1rem 0 0 1rem;position: absolute;">
+                    <div id="itemDiscribe" style="position: absolute;margin: 11rem 0 0 3rem;">{{ item.title }}
                     </div> 
                   </div>
-                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
           </el-row>
         </div>
         
-        <!--风景板块 -->
+        <!--教材板块 -->
         <div id="showlist2">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;风&nbsp;景&emsp;
+            &emsp;教&nbsp;材&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
           <el-row>
@@ -90,25 +89,24 @@
               </div>
             </el-col>
             <el-col :span="20">
-              <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                  <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
-                    <div id="itemDiscribe">{{ item.title }}
+              <div id="list1ItemBox" style="margin-left: 3rem;">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)" style="width: 17rem;">
+                  <div id="itemBox" style="width: 11.6rem;">
+                    <img src="../../assets/pic/home/books/rjcs.png" style="width:10rem;margin: 1rem 0 0 1rem;position: absolute;">
+                    <div id="itemDiscribe" style="position: absolute;margin: 11rem 0 0 3rem;">{{ item.title }}
                     </div> 
                   </div>
-                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
           </el-row>
         </div>
 
-        <!-- 文创板块 -->
+        <!-- 其他板块 -->
         <div id="showlist3">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;文&nbsp;创&emsp;
+            &emsp;其&nbsp;他&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
           <el-row>
@@ -136,14 +134,13 @@
               </div>
             </el-col>
             <el-col :span="20">
-              <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
-                  <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
-                    <div id="itemDiscribe">{{ item.title }}
+              <div id="list1ItemBox" style="margin-left: 3rem;">
+                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)" style="width: 17rem;">
+                  <div id="itemBox" style="width: 11.6rem;">
+                    <img src="../../assets/pic/home/books/pages3.png" style="width:10rem;margin: 1rem 0 0 1rem;position: absolute;">
+                    <div id="itemDiscribe" style="position: absolute;margin: 11rem 0 0 3rem;text-align: center;">{{ item.title }}
                     </div> 
                   </div>
-                    <!-- <div style="margin:-6rem 0 0 12.6rem;position: absolute;display: flex;width: 10rem;font-size: 0.8rem;color:rgb(0,0,0,.7)">{{ item.discribe }}</div> -->
                 </div>
               </div>
             </el-col>
@@ -179,51 +176,61 @@ export default {
       navBarList:[
         {
           id:"lnb1",
-          title:"历史",
+          title:"文献",
           index:1
         },
         {
           id:"lnb2",
-          title:"风景",
+          title:"教材",
           index:2
         },
         {
           id:"lnb3",
-          title:"文创",
+          title:"其他",
           index:3
         }
       ],
       list1:[
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
           pic:'@/assets/pic/home/scenery/fj1.jpg',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
           pic:'../../assets/pic/home/scenery/fj2.png',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
           pic:'../../assets/pic/home/scenery/fj3.jpg',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
           pic:'../../assets/pic/home/scenery/fj4.jpg',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
           pic:'../../assets/pic/home/scenery/fj5.jpg',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
+          title:'软件测试技术',
+          pic:'../../assets/pic/home/scenery/fj1.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+        },{ 
+          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
+          title:'软件测试技术',
+          pic:'../../assets/pic/home/scenery/fj5.jpg',
+          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+        },{ 
+          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
+          title:'软件测试技术',
           pic:'../../assets/pic/home/scenery/fj1.jpg',
           discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
         },
@@ -255,8 +262,14 @@ export default {
           this.targetHeight = 208
           break;
       }
+      if( (document.documentElement.scrollTop===208&&this.targetHeight === 208)||
+          (document.documentElement.scrollTop===960&&this.targetHeight === 960)||
+          (document.documentElement.scrollTop===1637&&this.targetHeight === 1637)
+        ){
+        // console.log('已经到达区域了哦')
+      }
       // 指定高度大于当前滚动条位置（即在下方）
-      if(this.targetHeight > this.scrollHeight){
+      else if(this.targetHeight > this.scrollHeight){
         //高度差
         let x = this.targetHeight - this.scrollHeight;
         // 先加上余数，保证高度差能整除设定的最小移动单位

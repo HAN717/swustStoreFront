@@ -1,11 +1,14 @@
 <template>
-    <div class="content">
+    <div class="usercontent">
       <navigateBar />
       <div id="banner3" ></div>
         <!-- 若用户未登录则不显示内容 -->
-        <div style="height:28.9rem;text-align: center;letter-spacing: 2rem;line-height: 24rem;color: #1c3a77;font-family: 幼圆;"
+        <div style="height:28.9rem;text-align: center;line-height: 24rem;color: #1c3a77;font-family: 幼圆;"
            v-show="isLogin==false">
-          <h1>页面不见了，请先完成登录再来看看吧</h1>
+          <h1><span style="letter-spacing: 1rem;">页面不见了，请先完成</span>
+            <span style="color: cornflowerblue;cursor: pointer;" @click="toLogin()">登录 </span>
+            <span style="letter-spacing: 1rem;">再来看看吧</span>
+          </h1>
         </div>
         <div id="userContent" v-show="isLogin==true"><br>
           <!-- 用户信息 -->
@@ -112,7 +115,9 @@
       };
     },
     methods: {
-    
+      toLogin() {
+        this.$router.push('/login');
+      },
     },
     mounted(){
       
@@ -120,10 +125,18 @@
   };
   </script>
   <style>
+  .usercontent{
+    background-color: rgb(28 58 119);
+  }
   #userContent{
     background-color: rgb(28 58 119);
     height:61rem;
-    padding: 0 3rem;
+    padding: 0.8rem 3rem;
+    /* animation: showUserContent 1.2s ease-in-out; */
+  }
+  @keyframes showUserContent {
+    from{ height: 0;}
+    to{}
   }
   #banner3 {
     background-image: url("../../assets/pic/bg.png");

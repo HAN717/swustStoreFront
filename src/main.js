@@ -30,4 +30,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+  // 页面跳转时，去到新页面的顶部，而不是旧页面点击跳转时的位置
+  window.scrollTo(0,0);
 })

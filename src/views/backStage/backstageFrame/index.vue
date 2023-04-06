@@ -76,9 +76,20 @@
                     <i v-show="isCollapse==false" class="el-icon-s-fold"  @click="isCollapse=!isCollapse"></i>
                     <i v-show="isCollapse==true" class="el-icon-s-unfold"  @click="isCollapse=!isCollapse"></i>
 				</div>
+				<!-- 天气 -->
+				 <div style="position: absolute; margin: 17px 0 0 1100px">
+					<div style="color: #BBDEFB;">
+						<span><i class="el-icon-location-information"></i>&nbsp;绵阳</span
+						><span>&emsp;</span>
+						<i v-if="wea_img == 'yin'" class="el-icon-cloudy-and-sunny"></i>
+						<i v-else-if="wea_img == 'qing'" class="el-icon-sunny"></i>
+						<i v-else-if="wea_img == 'yu'" class="el-icon-light-rain"></i>
+						<i v-else-if="wea_img == 'yun'" class="el-icon-cloudy"></i>&nbsp;{{tem}}°C
+					</div>
+				</div>
 				<!-- 用户 -->
 				<el-dropdown id="adminMenu">
-					<span class="el-dropdown-link" style="color: #BBDEFB;margin: -2rem 0 0  -2.5rem;font-size: 1.1rem;">
+					<span class="el-dropdown-link" style="color: #BBDEFB;margin: -2rem 0 0  -3.5rem;font-size: 1.1rem;">
 						<i class="el-icon-s-custom"></i>{{ userName }}
 						<!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
 					</span>
@@ -100,6 +111,7 @@
 </template>
  
 <script>
+import { getWether } from "../../../api/wether/wether";
 import './index.css'
 export default {
     components: {
@@ -113,11 +125,15 @@ export default {
 			menuActiveName: '',
 			menus: [],
 			userName: "",
+			wea: "",
+			tem: "",
+			wea_img: "",
         }
     },
 	created() {
 		let that = this;
 		that.routeHandle(that.$route);
+		this.getWeaAndTem();
 	},
 	// 监听路由变化
 	watch: {
@@ -145,6 +161,19 @@ export default {
 			localStorage.clear();
 			this.$cookies.remove("adminToken");
 			this.$router.replace('./adminLogin');
+		},
+		getWeaAndTem() {
+			const dataList = {
+				appid: "55297681", // 账号ID
+				appsecret: "PZcXgN1m", // 账号密钥
+				city: "绵阳", // 城市名称,不要带市和区
+				version: "v61",
+			};
+			getWether(dataList).then((res) => {
+				this.wea = res.data.wea;
+				this.tem = res.data.tem;
+				this.wea_img = res.data.wea_img;
+			});
 		},
 		resetDocumentClientHeight: function() {
 			this.documentClientHeight = document.documentElement['clientHeight'];
