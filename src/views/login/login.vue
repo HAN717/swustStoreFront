@@ -63,7 +63,7 @@ import { login } from "../../api/login/login";
             this.$router.push("/")
           },
           userLogin(){
-            if(this.input_name==123){
+            if(this.input_name=='Zi HAN'){
               this.loginMes = "登录成功"
               Message.success(this.loginMes)
               // this.$cookies.set("token", res.data.data, {expires: "15D"});

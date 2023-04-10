@@ -77,7 +77,7 @@
                     <i v-show="isCollapse==true" class="el-icon-s-unfold"  @click="isCollapse=!isCollapse"></i>
 				</div>
 				<!-- 天气 -->
-				 <div style="position: absolute; margin: 17px 0 0 1100px">
+				 <div style="position: absolute; right: 7rem;top: 1.1rem;">
 					<div style="color: #BBDEFB;">
 						<span><i class="el-icon-location-information"></i>&nbsp;绵阳</span
 						><span>&emsp;</span>

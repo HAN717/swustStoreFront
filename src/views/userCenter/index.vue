@@ -5,14 +5,16 @@
         <!-- 若用户未登录则不显示内容 -->
         <div style="height:28.9rem;text-align: center;line-height: 24rem;color: #1c3a77;font-family: 幼圆;"
            v-show="isLogin==false">
-          <h1><span style="letter-spacing: 1rem;">页面不见了，请先完成</span>
+          <h1><span style="letter-spacing: 1rem;color: #FFFFFF;">页面不见了，请先完成</span>
             <span style="color: cornflowerblue;cursor: pointer;" @click="toLogin()">登录 </span>
-            <span style="letter-spacing: 1rem;">再来看看吧</span>
+            <span style="letter-spacing: 1rem;color: #FFF">再来看看吧</span>
           </h1>
         </div>
         <div id="userContent" v-show="isLogin==true"><br>
           <!-- 用户信息 -->
-          <el-card>
+          <avatar :username="userName" id="userAvatar" :size="150" background-color="rgb(200 233 246)" color="#1c3a77"></avatar>
+          <el-card style="margin-top: -4.5rem;">
+            <br> <br>
             <el-descriptions title="用户信息" border>
                 <el-descriptions-item label="用户名">{{userName}}</el-descriptions-item>
                 <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
@@ -56,11 +58,13 @@
   import navigateBar from "../../components/navigateBar";
   import pageFooter from "../../components/pageFooter"
   import toTop from "../../components/toTop";
+  import Avatar from 'vue-avatar';
   export default {
     components: {
       navigateBar,
       pageFooter,
-      toTop
+      toTop,
+      Avatar
     },
     data() {
       return {
@@ -126,11 +130,14 @@
   </script>
   <style>
   .usercontent{
-    background-color: rgb(28 58 119);
+    background-color: #1c3a77;
+  }
+  #userAvatar{
+    margin: auto;position:relative;
   }
   #userContent{
     background-color: rgb(28 58 119);
-    height:61rem;
+    height:70rem;
     padding: 0.8rem 3rem;
     /* animation: showUserContent 1.2s ease-in-out; */
   }

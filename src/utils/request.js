@@ -3,6 +3,7 @@ export const baseUrl = '/api';
 // export const baseUrl = "http://192.168.43.244:8080";
 // axios.defaults.baseURL = '/api';
 // export const baseUrl = axios.defaults.baseURL ;
+
 // 第一步，创建实例
 const instance = axios.create({
     baseURL: baseUrl,
@@ -43,7 +44,6 @@ export function get(url, {params}) {
 export function post(url, data) {
     return instance.post(url, data)
 }
-
 
 export function put(url, data) {
     return instance.put(url, data)

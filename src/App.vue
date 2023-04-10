@@ -13,8 +13,7 @@ export default {
 <style>
 body {
   /* background-color: #dff4ff; */
-
-   background-color:rgb(255, 255, 255);
+  background-color:rgb(255, 255, 255);
   margin: 0;
 }
 ::-webkit-scrollbar {
