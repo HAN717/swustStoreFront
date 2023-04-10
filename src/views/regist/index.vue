@@ -180,7 +180,17 @@ export default {
         }
     },
     mounted(){
-        this.getUserRoleList()
+        this.getUserRoleList();
+        // 防止误触关闭网页
+        window.onbeforeunload = e => {
+            e = e || window.event
+            // 兼容IE8和Firefox 4之前的版本
+            if (e) {
+            e.returnValue = '关闭提示'
+            }
+            // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+            return '关闭提示'
+        }
     },
 }
 </script>
@@ -203,13 +213,14 @@ export default {
     border-radius: 10px;
 }
 .yuan2{
-    animation:return_c1 3s ease-in-out infinite alternate;
+    animation:return_c1 8s ease-in-out infinite alternate;
 }
 .yuan4{
     animation:return_c2 3s ease-in-out infinite alternate;
 }
 @keyframes return_c1 {
   0% {  top: -380px; }
+  50% {  top: 160px; }
   100% {  top: -200px; }
 }
 @keyframes return_c2 {

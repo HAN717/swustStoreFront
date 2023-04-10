@@ -6,7 +6,7 @@
         <div style="height:28.9rem;text-align: center;line-height: 24rem;color: #1c3a77;font-family: 幼圆;"
            v-show="isLogin==false">
           <h1><span style="letter-spacing: 1rem;color: #FFFFFF;">页面不见了，请先完成</span>
-            <span style="color: cornflowerblue;cursor: pointer;" @click="toLogin()">登录 </span>
+            <span style="color: cornflowerblue;cursor: pointer;" @click="toLogin()">登 录 </span>
             <span style="letter-spacing: 1rem;color: #FFF">再来看看吧</span>
           </h1>
         </div>
