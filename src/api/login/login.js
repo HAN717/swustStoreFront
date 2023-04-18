@@ -4,6 +4,6 @@ export function login(data){
     return service.request({
         url:'/user/login',
         method: "post",
-        data:data,
+        params:data,
     })
 }

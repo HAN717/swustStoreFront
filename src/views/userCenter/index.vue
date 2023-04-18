@@ -27,7 +27,55 @@
           </el-card>
           <!-- 修改信息 -->
           <el-card style="margin-top: 0.4rem;">
-            <el-descriptions title="信息修改" border></el-descriptions>
+            <!-- <el-descriptions title="信息修改" border> -->
+              <el-form label-position="left" :model="formList" label-width="80px" >
+                <el-form-item label="用户名">
+                    <el-input v-model="formList.account"  maxlength="6"
+                    placeholder="用户名长度不超过6位且不能出现字符"></el-input>
+                </el-form-item>
+                <el-form-item label="用户密码" >
+                    <el-input v-model="formList.pwd" maxlength="16"
+                    placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码"> 
+                    <el-input v-model="pwd" maxlength="16"
+                    placeholder="再次输入密码"></el-input>
+                </el-form-item>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="用户性别">
+                            <el-select v-model="formList.sex" style="width:12rem" placeholder="请选择性别">
+                                <el-option
+                                v-for="item in userSex"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="电话号码" style="width:17rem">
+                            <el-input v-model="formList.phoneNum" 
+                            placeholder="请输入正确电话号码格式"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="真实姓名" >
+                            <el-input v-model="formList.userName" 
+                            placeholder="请输入用户真实姓名"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-form-item label="用户地址">
+                    <el-input v-model="formList.address" 
+                    placeholder="请输入详细地址"></el-input>
+                </el-form-item>
+                <el-button  @click="putInfo()" style="width:580px;">确认修改</el-button>
+              </el-form>
+            <!-- </el-descriptions> -->
           </el-card>
           <!-- 用户收藏 -->
           <el-card style="margin-top: 0.4rem;">
@@ -59,6 +107,7 @@
   import pageFooter from "../../components/pageFooter"
   import toTop from "../../components/toTop";
   import Avatar from 'vue-avatar';
+  import { update_user , get_user_info} from '../../api/userContent/userContent'
   export default {
     components: {
       navigateBar,
@@ -115,16 +164,49 @@
           name: '123',
           address: '上海市普陀区金沙江路 1518 弄',
           status:'已签收'
-        }]
+        }],
+        userRoleList:[],
+        pwd:'',
+        err:'',
+        formList:{
+          userName:'',
+          account:'',
+          pwd:'',
+          sex:'',
+          userRole:'',
+          address:'',
+          phoneNum:''
+        },
+        userSex: [{
+          value: '0',
+          label: '男'
+          }, {
+          value: '1',
+          label: '女'
+          }, {
+          value: '2',
+          label: '其他'
+        }],
       };
     },
     methods: {
       toLogin() {
         this.$router.push('/login');
       },
+      putInfo(){
+
+      },
+      getUserInfo(){
+        let user = this.$cookies.get('token');
+        get_user_info(user).then(
+          (res)=>{
+            console.log('res',res)
+          }
+        )
+      }
     },
     mounted(){
-      
+      this.getUserInfo()
     }
   };
   </script>
@@ -137,7 +219,7 @@
   }
   #userContent{
     background-color: rgb(28 58 119);
-    height:70rem;
+    height:90rem;
     padding: 0.8rem 3rem;
     /* animation: showUserContent 1.2s ease-in-out; */
   }

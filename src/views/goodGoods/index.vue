@@ -40,11 +40,11 @@
       </div>
       <!-- 展示区 -->
       <div :id="this.isShow == true ? 'goodGoodsList':'goodGoodsList1'">
-        <div class="listItem"   v-for="(item,index) of goodsList" :key="index">
+        <div class="listItem"   v-for="(item,index) of goodLists" :key="index">
           <el-row>
             <el-col :span="8">
               <div  @mouseenter="mouseIsHover(index)" @mouseleave="mouseIsLeave()">
-                <img src="../../assets/pic/home/showGoods/25.jpg" :alt="item.name" id="goodsPic">
+                <img src="../../assets/pic/home/showGoods/25.jpg" :alt="item.materialName" id="goodsPic">
                 <div id="goodsMb" v-show="mouseHovering == true&& index == activeItem"> 
                   <div id="mbContent">
                     <el-row>
@@ -67,13 +67,13 @@
               </div>
             </el-col>
             <el-col :span="12">
-              <div style="font-family:幼圆;font-size:1.2rem;margin: 1.5rem 0 0 0;">{{ item.name }}</div>
-              <div style="margin:6.6rem 0 1rem 0">售价 <span style="color:rgb(0,0,0,.7);font-size:0.9rem">{{item.price}}</span> </div>
+              <div style="font-family:幼圆;font-size:1.2rem;margin: 1.5rem 0 0 0;">{{ item.materialName }}</div>
+              <!-- <div style="margin:6.6rem 0 1rem 0">售价 <span style="color:rgb(0,0,0,.7);font-size:0.9rem">{{item.price}}</span> </div>
               <div style="margin-bottom:1rem">
                 种类 <el-tag type="warning">装饰类</el-tag>&emsp; 
                 材质 <el-tag>布料</el-tag>&emsp;
                 发售时间 <el-tag type="success">2022-12-5</el-tag>
-              </div>
+              </div> -->
               <div id="lookDetails">
                 <div style="position:absolute;margin: -2.5rem 0 0 12.3rem;" @click="goDetails(item)">查看详情&emsp;<i class="el-icon-arrow-right"></i></div>
               </div>
@@ -99,6 +99,7 @@
 import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
 import toTop from "../../components/toTop";
+import { search_all_item } from "../../api/goodGoods/goodGoods";
 import "./index.css"
 export default {
   components: {
@@ -184,7 +185,8 @@ export default {
           price:'￥99.0元',
           id:'1239'
         },
-      ]
+      ],
+      goodLists:[]
     };
   },
   methods: {
@@ -207,12 +209,25 @@ export default {
       let id = item.id
       this.$router.push({
         path:'/details/'+id,
-        query:{ 'name':item.name}
+        query:{ 'id':id,'name':item.materialName}
       });
+    },
+    getAllItem(){
+      search_all_item().then(
+        (res)=>{
+          if(res.data.state!==200){
+            Message.warning(res.data.message)
+          }
+          else{
+            this.goodLists = res.data.data;
+          }
+        }
+      )
     }
   },
   mounted(){
-    window.addEventListener("scroll", this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll);
+    this.getAllItem()
   }
 };
 </script>

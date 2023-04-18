@@ -68,6 +68,7 @@
 <script>
 import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
+import {search_item_by_id} from '../../api/goodGoods/goodGoods'
 import "./index.css";
 export default {
   components: {
@@ -77,6 +78,7 @@ export default {
   data() {
     return {
       goodsName: this.$route.query.name,
+      goodsId:this.$route.query.id,
       currentIndex: 0,
       deadline2: Date.now(),
       moreList:[
@@ -117,7 +119,14 @@ export default {
     
   },
   methods: {
-    shuchu() {
+    searchItem() {
+      let id = this.goodsId
+      let data={"id":id}
+      search_item_by_id(data).then(
+        (res)=>{
+          console.log('res',res);
+        }
+      )
     },
     handler(event) {
       let mask = this.$refs.mask;
@@ -136,12 +145,11 @@ export default {
     },
   },
   mounted() {
-    this.shuchu();
-     //全局事件总线获取兄弟组件传递过来的索引值
-    //  this.$bus.$on("getIndex", (index) => {
-    //   this.currentIndex = index;
-    // });
+    
   },
+  created(){
+    this.searchItem();
+  }
 };
 </script>
 <style>

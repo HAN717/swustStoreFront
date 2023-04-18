@@ -20,7 +20,7 @@
 </template>
 <script>
 import { Message } from "element-ui";
-// import { admin } from "../../api/login/login";
+import { login } from "../../../api/login/login";
     export default {
         data(){
             return{
@@ -32,39 +32,45 @@ import { Message } from "element-ui";
         },
         methods:{
           adminLogin(){
-            if(this.input_name==123){
-            //   this.loginMes = "登录成功"
-            //   Message.success(this.loginMes)
-            this.$notify({
-                title: '登录成功',
-                message: '管理员 '+this.input_name+' 祝您工作愉快!',
-                type: 'success',
-                // showClose: false
-            });
-              // this.$cookies.set("token", res.data.data, {expires: "15D"});
-              localStorage.setItem("admin",this.input_name)
-              this.$cookies.set("adminToken", this.token, {expires: "7D"});
-              this.$router.push("/userManage",()=>{})
-              // console.log('登陆成功',this.$cookies.isKey("token"))
-            }
+
+            // if(this.input_name==123){
+            // //   this.loginMes = "登录成功"
+            // //   Message.success(this.loginMes)
+            // this.$notify({
+            //     title: '登录成功',
+            //     message: '管理员 '+this.input_name+' 祝您工作愉快!',
+            //     type: 'success',
+            //     // showClose: false
+            // });
+            //   // this.$cookies.set("token", res.data.data, {expires: "15D"});
+            //   localStorage.setItem("admin",this.input_name)
+            //   this.$cookies.set("adminToken", this.token, {expires: "7D"});
+            //   this.$router.push("/userManage",()=>{})
+            //   // console.log('登陆成功',this.$cookies.isKey("token"))
+            // }
            
-            // const user = {
-            //   account: this.input_name,
-            //   pwd:this.input_pwd
-            // };
-            // admin(user).then((res) =>{
-            //     if(res.data.state!==200){
-            //       Message.warning(res.data.message)
-            //     }
-            //     else{
-            //       this.loginMes = "登录成功"
-            //       Message.success(this.loginMes)
-            //       // this.$cookies.set("token", res.data.data, {expires: "15D"});
-            //       localStorage.setItem("user",this.input_name)
-            //       this.$router.push("/")
-            //     }
-            //   }
-            // )
+            const user = {
+              account: this.input_name,
+              pwd:this.input_pwd
+            };
+            login(user).then((res) =>{
+                if(res.data.state!==200){
+                  Message.warning(res.data.message)
+                }
+                else{
+                  this.loginMes = "登录成功"
+                  Message.success(this.loginMes)
+                  this.$notify({
+                    title: '登录成功',
+                    message: '管理员 '+this.input_name+' 祝您工作愉快!',
+                    type: 'success',
+                  });
+                  this.$cookies.set("adminToken", res.data.data, {expires: "15D"});
+                  localStorage.setItem("user",this.input_name)
+                  this.$router.push("/userManage",()=>{})
+                }
+              }
+            )
           }
         },
     }
