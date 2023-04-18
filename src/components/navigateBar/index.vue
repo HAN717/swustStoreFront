@@ -124,7 +124,7 @@ export default {
     },
     outLogin() {
       // console.log("退出系统");
-      localStorage.clear();
+      localStorage.removeItem('user');
       this.$cookies.remove("token");
       this.isLogin = false;
       location.reload();

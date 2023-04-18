@@ -39,7 +39,7 @@ import { Message } from "element-ui";
                 title: '登录成功',
                 message: '管理员 '+this.input_name+' 祝您工作愉快!',
                 type: 'success',
-                showClose: false
+                // showClose: false
             });
               // this.$cookies.set("token", res.data.data, {expires: "15D"});
               localStorage.setItem("admin",this.input_name)
