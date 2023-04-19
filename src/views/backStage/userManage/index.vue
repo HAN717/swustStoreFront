@@ -10,7 +10,7 @@
         <span>
           <el-button  id="editBox" v-show="multipleSelection.length===1" type="primary" icon="el-icon-edit" 
           style="background-color: #BBDEFB !important;color:rgb(64,158,255)" size="small"
-          @click="editUserDialog = true" >编辑信息</el-button> 
+          @click="openEditUserDialog()" >编辑信息</el-button> 
           <span v-show="multipleSelection.length>1">&emsp; &emsp;&emsp;&emsp;&emsp; &nbsp;</span>
         </span> 
         <!-- 删除按钮 -->
@@ -25,8 +25,8 @@
           icon-color="red"
           title="确定删除所选用户吗？删除后将无法恢复哦"
         >
-        <el-button  slot="reference" id="editBox" v-show="multipleSelection.length!==0" type="danger" icon="el-icon-delete" 
-            style="color:tomato;background-color: #fad0c3 !important;" size="small">删除用户</el-button>
+        <el-button  slot="reference" id="editBox" v-show="multipleSelection.length===1" type="danger" icon="el-icon-delete" 
+            style="color:tomato;background-color: #fad0c3 !important;" size="small" >删除用户</el-button>
         </el-popconfirm>
         </template>
       </span>
@@ -34,23 +34,24 @@
     <!-- 表格 -->
     <el-card>
       <el-table
-          :data="tableData"
+          :data="userList"
           border
           ref="filterTable"  @selection-change="handleSelectionChange"
+          @select="selectChecked"
           style="width: 100%">
           <el-table-column type="index" width="40"> </el-table-column>
           <el-table-column prop="userRole" label="用户身份" width="91">
               <template slot-scope="scope">
-                  <el-tag  v-if="scope.row.userRole=='普通用户'" type="primary" disable-transitions>{{scope.row.userRole}}</el-tag>  
-                  <el-tag  v-else-if="scope.row.userRole=='学生'" type="success" disable-transitions>{{scope.row.userRole}}用户</el-tag>  
+                  <el-tag  v-if="scope.row.userRoleName=='普通用户'" type="primary" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
+                  <el-tag  v-else-if="scope.row.userRoleName=='学生'" type="success" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
+                  <el-tag  v-else-if="scope.row.userRoleName=='管理员'" type="success" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
                   <el-tag  v-else type="warning" disable-transitions>教职员工</el-tag>   
               </template>
           </el-table-column>
-          <el-table-column prop="date" label="注册日期" width="110"> </el-table-column>
           <el-table-column prop="userName" label="姓名" width="100"> </el-table-column>
           <el-table-column prop="sex" label="性别" width="60"> </el-table-column>
           <el-table-column prop="account" label="账号名称" width="150"> </el-table-column>
-          <el-table-column prop="pwd" label="密码" width="150"> </el-table-column>
+          <el-table-column prop="pwd" label="密码" width="300"> </el-table-column>
           <el-table-column prop="phoneNum" label="电话" width="140"> </el-table-column>
           <el-table-column prop="address" label="地址"> </el-table-column>
           <el-table-column type="selection" width="55"> </el-table-column>
@@ -205,6 +206,8 @@
 <script>
 import { Message } from 'element-ui';
 import { getUserRole } from "../../../api/regist/regist"
+import { search_all_user , addUser, update_user, delete_user, get_user_info, 
+  get_user} from '../../../api/backstage/userManage/user'
 export default {
   data() {
     return {
@@ -297,10 +300,16 @@ export default {
         value: '2',
         label: '其他'
       }],
-      userRoleList:[]
+      userRoleList:[],
+      userList:[],
+      userId:0
     }
   },
   methods:{
+    openEditUserDialog(){
+      this.editUserDialog = true
+      this.getUserInfo()
+    },
     handleSelectionChange(val) {
       // console.log('this.multipleSelection',this.multipleSelection)
       this.multipleSelection = val;
@@ -311,7 +320,6 @@ export default {
     },
     getUserRoleList(){
       getUserRole().then((res)=>{
-        console.log(res.data.state)
         if(res.data.state===200){
             this.userRoleList = res.data.data;
             // console.log(this.userRoleList)
@@ -321,36 +329,100 @@ export default {
         }
       })
     },
+    selectChecked(select,row){
+      this.userId = row.id;
+    },
+    getUserInfo(){
+      let userId = {
+        id: this.userId
+      }
+      get_user(userId).then(
+        (res)=>{
+          if(res.data.state == 200){
+            this.formList = res.data.data;
+          }
+        }
+      )
+    },
     addUser(){
-      this.dialogVisible = false
-      this.$notify({
-          title: '操作成功',
-          message: '已完成新增用户！',
-          type: 'success',
-          // showClose: false
-      });
+      let dataList ={
+        userName:this.formList.userName,
+        account:this.formList.account,
+        pwd:this.formList.pwd,
+        sex:this.formList.sex,
+        userRole:this.formList.userRole,
+        address:this.formList.address,
+        phoneNum:this.formList.phoneNum
+      }
+      addUser(dataList).then((res)=>{
+        if(res.data.state==200){
+          this.$notify({
+            title: '操作成功',
+            message: '已完成新增用户！',
+            type: 'success',
+            // showClose: false
+          });
+          this.addUserDialog = false;
+          this.getAllUser()
+        }
+        else{
+            Message.warning(res.data)
+        }
+      })
     },
     editUser(){
-      this.editUserDialog = false
-      this.$refs.filterTable.clearSelection(); // 清空所选项
-      this.$notify({
-          title: '操作成功',
-          message: '已完成用户信息修改！',
-          type: 'success',
-      });
+      this.getUserInfo()
+      let admin = this.$cookies.get('adminToken');
+      update_user(this.formList ,admin).then(
+        (res)=>{
+          if(res.data.state == 200){
+            this.formList = res.data.data;
+            this.editUserDialog = false
+            this.$refs.filterTable.clearSelection(); // 清空所选项
+            this.$notify({
+                title: '操作成功',
+                message: '已完成用户信息修改！',
+                type: 'success',
+            });
+            this.getAllUser()
+          }
+        }
+      )
     },
     deleteUser(){
-      // console.log('first',this.$refs)
-      this.$refs.filterTable.clearSelection(); // 清空所选项
-      this.$notify({
-          title: '操作成功',
-          message: '已删除所选用户信息！',
-          type: 'success',
-      });
+      console.log('first',this.$refs)
+      let admin = this.$cookies.get('adminToken');
+      let userid = {
+        userId : this.userId
+      }
+      delete_user(userid,admin).then(
+        (res)=>{
+          if(res.data.state == 200){
+            this.$refs.filterTable.clearSelection(); // 清空所选项
+            this.$notify({
+                title: '操作成功',
+                message: '已删除所选用户信息！',
+                type: 'success',
+            });
+            this.getAllUser()
+          }
+        }
+      )
+    },
+    getAllUser(){
+      let admin = this.$cookies.get('adminToken');
+      search_all_user(admin).then(
+        (res)=>{
+          if(res.data.state==200){
+            this.userList = res.data.data
+          }
+        }
+      )
     }
   },
   mounted(){
-    // this.getUserRoleList()
+    this.getUserRoleList();
+    this.getAllUser()
   },
 }
 </script>

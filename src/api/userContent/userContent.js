@@ -1,10 +1,11 @@
 import service from '../../utils/request'
 
-export function update_user(data){
+export function update_user(data,token){
     return service.request({
         url:'/user/update_user',
         method: "post",
-        data:data
+        data:data,
+        headers:token
     })
 }
 

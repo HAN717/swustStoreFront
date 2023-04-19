@@ -17,34 +17,40 @@
             <br> <br>
             <el-descriptions title="用户信息" border>
                 <el-descriptions-item label="用户名">{{userName}}</el-descriptions-item>
-                <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
-                <el-descriptions-item label="居住地">苏州市</el-descriptions-item>
+                <el-descriptions-item label="手机号">{{formList.phoneNum}}</el-descriptions-item>
+                <el-descriptions-item label="真实姓名">{{formList.userName}}</el-descriptions-item>
                 <el-descriptions-item label="用户身份">
                   <el-tag size="small">普通用户</el-tag>
                 </el-descriptions-item>
-                <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
+                <el-descriptions-item label="联系地址">{{formList.address}}</el-descriptions-item>
             </el-descriptions>
-          </el-card>
-          <!-- 修改信息 -->
-          <el-card style="margin-top: 0.4rem;">
-            <!-- <el-descriptions title="信息修改" border> -->
-              <el-form label-position="left" :model="formList" label-width="80px" >
-                <el-form-item label="用户名">
-                    <el-input v-model="formList.account"  maxlength="6"
-                    placeholder="用户名长度不超过6位且不能出现字符"></el-input>
-                </el-form-item>
-                <el-form-item label="用户密码" >
-                    <el-input v-model="formList.pwd" maxlength="16"
-                    placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
-                </el-form-item>
-                <el-form-item label="确认密码"> 
-                    <el-input v-model="pwd" maxlength="16"
-                    placeholder="再次输入密码"></el-input>
-                </el-form-item>
+            <el-collapse v-model="activeNames" @change="handleChange">
+              <el-collapse-item title="信息修改" name="1">
+                <el-form label-position="left" :model="formList" label-width="90px" >
                   <el-row>
-                    <el-col :span="12">
+                    <el-col :span="8">
+                      <el-form-item label="用户名" style="width:28rem" >
+                        <el-input v-model="formList.account"  maxlength="6"
+                        placeholder="用户名长度不超过6位且不能出现字符"></el-input>
+                      </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                      <el-tooltip class="item" effect="dark" content="密码已加密显示" placement="top">
+                        <el-form-item label="用户密码" show-password style="width:28rem" >
+                          <el-input v-model="formList.pwd" maxlength="16"
+                          placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
+                        </el-form-item>
+                      </el-tooltip>
+                    </el-col>
+                    <el-col :span="8">
+                      <el-form-item label="确认密码" style="width:28rem" > 
+                          <el-input v-model="pwd" maxlength="16"
+                          placeholder="再次输入密码"></el-input>
+                      </el-form-item>
+                    </el-col>
+                    <el-col :span="4">
                         <el-form-item label="用户性别">
-                            <el-select v-model="formList.sex" style="width:12rem" placeholder="请选择性别">
+                            <el-select v-model="formList.sex" style="width:8rem" placeholder="请选择性别">
                                 <el-option
                                 v-for="item in userSex"
                                 :key="item.value"
@@ -54,28 +60,31 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="12">
-                        <el-form-item label="电话号码" style="width:17rem">
+                    <el-col :span="4">
+                        <el-form-item label="真实姓名" style="width:13.6rem">
+                            <el-input v-model="formList.userName" 
+                            placeholder="请输入真实姓名"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="电话号码" style="width:28rem">
                             <el-input v-model="formList.phoneNum" 
                             placeholder="请输入正确电话号码格式"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
-                        <el-form-item label="真实姓名" >
-                            <el-input v-model="formList.userName" 
-                            placeholder="请输入用户真实姓名"></el-input>
-                        </el-form-item>
+                    <el-col :span="7">
+                      <el-form-item label="用户地址" style="width:28rem">
+                        <el-input v-model="formList.address" 
+                        placeholder="请输入详细地址"></el-input>
+                      </el-form-item>
                     </el-col>
-                </el-row>
-                <el-form-item label="用户地址">
-                    <el-input v-model="formList.address" 
-                    placeholder="请输入详细地址"></el-input>
-                </el-form-item>
-                <el-button  @click="putInfo()" style="width:580px;">确认修改</el-button>
-              </el-form>
-            <!-- </el-descriptions> -->
+                  </el-row>
+                  <div style="text-align: center;">
+                    <el-button  @click="putInfo()" style="width:400px;">确认修改</el-button>
+                  </div>
+                </el-form>
+              </el-collapse-item>
+            </el-collapse>
           </el-card>
           <!-- 用户收藏 -->
           <el-card style="margin-top: 0.4rem;">
@@ -107,6 +116,7 @@
   import pageFooter from "../../components/pageFooter"
   import toTop from "../../components/toTop";
   import Avatar from 'vue-avatar';
+  import { Message } from "element-ui";
   import { update_user , get_user_info} from '../../api/userContent/userContent'
   export default {
     components: {
@@ -169,6 +179,7 @@
         pwd:'',
         err:'',
         formList:{
+          id:'',
           userName:'',
           account:'',
           pwd:'',
@@ -187,6 +198,7 @@
           value: '2',
           label: '其他'
         }],
+        activeNames: ['2']
       };
     },
     methods: {
@@ -194,15 +206,28 @@
         this.$router.push('/login');
       },
       putInfo(){
-
+        let user = this.$cookies.get('token');
+        update_user(this.formList ,user).then(
+          (res)=>{
+            if(res.data.state == 200){
+              this.formList = res.data.data;
+              Message.success('修改成功')
+            }
+          }
+        )
       },
       getUserInfo(){
         let user = this.$cookies.get('token');
         get_user_info(user).then(
           (res)=>{
-            console.log('res',res)
+            if(res.data.state == 200){
+              this.formList = res.data.data;
+            }
           }
         )
+      },
+      handleChange(val) {
+        // console.log(val);
       }
     },
     mounted(){
@@ -219,7 +244,7 @@
   }
   #userContent{
     background-color: rgb(28 58 119);
-    height:90rem;
+    height:80rem;
     padding: 0.8rem 3rem;
     /* animation: showUserContent 1.2s ease-in-out; */
   }
@@ -235,5 +260,8 @@
     width: 100%;
     height: 4.3rem;
     z-index: -4;
+}
+.el-button {
+    background-color: #c8e9f6!important;
 }
   </style>

@@ -66,7 +66,7 @@ import { login } from "../../../api/login/login";
                     type: 'success',
                   });
                   this.$cookies.set("adminToken", res.data.data, {expires: "15D"});
-                  localStorage.setItem("user",this.input_name)
+                  localStorage.setItem("admin",this.input_name)
                   this.$router.push("/userManage",()=>{})
                 }
               }
