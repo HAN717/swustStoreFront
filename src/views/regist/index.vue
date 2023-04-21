@@ -78,7 +78,7 @@
                             <el-input v-model="formList.address" 
                             placeholder="请输入详细地址"></el-input>
                         </el-form-item>
-                        <el-button  @click="listenInput()" style="width:580px; background-color: #c8e9f6!important">确认注册</el-button>
+                        <el-button  @click="listenInput()" style="width:580px;">确认注册</el-button>
                     </el-form>
                 </div>
             </div>

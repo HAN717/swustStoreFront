@@ -40,6 +40,7 @@
       </div>
       <!-- 展示区 -->
       <div :id="this.isShow == true ? 'goodGoodsList':'goodGoodsList1'">
+        <el-empty v-show="goodLists.length==0" description="暂无数据, 请检查网络连接" :image-size="200"></el-empty>
         <div class="listItem"   v-for="(item,index) of goodLists" :key="index">
           <el-row>
             <el-col :span="8">
@@ -81,7 +82,7 @@
           </el-row>
         </div>
         <!-- 列表分页 -->
-        <div id="buttomPagination">
+        <div  v-show="goodLists.length!==0" id="buttomPagination">
           <el-pagination
             background-color:
             layout="prev, pager, next, jumper"

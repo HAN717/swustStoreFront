@@ -79,7 +79,7 @@
                       </el-form-item>
                     </el-col>
                   </el-row>
-                  <div style="text-align: center;">
+                  <div style="text-align: center;" id="confirmButton">
                     <el-button  @click="putInfo()" style="width:400px;">确认修改</el-button>
                   </div>
                 </el-form>
@@ -261,7 +261,7 @@
     height: 4.3rem;
     z-index: -4;
 }
-.el-button {
+#confirmButton .el-button {
     background-color: #c8e9f6!important;
 }
   </style>
