@@ -26,7 +26,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="发售时间">
+          <!-- <el-form-item label="发售时间">
             <el-select v-model="value3"  style="width:13.1rem" placeholder="请选择发售时间">
               <el-option
               v-for="item in selectOptions"
@@ -35,7 +35,7 @@
               :value="item.value">
               </el-option>
             </el-select>
-          </el-form-item>
+          </el-form-item> -->
         </el-form>
       </div>
       <!-- 展示区 -->
@@ -100,7 +100,8 @@
 import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
 import toTop from "../../components/toTop";
-import { search_all_item } from "../../api/goodGoods/goodGoods";
+import { search_all_item , search_item_by_material , search_item_by_type} from "../../api/goodGoods/goodGoods";
+import { search_all_item_material , search_all_item_type} from '../../api/common/index'
 import "./index.css"
 export default {
   components: {
@@ -117,80 +118,24 @@ export default {
       value1:'',
       value2:'',
       value3:'',
-      selectOptions:[
-        {
-          label:'饰品',
-          value:'1'
-        },
-        {
-          label:'布艺品',
-          value:'2'
-        },
-        {
-          label:'玻璃陶瓷品',
-          value:'3'
-        },
-      ],
-      goodsList:[
-        {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1232'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1233'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1234'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1235'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1236'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1237'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1238'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/25.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1239'
-        },
-      ],
       goodLists:[]
     };
   },
   methods: {
+    getAllMateral(){
+      search_all_item_material().then((res)=>{
+        if(res.data.state==200){
+          this.materialList = res.data.data;
+        }
+      })
+    },
+    getAllType(){
+      search_all_item_type().then((res)=>{
+        if(res.data.state==200){
+          this.typeList = res.data.data;
+        }
+      })
+    },
     mouseIsHover(itemNum){
       this.activeItem = itemNum;
       this.mouseHovering=true;
@@ -228,7 +173,9 @@ export default {
   },
   mounted(){
     window.addEventListener("scroll", this.handleScroll);
-    this.getAllItem()
+    this.getAllItem();
+    this.getAllMateral();
+    this.getAllType();
   }
 };
 </script>

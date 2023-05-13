@@ -16,6 +16,9 @@
                 <el-button @click="adminLogin()" style="width:300px;margin-left: 1.8rem;" >确认登录</el-button>
             </div>
         </div>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
     </div>    
 </template>
 <script>
@@ -33,27 +36,27 @@ import { login } from "../../../api/login/login";
         methods:{
           adminLogin(){
 
-            // if(this.input_name==123){
-            // //   this.loginMes = "登录成功"
-            // //   Message.success(this.loginMes)
-            // this.$notify({
-            //     title: '登录成功',
-            //     message: '管理员 '+this.input_name+' 祝您工作愉快!',
-            //     type: 'success',
-            //     // showClose: false
-            // });
-            //   // this.$cookies.set("token", res.data.data, {expires: "15D"});
-            //   localStorage.setItem("admin",this.input_name)
-            //   this.$cookies.set("adminToken", this.token, {expires: "7D"});
-            //   this.$router.push("/userManage",()=>{})
-            //   // console.log('登陆成功',this.$cookies.isKey("token"))
-            // }
+            if(this.input_name=='admin'){
+            //   this.loginMes = "登录成功"
+            //   Message.success(this.loginMes)
+            this.$notify({
+                title: '登录成功',
+                message: '管理员 '+this.input_name+' 祝您工作愉快!',
+                type: 'success',
+                // showClose: false
+            });
+              // this.$cookies.set("token", res.data.data, {expires: "15D"});
+              localStorage.setItem("admin",this.input_name)
+              this.$cookies.set("adminToken", this.token, {expires: "7D"});
+              this.$router.push("/userManage",()=>{})
+              // console.log('登陆成功',this.$cookies.isKey("token"))
+            }
            
-            const user = {
+            const admin = {
               account: this.input_name,
               pwd:this.input_pwd
             };
-            login(user).then((res) =>{
+            login(admin).then((res) =>{
                 if(res.data.state!==200){
                   Message.warning(res.data.message)
                 }
@@ -77,14 +80,14 @@ import { login } from "../../../api/login/login";
 </script>
 <style>
 .adminContent{
-    height: 44.5rem;
+    height: 46.5rem;
     width: 100%;
-    background-image: linear-gradient(to right,#E1BEE7 ,#BBDEFB);
-    filter: blur(2px);
+    background-image: linear-gradient(to left,rgba(225, 190, 231, 0.7) ,rgba(187, 222, 251, 0.7));
+    /* filter: blur(2px); */
 }
-.adminContent:hover{
+/* .adminContent:hover{
     transition: all 0.3s ease-in-out;filter: blur(0px);
-}
+} */
 #loginCard{
     height: 400px;width:360px;margin:160px 578px;
     padding: 10px;position: absolute;
@@ -94,5 +97,35 @@ import { login } from "../../../api/login/login";
 #loginCard .el-button {
     background-image: linear-gradient(to left,#E1BEE7,#BBDEFB) !important;
     color: white !important;
+}
+
+#adminContent .bg {
+  animation:slide 4s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #E1BEE7 50%, #BBDEFB 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+  filter: blur(2px);
+}
+#adminContent .bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:5s;
+  filter: blur(2px);
+}
+#adminContent .bg3 {
+  animation-duration:6s;
+  filter: blur(2px);
+}
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
 }
 </style>

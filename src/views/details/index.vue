@@ -3,7 +3,8 @@
     <navigateBar />
     <div id="banner2"></div>
     <div id="goodsBox">
-      <div id="goodsName">{{ this.goodsName }}</div>
+      <!-- <div id="goodsName">{{ this.goodsName }}</div> -->
+      <div id="goodsName">70周年校庆周边抱枕</div>
         <div style="position: absolute;margin: 5rem 0 0 32rem;width: 40rem;">
           <div style=" background-color:aliceblue;padding: 1.5rem;">
             <div style="width: 14rem;margin: 0 0 2rem -0.6rem;">

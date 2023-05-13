@@ -29,7 +29,8 @@
                                 <div style="height:30px"></div>
                                 <el-input placeholder="请输入密码" v-model="input_pwd" show-password
                                 prefix-icon="el-icon-lock"></el-input>
-                                <div style="height:50px"></div>
+                                <div style="height:50px;color: rgb(28, 58, 119,.5);margin-left: 21.3rem;font-size: 0.9rem;
+                                padding: 0.6rem 0 0.3rem 0;">忘记密码</div>
                                 <el-button @click="userLogin()" style="width:400px" >确认登录</el-button>
                             </div>
                         </div>
@@ -80,7 +81,7 @@ import { login } from "../../api/login/login";
                 }
               }
             )
-            // if(this.input_name=='Zi HAN'){
+            // if(this.input_name=='游客'){
             //   this.loginMes = "登录成功"
             //   Message.success(this.loginMes)
             //   // this.$cookies.set("token", res.data.data, {expires: "15D"});

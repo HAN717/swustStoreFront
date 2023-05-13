@@ -74,7 +74,7 @@
         :visible.sync="addUserDialog"
         width="40%"
         :before-close="handleClose">
-        <el-form label-position="left" :model="formList" label-width="80px" >
+        <el-form label-position="center" :model="formList" label-width="80px" >
           <el-form-item label="用户名">
               <el-input v-model="formList.account"  maxlength="6"
               placeholder="用户名长度不超过6位且不能出现字符"></el-input>
@@ -391,7 +391,7 @@ export default {
       )
     },
     deleteUser(){
-      console.log('first',this.$refs)
+      // console.log('first',this.$refs)
       let admin = this.$cookies.get('adminToken');
       let userid = {
         userId : this.userId

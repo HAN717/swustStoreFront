@@ -86,19 +86,19 @@
               </el-collapse-item>
             </el-collapse>
           </el-card>
+          <!-- 用户购买记录 -->
+          <el-card style="margin-top: 0.4rem;">
+          <el-descriptions title="我的购物记录" border> </el-descriptions>
+            <el-table :data="tableData" height="250" border style="width: 100%">
+              <el-table-column prop="date" label="日期" width="180"> </el-table-column>
+              <el-table-column prop="name" label="好物" width="180"> </el-table-column>
+              <el-table-column prop="address"  label="收货地址"></el-table-column>
+              <el-table-column prop="status"  label="状态"></el-table-column>
+            </el-table>
+          </el-card>
           <!-- 用户收藏 -->
           <el-card style="margin-top: 0.4rem;">
             <el-descriptions title="我的收藏" border></el-descriptions>
-              <el-table :data="tableData" height="250" border style="width: 100%">
-                <el-table-column prop="date" label="日期" width="180"> </el-table-column>
-                <el-table-column prop="name" label="好物" width="180"> </el-table-column>
-                <el-table-column prop="address"  label="收货地址"></el-table-column>
-                <el-table-column prop="status"  label="状态"></el-table-column>
-              </el-table>
-          </el-card>
-          <!-- 用户购买记录 -->
-          <el-card style="margin-top: 0.4rem;">
-            <el-descriptions title="我的购物记录" border> </el-descriptions>
               <el-table :data="tableData" height="250" border style="width: 100%">
                 <el-table-column prop="date" label="日期" width="180"> </el-table-column>
                 <el-table-column prop="name" label="好物" width="180"> </el-table-column>

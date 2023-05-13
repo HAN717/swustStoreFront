@@ -21,10 +21,6 @@
 						<i class="el-icon-s-order"></i>
 						<span slot="">&nbsp;&nbsp;用户列表</span>
 					</el-menu-item>
-					<el-menu-item index="1-2" @click="$router.push({name:'userManage'}, () => {})">
-						<i class="el-icon-s-claim"></i>
-						<span slot="">&nbsp;&nbsp;信息审核</span>
-					</el-menu-item>
 				</el-submenu>
                 <el-submenu index="2"  @click="$router.push({name:'goodsManage'}, () => {})">
 					<template #title>
@@ -58,9 +54,13 @@
 						<span slot="">&nbsp;&nbsp;出版列表</span>
 					</el-menu-item>
 				</el-submenu>
-				<el-menu-item index="5" @click="$router.push({name:'publishmentManage'}, () => {})">
+				<el-menu-item index="5" @click="$router.push({name:'typeManage'}, () => {})">
 					<i class="el-icon-menu"></i>
-					<span slot="">&nbsp;&nbsp;好物类别</span>
+					<span slot="">&nbsp;&nbsp;类别管理</span>
+				</el-menu-item>
+				<el-menu-item index="5" @click="$router.push({name:'materialManage'}, () => {})">
+					<i class="el-icon-s-open"></i>
+					<span slot="">&nbsp;&nbsp;材质管理</span>
 				</el-menu-item>
 				<el-menu-item index="6" @click="$router.push({name:'goodsManage'}, () => {})">
 					<i class="el-icon-s-promotion"></i>

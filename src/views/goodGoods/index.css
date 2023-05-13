@@ -9,7 +9,7 @@
     border: 0.2rem dashed #85a9f34d;
     background-color: rgb(187, 227, 254);
     width: 21rem;
-    height: 13rem;
+    height: 9rem;
     position: sticky;
     animation: showSelectForm1 1.3s ease-in-out;
 }

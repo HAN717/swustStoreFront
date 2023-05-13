@@ -13,8 +13,10 @@ import publishment from '../views/publishment/index'
 // 后台
 import adminLogin from '../views/backStage/adminLogin/index'
 import userManage from '../views/backStage/userManage/index'
+import typeManage from '../views/backStage/typeManage/index'
 import goodsManage from '../views/backStage/goodsManage/index'
 import backstageFrame from '../views/backStage/backstageFrame/index'
+import materialManage from '../views/backStage/materialManage/index'
 import originalityManage from '../views/backStage/originalityManage/index'
 import publishmentManage from '../views/backStage/publishmentManage/index'
 // 其他组件
@@ -140,11 +142,29 @@ const router = new Router({
           }
         },
         {
-          path: "/originalityManage",
+          path: "/publishmentManage",
           name: 'publishmentManage',
           component: publishmentManage,
           meta: {
             title: '出版管理',
+            meta: { requireAuth: true },
+          }
+        },
+        {
+          path: "/metarilManage",
+          name: 'materialManage',
+          component: materialManage,
+          meta: {
+            title: '材质管理',
+            meta: { requireAuth: true },
+          }
+        },
+        {
+          path: "/typeManage",
+          name: 'typeManage',
+          component: typeManage,
+          meta: {
+            title: '类别管理',
             meta: { requireAuth: true },
           }
         },

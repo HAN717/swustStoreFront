@@ -96,6 +96,7 @@
     z-index: 999;
     border-bottom: 2px rgb(28, 58, 119) solid;
     animation: showbar .7s;
+    box-shadow: 0 0 10px rgb(28, 58, 119,0.7);
 }
 @keyframes showbar {
     0%{
