@@ -58,11 +58,11 @@
 					<i class="el-icon-menu"></i>
 					<span slot="">&nbsp;&nbsp;类别管理</span>
 				</el-menu-item>
-				<el-menu-item index="5" @click="$router.push({name:'materialManage'}, () => {})">
+				<el-menu-item index="6" @click="$router.push({name:'materialManage'}, () => {})">
 					<i class="el-icon-s-open"></i>
 					<span slot="">&nbsp;&nbsp;材质管理</span>
 				</el-menu-item>
-				<el-menu-item index="6" @click="$router.push({name:'goodsManage'}, () => {})">
+				<el-menu-item index="7" @click="$router.push({name:'goodsManage'}, () => {})">
 					<i class="el-icon-s-promotion"></i>
 					<span slot="">&nbsp;&nbsp;订单管理</span>
 				</el-menu-item>

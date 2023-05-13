@@ -39,7 +39,7 @@
           ref="filterTable"  @selection-change="handleSelectionChange"
           @select="selectChecked"
           style="width: 100%">
-          <el-table-column type="index" width="40"> </el-table-column>
+          <el-table-column type="index" width="40" label="id"> </el-table-column>
           <el-table-column prop="itemName" label="好物名称" > </el-table-column>
           <el-table-column prop="itemDesc" label="好物描述" > </el-table-column>
           <el-table-column prop="ifSale" label="是否出售" >

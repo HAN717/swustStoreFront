@@ -40,7 +40,7 @@
           ref="filterTable"  @selection-change="handleSelectionChange"
           @select="selectChecked"
           style="width: 100%">
-          <el-table-column type="index" width="40"> </el-table-column>
+          <el-table-column type="index" label="id" width="40"> </el-table-column>
           <el-table-column prop="userRole" label="用户身份" width="91">
               <template slot-scope="scope">
                   <el-tag  v-if="scope.row.userRoleName=='普通用户'" type="primary" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
