@@ -160,7 +160,7 @@ export default {
 			// console.log("退出系统");
 			localStorage.removeItem('admin');
 			this.$cookies.remove("adminToken");
-			this.$router.replace('./adminLogin');
+			this.$router.replace('./admin/login');
 		},
 		getWeaAndTem() {
 			const dataList = {

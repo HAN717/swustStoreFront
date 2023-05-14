@@ -70,41 +70,53 @@
           width="40%"
           :before-close="handleClose">
           <el-form label-position="center" :model="formList" label-width="80px" >
-            <el-form-item label="好物名称">
-                <el-input v-model="formList.itemName"  maxlength="6"></el-input>
-            </el-form-item>
-            <el-form-item label="是否出售">
-              <el-select v-model="formList.ifSale" placeholder="请选择">
-                <el-option
-                  v-for="item in ifSaleOp"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </el-form-item>
+            <el-row>
+              <el-col :span="12">
+                <el-form-item label="好物名称">
+                  <el-input v-model="formList.itemName"  maxlength="6"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="是否出售">
+                  <el-select v-model="formList.ifSale" placeholder="请选择">
+                    <el-option
+                      v-for="item in ifSaleOp"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row>
+              <el-col :span="12">
+                <el-form-item label="好物类别">
+                  <el-select v-model="formList.itemType" placeholder="请选择">
+                    <el-option
+                    v-for="item in typeList"
+                    :key="item.typeId"
+                    :label="item.typeName"
+                    :value="item.typeId">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="好物材质">
+                  <el-select v-model="formList.itemMaterial" placeholder="请选择">
+                    <el-option
+                    v-for="item in materialList"
+                    :key="item.materialId"
+                    :label="item.materialName"
+                    :value="item.materialId">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            </el-row>
             <el-form-item label="好物描述">
                 <el-input v-model="formList.itemDesc"  maxlength="6"></el-input>
-            </el-form-item>
-            <el-form-item label="好物类别">
-              <el-select v-model="formList.itemType" placeholder="请选择">
-                <el-option
-                  v-for="item in typeList"
-                  :key="item.typeId"
-                  :label="item.typeName"
-                  :value="item.typeId">
-                </el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="好物材质">
-              <el-select v-model="formList.itemMaterial" placeholder="请选择">
-                <el-option
-                  v-for="item in materialList"
-                  :key="item.materialId"
-                  :label="item.materialName"
-                  :value="item.materialId">
-                </el-option>
-              </el-select>
             </el-form-item>
             <el-form-item label="好物价格">
                 <el-input v-model="formList.itemPrice"  maxlength="6"></el-input>
@@ -121,7 +133,7 @@
               </el-upload>
             </el-form-item>
           </el-form>
-          <el-button  style="background-color: #BBDEFB !important;width:575px;"
+          <el-button  style="width:575px;"
           @click="addItem()" >确认新增</el-button>
         </el-dialog>
         <!-- 编辑信息对话框 -->
@@ -145,7 +157,7 @@
         editUserDialog:false,
         addItemDialog:false,
         multipleSelection: [],
-        goodLists:{},
+        goodLists:[],
         picUrl:'',
         formList:{
           itemName:'',
@@ -176,6 +188,8 @@
           if(res.data.state==200){
             this.materialList = res.data.data;
           }
+        }).catch((error)=>{
+          Message.error(error)
         })
       },
       getAllType(){
@@ -183,6 +197,8 @@
           if(res.data.state==200){
             this.typeList = res.data.data;
           }
+        }).catch((error)=>{
+          Message.error(error)
         })
       },
       handleSelectionChange(val) {
@@ -193,8 +209,15 @@
         this.itemId = row.id;
       },
       handleClose() {
-        this.addUserDialog = false
-        this.editUserDialog = false
+        this.addItemDialog = false
+        this.editItemDialog = false
+        this.formList.itemName='',
+        this.formList.ifSale=null,
+        this.formList.itemAuthor='西科大',
+        this.formList.itemDesc='',
+        this.formList.itemMaterial=null,
+        this.formList.itemPrice=null,
+        this.formList.itemType=null
       },
       uploadSuccess(res, file) {
         if(res.state===200){
@@ -215,7 +238,9 @@
               this.goodLists = res.data.data;
             }
           }
-        )
+        ).catch((error)=>{
+          Message.error(error)
+        })
       },
       addItem(){
         const data={
@@ -239,6 +264,8 @@
               this.getAllItem()
             }
             else{}
+        }).catch((error)=>{
+          Message.error(error)
         })
         this.addItemDialog=false;  
       },
@@ -267,6 +294,8 @@
           }else{
             Message.error(res.data.message)
           }
+        }).catch((error)=>{
+          Message.error(error)
         })
         // console.log('first',this.$refs)
         // this.$refs.filterTable.clearSelection(); // 清空所选项

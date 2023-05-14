@@ -36,21 +36,21 @@ import { login } from "../../../api/login/login";
         methods:{
           adminLogin(){
 
-            if(this.input_name=='admin'){
-            //   this.loginMes = "登录成功"
-            //   Message.success(this.loginMes)
-            this.$notify({
-                title: '登录成功',
-                message: '管理员 '+this.input_name+' 祝您工作愉快!',
-                type: 'success',
-                // showClose: false
-            });
-              // this.$cookies.set("token", res.data.data, {expires: "15D"});
-              localStorage.setItem("admin",this.input_name)
-              this.$cookies.set("adminToken", this.token, {expires: "7D"});
-              this.$router.push("/userManage",()=>{})
-              // console.log('登陆成功',this.$cookies.isKey("token"))
-            }
+            // if(this.input_name=='admin'){
+            // //   this.loginMes = "登录成功"
+            // //   Message.success(this.loginMes)
+            // this.$notify({
+            //     title: '登录成功',
+            //     message: '管理员 '+this.input_name+' 祝您工作愉快!',
+            //     type: 'success',
+            //     // showClose: false
+            // });
+            //   // this.$cookies.set("token", res.data.data, {expires: "15D"});
+            //   localStorage.setItem("admin",this.input_name)
+            //   this.$cookies.set("adminToken", this.token, {expires: "7D"});
+            //   this.$router.push("/admin/userManage",()=>{})
+            //   // console.log('登陆成功',this.$cookies.isKey("token"))
+            // }
            
             const admin = {
               account: this.input_name,
@@ -70,12 +70,24 @@ import { login } from "../../../api/login/login";
                   });
                   this.$cookies.set("adminToken", res.data.data, {expires: "15D"});
                   localStorage.setItem("admin",this.input_name)
-                  this.$router.push("/userManage",()=>{})
+                  this.$router.push("/user/manage",()=>{})
                 }
               }
             )
+          },
+          handleKeyup(event){
+            if (event.keyCode === 13) {
+              if (this.input_name!==''&&this.input_pwd!=='') {
+                this. adminLogin()
+              } else {
+                Message.warning('请填写完整的用户名和密码！')
+              }
+            }
           }
         },
+        mounted(){
+          // this.$refs.passwordInput.$el.addEventListener('keyup', this.handleKeyup)
+        }
     }
 </script>
 <style>

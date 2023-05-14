@@ -32,3 +32,21 @@ export function search_item_by_type(id){
         params:id
     })
 }
+
+export function add_shop_cart(id,token){
+    return service.request({
+        url:'/shop_cart/add_shop_cart',
+        method: "post",
+        params:id,
+        headers:token
+    })
+}
+
+export function add_collection(id,token){
+    return service.request({
+        url:'/collection/add_collection',
+        method: "post",
+        params:id,
+        headers:token
+    })
+}

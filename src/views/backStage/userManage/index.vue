@@ -71,6 +71,7 @@
       <!-- 新增用户对话框 -->
       <el-dialog
         title="新增用户"
+        custom-class="addUserDialog"  
         :visible.sync="addUserDialog"
         width="40%"
         :before-close="handleClose">
@@ -80,11 +81,11 @@
               placeholder="用户名长度不超过6位且不能出现字符"></el-input>
           </el-form-item>
           <el-form-item label="用户密码" >
-              <el-input v-model="formList.pwd" maxlength="16"
+              <el-input v-model="formList.pwd" maxlength="16" show-password
               placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
           </el-form-item>
           <el-form-item label="确认密码"> 
-              <el-input v-model="pwd" maxlength="16"
+              <el-input v-model="pwd" maxlength="16" show-password
               placeholder="再次输入密码"></el-input>
           </el-form-item>
           <el-row>
@@ -131,7 +132,7 @@
               <el-input v-model="formList.address" 
               placeholder="请输入详细地址"></el-input>
           </el-form-item>
-          <el-button  style="background-color: #BBDEFB !important;width:575px;"
+          <el-button  style="width:500px;margin:0 0 0 2.4rem;"
           @click="addUser()" >确认新增</el-button>
         </el-form>
       </el-dialog>
@@ -215,72 +216,6 @@ export default {
       addUserDialog:false,
       editUserDialog:false,
       multipleSelection: [],
-      tableData: [{
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'普通用户',
-        phoneNum:'18333334567'
-      },
-      {
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'学生',
-        phoneNum:'18333334567'
-      },
-      {
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'普通用户',
-        phoneNum:'18333334567'
-      },{
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'教职工',
-        phoneNum:'18333334567'
-      },{
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'普通用户',
-        phoneNum:'18333334567'
-      },{
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'普通用户',
-        phoneNum:'18333334567'
-      },{
-        date: '2023-04-02',
-        userName: '王小虎',
-        sex: '男',
-        account: '王小虎666',
-        pwd: '124124412',
-        address: '上海市普陀区金沙江路 1518 弄',
-        userRole:'普通用户',
-        phoneNum:'18333334567'
-      }],
       formList:{
         userName:'',
         account:'',
@@ -442,5 +377,9 @@ export default {
 	from{ opacity: 0; }
 	/* from{ transform: translateX(-15rem); opacity: 0;} */
 	to{}
+}
+.el-dialog {
+    /* background: #8dc3fb; */
+    border-radius: 14px !important;
 }
 </style>

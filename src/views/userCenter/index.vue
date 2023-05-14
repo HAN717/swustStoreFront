@@ -37,14 +37,14 @@
                     <el-col :span="8">
                       <el-tooltip class="item" effect="dark" content="密码已加密显示" placement="top">
                         <el-form-item label="用户密码" show-password style="width:28rem" >
-                          <el-input v-model="formList.pwd" maxlength="16"
+                          <el-input v-model="formList.pwd" maxlength="16" show-password
                           placeholder="密码长度大于8且小于16，并由数字和字母组合"></el-input>
                         </el-form-item>
                       </el-tooltip>
                     </el-col>
                     <el-col :span="8">
                       <el-form-item label="确认密码" style="width:28rem" > 
-                          <el-input v-model="pwd" maxlength="16"
+                          <el-input v-model="pwd" maxlength="16" show-password
                           placeholder="再次输入密码"></el-input>
                       </el-form-item>
                     </el-col>
@@ -98,12 +98,30 @@
           </el-card>
           <!-- 用户收藏 -->
           <el-card style="margin-top: 0.4rem;">
-            <el-descriptions title="我的收藏" border></el-descriptions>
+            <el-descriptions title="我的购物车" border></el-descriptions>
               <el-table :data="tableData" height="250" border style="width: 100%">
                 <el-table-column prop="date" label="日期" width="180"> </el-table-column>
                 <el-table-column prop="name" label="好物" width="180"> </el-table-column>
                 <el-table-column prop="address"  label="收货地址"></el-table-column>
                 <el-table-column prop="status"  label="状态"></el-table-column>
+              </el-table>
+          </el-card>
+          <!-- 用户收藏 -->
+          <el-card style="margin-top: 0.4rem;">
+            <el-descriptions title="我的收藏" border></el-descriptions>
+              <el-table :data="userCollectionList" height="250" border style="width: 100%">
+                <el-table-column prop="picPath"  label="图片"  width="220">
+                  <template slot-scope="scope">
+                    <img :src="scope.row.picPath" alt="">
+                  </template>
+                </el-table-column>
+                <el-table-column prop="itemName" label="好物名称" width="180"> 
+                  <template slot-scope="scope">
+                    <el-button type="text" @click="gotoDetils(scope.row.id)">{{scope.row.itemName}}</el-button>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="typeName" label="好物类别" width="180"> </el-table-column>
+                <el-table-column prop="materialName"  label="好物材质"></el-table-column>
               </el-table>
           </el-card>
         </div>
@@ -117,7 +135,7 @@
   import toTop from "../../components/toTop";
   import Avatar from 'vue-avatar';
   import { Message } from "element-ui";
-  import { update_user , get_user_info} from '../../api/userContent/userContent'
+  import { update_user , get_user_info , search_user_shop_cart , search_user_collection} from '../../api/userContent/userContent'
   export default {
     components: {
       navigateBar,
@@ -176,6 +194,8 @@
           status:'已签收'
         }],
         userRoleList:[],
+        userShopCarList:[],
+        userCollectionList:[],
         pwd:'',
         err:'',
         formList:{
@@ -226,12 +246,46 @@
           }
         )
       },
+      getUserShopCar(){
+        let user = this.$cookies.get('token');
+        search_user_shop_cart(user).then((res)=>{
+          if(res.data.state==200){
+            this.userShopCarList = res.data.data
+            console.log('first',this.userShopCarList)
+          }else{
+            Message.error(res.data.message);
+          }
+        }).catch((err)=>{
+          Message.error(err)
+        })
+      },
+      getUserCollection(){
+        let user = this.$cookies.get('token');
+        search_user_collection(user).then((res)=>{
+          if(res.data.state==200){
+            this.userCollectionList = res.data.data
+            console.log('first',this.userCollectionList)
+          }else{
+            Message.error(res.data.message);
+          }
+        }).catch((err)=>{
+          Message.error(err)
+        })
+      },
       handleChange(val) {
         // console.log(val);
+      },
+      gotoDetils(id){
+        this.$router.push({
+        path:'/details/'+id,
+        params:{ 'id':id }
+      });
       }
     },
     mounted(){
-      this.getUserInfo()
+      this.getUserInfo();
+      this.getUserShopCar();
+      this.getUserCollection()
     }
   };
   </script>
@@ -244,7 +298,7 @@
   }
   #userContent{
     background-color: rgb(28 58 119);
-    height:80rem;
+    height:86rem;
     padding: 0.8rem 3rem;
     /* animation: showUserContent 1.2s ease-in-out; */
   }

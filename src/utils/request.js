@@ -7,7 +7,7 @@ axios.defaults.baseURL = '/api';
 // 第一步，创建实例
 const instance = axios.create({
     baseURL: baseUrl,
-    timeout: 120000 //毫秒
+    timeout: 60000 //毫秒
 })
 // 第二步 请求拦截
 instance.interceptors.request.use(function (config) { 

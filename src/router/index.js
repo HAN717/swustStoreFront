@@ -98,7 +98,7 @@ const router = new Router({
     },
     // 后台
     {
-      path: "/adminLogin",
+      path: "/admin/login",
       name: 'adminLogin',
       component: adminLogin,
       meta: {
@@ -115,7 +115,7 @@ const router = new Router({
       // 子路由
       children:[
         {
-          path: "/userManage",
+          path: "userManage",
           name: 'userManage',
           component: userManage,
           meta: {
@@ -124,7 +124,7 @@ const router = new Router({
           }
         },
         {
-          path: "/goodsManage",
+          path: "goodsManage",
           name: 'goodsManage',
           component: goodsManage,
           meta: {
@@ -133,7 +133,7 @@ const router = new Router({
           }
         },
         {
-          path: "/originalityManage",
+          path: "originalityManage",
           name: 'originalityManage',
           component: originalityManage,
           meta: {
@@ -142,7 +142,7 @@ const router = new Router({
           }
         },
         {
-          path: "/publishmentManage",
+          path: "publishmentManage",
           name: 'publishmentManage',
           component: publishmentManage,
           meta: {
@@ -151,7 +151,7 @@ const router = new Router({
           }
         },
         {
-          path: "/metarilManage",
+          path: "metarilManage",
           name: 'materialManage',
           component: materialManage,
           meta: {
@@ -160,7 +160,7 @@ const router = new Router({
           }
         },
         {
-          path: "/typeManage",
+          path: "typeManage",
           name: 'typeManage',
           component: typeManage,
           meta: {
