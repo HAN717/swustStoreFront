@@ -311,7 +311,6 @@
       },
       getUserRoleList(){
         getUserRole().then((res)=>{
-          console.log(res.data.state)
           if(res.data.state===200){
               this.userRoleList = res.data.data;
               // console.log(this.userRoleList)

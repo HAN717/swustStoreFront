@@ -3,24 +3,24 @@
     <navigateBar />
     <div id="banner2"></div>
     <div id="goodsBox">
-      <!-- <div id="goodsName">{{ this.goodsName }}</div> -->
-      <div id="goodsName">70周年校庆周边抱枕</div>
+      <div id="goodsName">{{ this.itemInfo.itemName }}</div>
         <div style="position: absolute;margin: 5rem 0 0 32rem;width: 40rem;">
           <div style=" background-color:aliceblue;padding: 1.5rem;">
             <div style="width: 14rem;margin: 0 0 2rem -0.6rem;">
-              <el-statistic :value="deadline2" time-indices>
-                <template slot="suffix"> 抢购即将开始 </template>
-              </el-statistic>
+              <div style="font-family: 幼圆;"> &nbsp;介绍:
+                <span style="color:rgb(118, 119, 119);font-size: 1.1rem;">{{ this.itemInfo.itemDesc }}</span>
+              </div>
             </div>
-            <div style="font-family: 幼圆;">售价: <span style="color:tomato;font-size: 1.5rem;">￥ 99.00</span> </div>
+            <div style="font-family: 幼圆;">售价: <span style="color:tomato;font-size: 1.5rem;">
+              ￥ {{ this.itemInfo.itemPrice }}</span> </div>
           </div>
           <div style="margin:1.3rem 0 1rem 0;font-family: 幼圆">
-            种类 <el-tag type="warning">装饰类</el-tag>&emsp; 
-            材质 <el-tag>布料</el-tag>&emsp;
-            发售时间 <el-tag type="success">2022-12-5</el-tag>
+            种类 <el-tag type="warning">{{ this.itemInfo.typeName }}</el-tag>&emsp; 
+            材质 <el-tag>{{ this.itemInfo.materialName }}</el-tag>&emsp;
+            发售时间 <el-tag type="success">{{ showTime( this.itemInfo.createTime) }}</el-tag>
           </div>
           <div style="padding: 0.2rem 0;color: slategray;">
-            由西科i货运公司发货, 并提供售后服务. 现在下单, 4月3日前发货, 预计4月6日送达
+            由西科i货运公司发货, 并提供售后服务. 现在下单, 2日后发货, 预计7日可送达
           </div>
           <div style="width: 14rem;height: 18rem;background-color: rgb(138, 58, 119,.08);right: -16rem;
           top: -3rem;position: absolute;border-radius: 0.5rem;">
@@ -29,14 +29,14 @@
           <div style="margin: 1rem 0 0 0.1rem;">
             <el-row style="padding: 0 0.5rem;">
               <el-col :span="8">
-                <div id="mbButton1" style="width: 4.6rem;">
+                <div id="mbButton1" style="width: 4.6rem;" @click="addToCollection()">
                   <div class="buttonText">收藏</div>
                   <img src="../../assets/pic/home/icons/like.png" id="buttonPic1">
                 </div>
               </el-col>
               <el-col :span="2">&emsp;</el-col>
               <el-col :span="14">
-                <div id="mbButton2" style="width: 7.3rem;">
+                <div id="mbButton2" style="width: 7.3rem;" @click="addToShopCar()">
                   <div class="buttonText">加入购物车</div>
                   <img src="../../assets/pic/home/icons/gwc.png" id="buttonPic2">
                 </div>
@@ -69,7 +69,9 @@
 <script>
 import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
-import {search_item_by_id} from '../../api/goodGoods/goodGoods'
+import { Message } from "element-ui";
+import { get_item } from '../../api/details/index'
+import { add_shop_cart , add_collection } from '../../api/goodGoods/goodGoods'
 import "./index.css";
 export default {
   components: {
@@ -78,8 +80,7 @@ export default {
   },
   data() {
     return {
-      goodsName: this.$route.query.name,
-      goodsId:this.$route.query.id,
+      goodsId:this.$route.params.id,
       currentIndex: 0,
       deadline2: Date.now(),
       moreList:[
@@ -113,21 +114,31 @@ export default {
           price:'￥99.0元',
           id:'1231'
         },
-      ]
+      ],
+      itemInfo:[]
     };
   },
   computed: {
     
   },
   methods: {
+    showTime(time){
+      return this.$moment(time).format('YYYY-MM-DD');
+    },
     searchItem() {
-      let id = this.goodsId
-      let data={"id":id}
-      search_item_by_id(data).then(
+      let data={"id": this.goodsId}
+      get_item(data).then(
         (res)=>{
-          console.log('res',res);
+          if(res.data.state==200){
+            this.itemInfo = res.data.data
+          }
+          else{
+            Message.error(this.data.message)
+          }
         }
-      )
+      ).catch((err)=>{
+        Message.error(err)
+      })
     },
     handler(event) {
       let mask = this.$refs.mask;
@@ -144,6 +155,44 @@ export default {
       big.style.left = -4 * left + "px";
       big.style.top = -4 * top + "px";
     },
+    addToCollection(){
+      let token = this.$cookies.get('token');
+      const data = {
+        itemId : this.goodsId
+      }
+      add_collection(data,token).then((res)=>{
+        if(res.data.state == 200){
+          this.$notify({
+            title: '成功',
+            message: '已添加到收藏夹！',
+            type: 'success',
+          });
+        }else{
+          Message.error(res.data.message)
+        }
+      }).catch((err)=>{
+        Message.error(err);
+      })
+    },
+    addToShopCar(){
+      let token = this.$cookies.get('token');
+      const data = {
+        itemId : this.goodsId
+      }
+      add_shop_cart(data,token).then((res)=>{
+        if(res.data.state == 200){
+          this.$notify({
+            title: '成功',
+            message: '已添加到购物车！',
+            type: 'success',
+          });
+        }else{
+          Message.error(res.data.message)
+        }
+      }).catch((err)=>{
+        Message.error(err);
+      })
+    }
   },
   mounted() {
     

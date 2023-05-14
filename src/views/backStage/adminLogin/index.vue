@@ -70,7 +70,7 @@ import { login } from "../../../api/login/login";
                   });
                   this.$cookies.set("adminToken", res.data.data, {expires: "15D"});
                   localStorage.setItem("admin",this.input_name)
-                  this.$router.push("/user/manage",()=>{})
+                  this.$router.push("/admin/userManage",()=>{})
                 }
               }
             )

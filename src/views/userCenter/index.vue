@@ -251,7 +251,7 @@
         search_user_shop_cart(user).then((res)=>{
           if(res.data.state==200){
             this.userShopCarList = res.data.data
-            console.log('first',this.userShopCarList)
+            // console.log('first',this.userShopCarList)
           }else{
             Message.error(res.data.message);
           }
@@ -264,7 +264,7 @@
         search_user_collection(user).then((res)=>{
           if(res.data.state==200){
             this.userCollectionList = res.data.data
-            console.log('first',this.userCollectionList)
+            // console.log('first',this.userCollectionList)
           }else{
             Message.error(res.data.message);
           }
@@ -298,7 +298,7 @@
   }
   #userContent{
     background-color: rgb(28 58 119);
-    height:86rem;
+    /* height:86rem; */
     padding: 0.8rem 3rem;
     /* animation: showUserContent 1.2s ease-in-out; */
   }

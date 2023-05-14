@@ -1,6 +1,5 @@
 #goodGoodscontent{
     width: 100%;
-    height: 160rem;
   }
 #goodGoodsSelect{
     border-radius: 1rem;
@@ -91,20 +90,21 @@
     cursor: pointer;
 }
 #goodGoodsList{
-    right: 4rem;
+    margin: -9.2rem 0 0 29rem;
     top: 22rem;
-    height:170rem;
+    /* height:170rem; */
     width:62rem;
-    position: absolute;
+    /* position: absolute; */
     overflow: auto;
     animation: showggL 1.2s ease-in-out;
 }
 #goodGoodsList1{
     right: 7.5rem;
     top: 22rem;
-    height:170rem;
+    /* height:170rem; */
     width:82rem;
-    position: absolute;
+    margin: 0.2rem 0 0 6.8rem;
+    /* position: absolute; */
     overflow: auto;
 }
 @keyframes showggL {

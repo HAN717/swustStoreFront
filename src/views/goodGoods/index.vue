@@ -42,7 +42,7 @@
       </div>
       <!-- 展示区 -->
       <div :id="this.isShow == true ? 'goodGoodsList':'goodGoodsList1'">
-        <el-empty v-show="goodLists.length==0" description="暂无数据" :image-size="200"></el-empty>
+        <el-empty style="height: 20rem;" v-show="goodLists.length==0" description="暂无数据" :image-size="200"></el-empty>
         <div class="listItem"   v-for="(item,index) of goodLists" :key="index">
           <el-row>
             <el-col :span="8">
@@ -93,7 +93,8 @@
           </el-pagination>
         </div>
       </div>
-      <div style="clear:both"></div>
+      <br>
+      <!-- <div style="clear:both"></div> -->
     </div>
     <toTop />
     <pageFooter/>
@@ -255,6 +256,9 @@ export default {
     this.getAllItem();
     this.getAllMateral();
     this.getAllType();
+  },
+  created(){
+    this.getAllItem();
   }
 };
 </script>

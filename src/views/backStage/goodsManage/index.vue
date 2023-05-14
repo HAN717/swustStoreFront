@@ -129,7 +129,7 @@
                 :limit="1"
                 :on-success="uploadSuccess">
                 <el-button size="small" type="primary">点击上传</el-button>
-                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过5M</div>
               </el-upload>
             </el-form-item>
           </el-form>
@@ -307,6 +307,9 @@
       this.getAllMateral(),
       this.getAllType()
     },
+    created(){
+      // this.getAllItem()
+    }
   }
   </script>
   <style>
@@ -314,7 +317,7 @@
     animation: showeditBox 0.7s ease-out;
   }
   .routerViewContent{
-      height: 40.5rem;
-      animation: showContentMain 1s ease-in-out;
+    height: 40.5rem;
+    animation: showContentMain 1s ease-in-out;
   }
   </style>

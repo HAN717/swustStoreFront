@@ -276,9 +276,13 @@ export default {
         (res)=>{
           if(res.data.state == 200){
             this.formList = res.data.data;
+          }else{
+            Message.warning(res.data.message)
           }
         }
-      )
+      ).catch((err)=>{
+        Message.error(err)
+      })
     },
     addUser(){
       let dataList ={
@@ -360,6 +364,9 @@ export default {
     this.getUserRoleList();
     this.getAllUser()
   },
+  created(){
+    this.getAllUser()
+  }
 }
 </script>
 <style>
