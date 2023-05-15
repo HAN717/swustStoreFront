@@ -12,11 +12,11 @@
       <!-- 右侧展示区 -->
       <div id="rightList">
 
-        <!--历史板块 -->
+        <!--风景板块 -->
         <div id="showlist1">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;历&nbsp;史&emsp;
+            &emsp;风&nbsp;景&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
           <el-row>
@@ -47,7 +47,7 @@
               <div id="list1ItemBox">
                 <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
                   <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <img :src="item.pic">
                     <div id="itemDiscribe">{{ item.title }}
                     </div> 
                   </div>
@@ -58,11 +58,11 @@
           </el-row>
         </div>
         
-        <!--风景板块 -->
+        <!--历史板块 -->
         <div id="showlist2">
           <h3 style="margin: -3rem 0 0 38.8rem;font-size: 1.2rem; color: rgb(0,0,0,.7);position: absolute;">
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
-            &emsp;风&nbsp;景&emsp;
+            &emsp;历&nbsp;史&emsp;
             <span style="font-size:1rem;color: rgb(0,0,0,.2);">——</span>
           </h3>
           <el-row>
@@ -91,9 +91,9 @@
             </el-col>
             <el-col :span="20">
               <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                <div id="listIem" v-for="(item,index) in list2" :key="index" @click="goDetils(item.url)">
                   <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <img :src="item.pic">
                     <div id="itemDiscribe">{{ item.title }}
                     </div> 
                   </div>
@@ -137,9 +137,9 @@
             </el-col>
             <el-col :span="20">
               <div id="list1ItemBox">
-                <div id="listIem" v-for="(item,index) in list1" :key="index" @click="goDetils(item.url)">
+                <div id="listIem" v-for="(item,index) in list3" :key="index" @click="goDetils(item.url)">
                   <div id="itemBox">
-                    <img src="../../assets/pic/home/scenery/fj2.png">
+                    <img :src="item.pic">
                     <div id="itemDiscribe">{{ item.title }}
                     </div> 
                   </div>
@@ -176,12 +176,12 @@ export default {
       navBarList:[
         {
           id:"lnb1",
-          title:"历史",
+          title:"风景",
           index:1
         },
         {
           id:"lnb2",
-          title:"风景",
+          title:"历史",
           index:2
         },
         {
@@ -193,36 +193,93 @@ export default {
       list1:[
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'@/assets/pic/home/scenery/fj1.jpg',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'点击领取|夏日西科大',
+          pic:'https://img2.baidu.com/it/u=4017775282,3880433396&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500',
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj2.png',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'湖边漫步|享休闲时光',
+          pic:'https://img0.baidu.com/it/u=2613849618,2702453330&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500',
+        },
+        { 
+          url:'https://mp.weixin.qq.com/s/sCSc9mGGLCo7xwPhj-zBQA',
+          title:'花时来信|花开的五月',
+          pic:'https://img0.baidu.com/it/u=3164847065,4086242804&fm=253&fmt=auto&app=138&f=JPEG?w=721&h=500',
         },
         { 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj3.jpg',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'拾光|阳光照耀的食堂',
+          pic:'https://img1.baidu.com/it/u=4178695626,1778943187&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500',
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj4.jpg',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'觅食|诱人科大美食',
+          pic:'https://img2.baidu.com/it/u=186373152,1236110240&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500',
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj5.jpg',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'温暖耀眼|西科夜晚',
+          pic:'https://img1.baidu.com/it/u=2135511749,706079808&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500',
+        },
+        
+      ],
+      list2:[
+        { 
+          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
+          title:'历史渊源|清华楼',
+          pic:'https://img1.baidu.com/it/u=2352911326,3523601810&fm=253&fmt=auto&app=138&f=JPEG?w=764&h=500',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1765887586798613816',
+          title:'匠心筑梦|新时代奋斗者',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/839ce6fb3c44a18c6f48612a581ed0b2.jpeg',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1764990800950812231',
+          title:'表彰|青春的荣光！',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/9a3c0a9f2715bd823f7e2b12ada2b95e.jpeg',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1764263603282951379',
+          title:'跃进|创新成果百余项',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/8879fd566f2a388339edb0f64951206d.jpeg',
+        },{ 
+          url:'https://baijiahao.baidu.com/s?id=1761834299834244122',
+          title:'陇上花开|追光十年！',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/e456e8c9bb89076052e3b9ce4bb96491.jpeg',
         },{ 
           url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
-          title:'初春|快来一起赏花吧',
-          pic:'../../assets/pic/home/scenery/fj1.jpg',
-          discribe:'安保处的非工会的一二三六七八计划书会啥UI是按时水岸世气温会轻武器第四十滴啊会滴啊的书画爱打谁'
+          title:'科大限定|镜头下青春的活力',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/149cea5e5d7a32ea82e049c123de4796.jpeg',
+        },
+        
+      ],
+      list3:[
+        { 
+          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
+          title:'《美丽西科》系列文创',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/f71d1fbcafbe7d3c6baa287cb64665aa.jpeg',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1765887586798613816',
+          title:'好“柿”成“兔”系列',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/ece74746e2236f63bc665561eec55690.jpeg',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1764990800950812231',
+          title:'《科大风貌》系列',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/27fb401c1f1f3714a6725ba875bdf62b.jpeg',
+        },
+        { 
+          url:'https://baijiahao.baidu.com/s?id=1764263603282951379',
+          title:'《万象西科》系列',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/22e45779c207a604817394a2cd74c1aa.jpeg',
+        },{ 
+          url:'https://baijiahao.baidu.com/s?id=1761834299834244122',
+          title:'《喜迎70》系列',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/b530b141877dda4ca3bd8936efad5a73.jpeg',
+        },{ 
+          url:'https://mp.weixin.qq.com/s/9sZz3_D8W8fQacWStcQJRQ',
+          title:'青春科大系列',
+          pic:'https://pic.rmb.bdstatic.com/bjh/news/ae28066ecbca92e9e9e6ba69ff92d947.png',
         },
         
       ]

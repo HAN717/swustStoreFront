@@ -105,7 +105,7 @@
     cursor: pointer;
 }
 #itemDiscribe{
-    text-align: center;margin:1rem 0;position: absolute;display: flex;width: 10rem;
+    text-align: center;margin:1rem 0;position: absolute;display: flex;width: 13rem;
 }
 #itemBox img{
     width: 100%;height:10rem;margin-left: 0rem;border-radius: 1rem;
