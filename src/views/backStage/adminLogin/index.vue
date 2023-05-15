@@ -73,7 +73,9 @@ import { login } from "../../../api/login/login";
                   this.$router.push("/admin/userManage",()=>{})
                 }
               }
-            )
+            ).catch((err)=>{
+              Message.error(err)
+            })
           },
           handleKeyup(event){
             if (event.keyCode === 13) {

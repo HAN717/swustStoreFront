@@ -89,7 +89,7 @@
           <el-pagination
             background-color:
             layout="prev, pager, next, jumper"
-            :total="1000">
+            :total="goodLists.length">
           </el-pagination>
         </div>
       </div>

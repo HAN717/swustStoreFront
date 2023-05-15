@@ -46,11 +46,11 @@
       </el-table>
       <br>
       <!-- 底部分页 -->
-      <div id="buttomPagination" style="margin-left: 41rem;">
+      <div id="buttomPagination" style="margin-left: 65rem;">
         <el-pagination
         background-color:
         layout="prev, pager, next, jumper"
-        :total="1000">
+        :total="typeList.length">
         </el-pagination>
       </div>
     </el-card>

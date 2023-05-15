@@ -30,11 +30,11 @@
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination2">
+                    <div style="margin:2rem 0 0 69rem" id="buttomPagination2">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"
-                        :total="1000">
+                        :total="list1.length">
                       </el-pagination>
                     </div>
                   </div>
@@ -75,11 +75,11 @@
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination3">
+                    <div style="margin:2rem 0 0 69rem" id="buttomPagination3">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"
-                        :total="1000">
+                        :total="list1.length">
                       </el-pagination>
                     </div>
                   </div>
@@ -120,11 +120,11 @@
                 <div style="height:15rem;width: 100%;">
                   <!-- 卡片底部分页 -->
                   <div style="background-color:white;position:absolute;height: 6rem;width: 100%;bottom: 0;">
-                    <div style="margin:2rem 0 0 32rem" id="buttomPagination4">
+                    <div style="margin:2rem 0 0 69rem" id="buttomPagination4">
                       <el-pagination
                         background-color:
                         layout="prev, pager, next, jumper"
-                        :total="1000">
+                        :total="list1.length">
                       </el-pagination>
                     </div>
                   </div>

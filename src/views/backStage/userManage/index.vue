@@ -45,12 +45,16 @@
               <template slot-scope="scope">
                   <el-tag  v-if="scope.row.userRoleName=='普通用户'" type="primary" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
                   <el-tag  v-else-if="scope.row.userRoleName=='学生'" type="success" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
-                  <el-tag  v-else-if="scope.row.userRoleName=='管理员'" type="success" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
+                  <el-tag  v-else-if="scope.row.userRoleName=='管理员'" type="danger" disable-transitions>{{scope.row.userRoleName}}</el-tag>  
                   <el-tag  v-else type="warning" disable-transitions>教职员工</el-tag>   
               </template>
           </el-table-column>
           <el-table-column prop="userName" label="姓名" width="100"> </el-table-column>
-          <el-table-column prop="sex" label="性别" width="60"> </el-table-column>
+          <el-table-column prop="sex" label="性别" width="60"> 
+            <template slot-scope="scope">
+              {{ getSex(scope.row.sex)  }}
+            </template>
+          </el-table-column>
           <el-table-column prop="account" label="账号名称" width="150"> </el-table-column>
           <el-table-column prop="pwd" label="密码" width="300"> </el-table-column>
           <el-table-column prop="phoneNum" label="电话" width="140"> </el-table-column>
@@ -59,11 +63,11 @@
       </el-table>
       <br>
       <!-- 底部分页 -->
-      <div id="buttomPagination" style="margin-left: 41rem;">
+      <div id="buttomPagination" style="margin-left: 65rem;">
           <el-pagination
           background-color:
           layout="prev, pager, next, jumper"
-          :total="1000">
+          :total="userList.length">
           </el-pagination>
       </div>
     </el-card>
@@ -267,6 +271,17 @@ export default {
     },
     selectChecked(select,row){
       this.userId = row.id;
+    },
+    getSex(sex){
+      let sexLabel = ''
+      if(sex=='0'){
+        sexLabel = '男'
+      }else if(sex=='1'){
+        sexLabel = '女'
+      }else{
+        sexLabel = '其他'
+      }
+      return sexLabel
     },
     getUserInfo(){
       let userId = {

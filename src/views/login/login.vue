@@ -80,7 +80,9 @@ import { login } from "../../api/login/login";
                   this.$router.push("/")
                 }
               }
-            )
+            ).catch((err)=>{
+              Message.error(err)
+            })
             // if(this.input_name=='游客'){
             //   this.loginMes = "登录成功"
             //   Message.success(this.loginMes)
