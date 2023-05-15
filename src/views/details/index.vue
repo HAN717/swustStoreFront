@@ -3,7 +3,7 @@
     <navigateBar />
     <div id="banner2"></div>
     <div id="goodsBox">
-      <div id="goodsName">{{ this.itemInfo.itemName }}</div>
+      <div style="margin-top: .4rem;" id="goodsName">{{ this.itemInfo.itemName }}</div>
         <div style="position: absolute;margin: 5rem 0 0 32rem;width: 40rem;">
           <div style=" background-color:aliceblue;padding: 1.5rem;">
             <div style="width: 14rem;margin: 0 0 2rem -0.6rem;">
@@ -14,18 +14,18 @@
             <div style="font-family: 幼圆;">售价: <span style="color:tomato;font-size: 1.5rem;">
               ￥ {{ this.itemInfo.itemPrice }}</span> </div>
           </div>
-          <div style="margin:1.3rem 0 1rem 0;font-family: 幼圆">
+          <div style="margin:1.6rem 0 1rem 0;font-family: 幼圆">
             种类 <el-tag type="warning">{{ this.itemInfo.typeName }}</el-tag>&emsp; 
             材质 <el-tag>{{ this.itemInfo.materialName }}</el-tag>&emsp;
             发售时间 <el-tag type="success">{{ showTime( this.itemInfo.createTime) }}</el-tag>
           </div>
-          <div style="padding: 0.2rem 0;color: slategray;">
+          <div style="color: slategray;margin-top: 2rem;">
             由西科i货运公司发货, 并提供售后服务. 现在下单, 2日后发货, 预计7日可送达
           </div>
           <div style="width: 14rem;height: 18rem;background-color: rgb(138, 58, 119,.08);right: -16rem;
           top: -3rem;position: absolute;border-radius: 0.5rem;">
-          <img src="../../assets/pic/home/showGoods/32.jpg" width="200.8rem" height="200rem"
-          style="margin: 0.7rem;border-radius: 0.5rem;;">
+          <img :src="this.itemInfo.picPath" width="200.8rem" height="200rem"
+          style="margin: 0.7rem;border-radius: 0.5rem;border: 0.1rem solid #bebebe;">
           <div style="margin: 1rem 0 0 0.1rem;">
             <el-row style="padding: 0 0.5rem;">
               <el-col :span="8">
@@ -46,19 +46,19 @@
             
           </div>
         </div>
-      <img src="../../assets/pic/home/showGoods/25.jpg" id="goodsPicbig" />
+      <img :src="this.itemInfo.picPath" id="goodsPicbig" style="border: 0.1rem solid #bebebe;"/>
       <div class="event" @mousemove="handler"></div>
       <div class="big">
-        <img src="../../assets/pic/home/showGoods/25.jpg" ref="big" />
+        <img :src="this.itemInfo.picPath" ref="big" />
       </div>
       <!-- 遮罩层 -->
       <div class="mask" ref="mask"></div>
       <div id="showMore">
         <div>
           <div style="margin: 0.6rem 0 0.7rem 0.8rem;font-size: 1.1rem;color: rgb(28, 58, 119,.7);">更 多 推 荐</div>
-            <div v-for="item in moreList" :key="item.index" id="showMoreItem">
-            <img src="../../assets/pic/home/showGoods/18.jpg" id="showMorePic" width="198rem" height="144rem"> 
-            </div>
+          <div v-for="item in goodLists" :key="item.index" id="showMoreItem">
+            <img :src="item.picPath" id="showMorePic" width="198rem" height="144rem" @click="goDetails(item.id)"> 
+          </div>
           <div>我的购物车</div>
         </div>
       </div>
@@ -71,7 +71,7 @@ import navigateBar from "../../components/navigateBar";
 import pageFooter from "../../components/pageFooter";
 import { Message } from "element-ui";
 import { get_item } from '../../api/details/index'
-import { add_shop_cart , add_collection } from '../../api/goodGoods/goodGoods'
+import { add_shop_cart , add_collection ,  search_all_item } from '../../api/goodGoods/goodGoods'
 import "./index.css";
 export default {
   components: {
@@ -83,39 +83,8 @@ export default {
       goodsId:this.$route.params.id,
       currentIndex: 0,
       deadline2: Date.now(),
-      moreList:[
-      {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-        {
-          url:'../../assets/pic/home/showGoods/18.jpg',
-          name:'70周年校庆周边抱枕',
-          price:'￥99.0元',
-          id:'1231'
-        },
-      ],
-      itemInfo:[]
+      itemInfo:[],
+      goodLists:[]
     };
   },
   computed: {
@@ -124,6 +93,18 @@ export default {
   methods: {
     showTime(time){
       return this.$moment(time).format('YYYY-MM-DD');
+    },
+    getAllItem(){
+      search_all_item().then(
+        (res)=>{
+          if(res.data.state!==200){
+            Message.warning(res.data.message)
+          }
+          else{
+            this.goodLists = res.data.data;
+          }
+        }
+      )
     },
     searchItem() {
       let data={"id": this.goodsId}
@@ -192,10 +173,17 @@ export default {
       }).catch((err)=>{
         Message.error(err);
       })
-    }
+    },
+    goDetails(id){
+      this.$router.push({
+        path:'/details/'+id,
+        params:{'id':id}
+      });
+      window.location.reload()
+    },
   },
   mounted() {
-    
+    this.getAllItem();
   },
   created(){
     this.searchItem();

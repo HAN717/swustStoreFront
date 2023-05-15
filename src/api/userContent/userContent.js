@@ -32,3 +32,12 @@ export function search_user_collection(token){
         headers:token
     })
 }
+
+export function remove_user_collection(id,token){
+    return service.request({
+        url:'/collection/remove_collection_by_item_id',
+        method: "post",
+        params:id,
+        headers:token
+    })
+}

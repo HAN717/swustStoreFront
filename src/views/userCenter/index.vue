@@ -88,18 +88,22 @@
           </el-card>
           <!-- 用户购买记录 -->
           <el-card style="margin-top: 0.4rem;">
-          <el-descriptions title="我的购物记录" border> </el-descriptions>
-            <el-table :data="tableData" height="250" border style="width: 100%">
+          <el-descriptions title="我的订单" border> </el-descriptions>
+          <span style="cursor: pointer;margin: -2.5rem 0 0 88%;position: absolute;color: #92b3f5;"
+               @click="isShowOrder()" >{{showOrder==true ? '收起':'展开'}}</span>
+            <el-table v-if="showOrder==true" :data="tableData" height="250" border style="width: 100%">
               <el-table-column prop="date" label="日期" width="180"> </el-table-column>
               <el-table-column prop="name" label="好物" width="180"> </el-table-column>
               <el-table-column prop="address"  label="收货地址"></el-table-column>
               <el-table-column prop="status"  label="状态"></el-table-column>
             </el-table>
           </el-card>
-          <!-- 用户收藏 -->
+          <!-- 用户购物车 -->
           <el-card style="margin-top: 0.4rem;">
             <el-descriptions title="我的购物车" border></el-descriptions>
-              <el-table :data="tableData" height="250" border style="width: 100%">
+            <span style="cursor: pointer;margin: -2.5rem 0 0 88%;position: absolute;color: #92b3f5;"
+               @click="isShowShopCart()" >{{showShopCart==true ? '收起':'展开'}}</span>
+              <el-table v-if="showShopCart==true" :data="tableData" height="250" border style="width: 100%">
                 <el-table-column prop="date" label="日期" width="180"> </el-table-column>
                 <el-table-column prop="name" label="好物" width="180"> </el-table-column>
                 <el-table-column prop="address"  label="收货地址"></el-table-column>
@@ -108,11 +112,13 @@
           </el-card>
           <!-- 用户收藏 -->
           <el-card style="margin-top: 0.4rem;">
-            <el-descriptions title="我的收藏" border></el-descriptions>
-              <el-table :data="userCollectionList" height="250" border style="width: 100%">
+            <el-descriptions title="我的收藏"  border></el-descriptions>
+            <span style="cursor: pointer;margin: -2.5rem 0 0 88%;position: absolute;color: #92b3f5;"
+               @click="isShowCollection()" >{{showCollection==true ? '收起':'展开'}}</span>
+              <el-table v-if="showCollection==true" :data="userCollectionList"  border style="width: 100%">
                 <el-table-column prop="picPath"  label="图片"  width="220">
                   <template slot-scope="scope">
-                    <img :src="scope.row.picPath" alt="">
+                    <img :src="scope.row.picPath" alt="" style="width: 10rem;">
                   </template>
                 </el-table-column>
                 <el-table-column prop="itemName" label="好物名称" width="180"> 
@@ -122,6 +128,16 @@
                 </el-table-column>
                 <el-table-column prop="typeName" label="好物类别" width="180"> </el-table-column>
                 <el-table-column prop="materialName"  label="好物材质"></el-table-column>
+                <el-table-column label="操作" width="130"> 
+                  <template slot-scope="scope">
+                    <el-button
+                      @click="dropCollect(scope.row.id)"
+                      type="danger" plain
+                      size="big">
+                      移除
+                    </el-button>
+                  </template>
+                </el-table-column>
               </el-table>
           </el-card>
         </div>
@@ -135,7 +151,8 @@
   import toTop from "../../components/toTop";
   import Avatar from 'vue-avatar';
   import { Message } from "element-ui";
-  import { update_user , get_user_info , search_user_shop_cart , search_user_collection} from '../../api/userContent/userContent'
+  import { update_user , get_user_info , search_user_shop_cart , search_user_collection ,
+    remove_user_collection } from '../../api/userContent/userContent'
   export default {
     components: {
       navigateBar,
@@ -147,6 +164,9 @@
       return {
         userName:localStorage.getItem("user"),
         isLogin:this.$cookies.isKey("token"),
+        showCollection:true,
+        showShopCart:true,
+        showOrder:true,
         tableData: [{
           date: '2024-04-02',
           name: '123',
@@ -272,6 +292,22 @@
           Message.error(err)
         })
       },
+      dropCollect(id){
+        let user = this.$cookies.get('token');
+        const data = {
+          itemId:id
+        }
+        remove_user_collection(data,user).then((res=>{
+          if(res.data.state==200){
+            this.getUserCollection();
+            Message.success('已从收藏夹中移出好物')
+          }else{
+            Message.error(res.data.message)
+          }
+        })).catch((err)=>{
+          Message.error(err)
+        })
+      },
       handleChange(val) {
         // console.log(val);
       },
@@ -280,6 +316,15 @@
         path:'/details/'+id,
         params:{ 'id':id }
       });
+      },
+      isShowCollection(){
+        this.showCollection = !this.showCollection
+      },
+      isShowShopCart(){
+        this.showShopCart = !this.showShopCart
+      },
+      isShowOrder(){
+        this.showOrder = !this.showOrder
       }
     },
     mounted(){

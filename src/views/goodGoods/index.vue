@@ -175,7 +175,7 @@ export default {
     },
     searchByMaterial(event){
       const data = {
-        typeId: event
+        materialId: event
       }
       search_item_by_material(data).then((res)=>{
         if(res.data.state==200){
@@ -209,7 +209,7 @@ export default {
       let id = item.id
       this.$router.push({
         path:'/details/'+id,
-        query:{ 'id':id,'name':item.materialName}
+        params:{ 'id':id}
       });
     },
     addToCollection(id){
