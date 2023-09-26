@@ -64,34 +64,34 @@ import { login } from "../../api/login/login";
             this.$router.push("/")
           },
           userLogin(){           
-            const user = {
-              account: this.input_name,
-              pwd:this.input_pwd
-            };
-            login(user).then((res) =>{
-                if(res.data.state!==200){
-                  Message.warning(res.data.message)
-                }
-                else{
-                  this.loginMes = "登录成功"
-                  Message.success(this.loginMes)
-                  this.$cookies.set("token", res.data.data, {expires: "15D"});
-                  localStorage.setItem("user",this.input_name)
-                  this.$router.push("/")
-                }
-              }
-            ).catch((err)=>{
-              Message.error(err)
-            })
-            // if(this.input_name=='游客'){
-            //   this.loginMes = "登录成功"
-            //   Message.success(this.loginMes)
-            //   // this.$cookies.set("token", res.data.data, {expires: "15D"});
-            //   localStorage.setItem("user",this.input_name)
-            //   this.$router.push("/")
-            //   this.$cookies.set("token", this.token, {expires: "7D"});
-            //   // console.log('登陆成功',this.$cookies.isKey("token"))
-            // }
+            // const user = {
+            //   account: this.input_name,
+            //   pwd:this.input_pwd
+            // };
+            // login(user).then((res) =>{
+            //     if(res.data.state!==200){
+            //       Message.warning(res.data.message)
+            //     }
+            //     else{
+            //       this.loginMes = "登录成功"
+            //       Message.success(this.loginMes)
+            //       this.$cookies.set("token", res.data.data, {expires: "15D"});
+            //       localStorage.setItem("user",this.input_name)
+            //       this.$router.push("/")
+            //     }
+            //   }
+            // ).catch((err)=>{
+            //   Message.error(err)
+            // })
+            if(this.input_name=='游客'){
+              this.loginMes = "登录成功"
+              Message.success(this.loginMes)
+              // this.$cookies.set("token", res.data.data, {expires: "15D"});
+              localStorage.setItem("user",this.input_name)
+              this.$router.push("/")
+              this.$cookies.set("token", this.token, {expires: "7D"});
+              // console.log('登陆成功',this.$cookies.isKey("token"))
+            }
           }
         }
     }
